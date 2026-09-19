@@ -90,7 +90,7 @@
 | Cart + Checkout | `checkout.html` | ✅ Done |
 | About Us | `about.html` | ✅ Done |
 | Contact | `contact.html` | ✅ Done |
-| Login / Register | `login.html` | ⬜ |
+| Login / Register | `login.html` | ✅ Done |
 | Student Dashboard | `dashboard.html` | ⬜ |
 | Blog | `blog.html` | ⬜ (optional, last) |
 

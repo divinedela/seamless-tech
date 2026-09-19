@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login / Register — Seamless Technologies Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3A6B;--blue:#1565C0;--blue-lt:#E8F0FE;
+  --orange:#F97316;--orange-dk:#EA6508;--white:#FFFFFF;--off-white:#F5F7FA;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#6B7280;--gray-900:#111827;
+  --green:#16A34A;--green-lt:#DCFCE7;--red:#DC2626;--amber:#F59E0B;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--gray-900);background:var(--off-white);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+/* PAGE LAYOUT */
+.page{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+
+/* LEFT BRAND PANEL */
+.brand-panel{background:linear-gradient(160deg,var(--navy) 0%,#0d2545 50%,#0a1e38 100%);padding:48px 56px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.brand-panel::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.brand-panel::after{content:'';position:absolute;bottom:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.12),transparent 70%);pointer-events:none}
+.bp-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:auto;position:relative;z-index:1}
+.bp-logo-mark{width:40px;height:40px;background:var(--orange);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
+.bp-logo-mark svg{width:22px;height:22px}
+.bp-logo-text{font-family:var(--font-head);font-weight:800;font-size:18px;color:#fff;line-height:1.1}
+.bp-logo-sub{font-size:10px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.05em;text-transform:uppercase}
+.bp-content{position:relative;z-index:1;margin-bottom:auto;padding:40px 0}
+.bp-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);border-radius:var(--r-full);padding:5px 14px;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:20px}
+.bp-title{font-family:var(--font-head);font-size:clamp(28px,3vw,40px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px}
+.bp-title em{color:var(--orange);font-style:normal}
+.bp-sub{font-size:15px;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:36px;max-width:380px}
+.bp-perks{display:flex;flex-direction:column;gap:14px}
+.bp-perk{display:flex;align-items:flex-start;gap:12px}
+.bp-perk-icon{width:32px;height:32px;border-radius:var(--r-sm);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.bp-perk-icon svg{width:16px;height:16px;color:var(--orange)}
+.bp-perk-text strong{display:block;font-size:14px;font-weight:700;color:#fff;margin-bottom:1px}
+.bp-perk-text span{font-size:12.5px;color:rgba(255,255,255,.6)}
+.bp-testimonial{border-top:1px solid rgba(255,255,255,.1);padding-top:28px;position:relative;z-index:1}
+.bp-quote{font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;font-style:italic;margin-bottom:14px}
+.bp-author{display:flex;align-items:center;gap:10px}
+.bp-ava{width:36px;height:36px;border-radius:var(--r-full);background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.bp-author-name{font-size:13px;font-weight:700;color:#fff}
+.bp-author-meta{font-size:11.5px;color:rgba(255,255,255,.5)}
+.bp-stars{display:flex;gap:2px;margin-left:auto}
+.bp-stars svg{width:12px;height:12px;fill:var(--amber)}
+
+/* RIGHT FORM PANEL */
+.form-panel{background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 56px;overflow-y:auto}
+.form-panel-inner{width:100%;max-width:420px}
+.fp-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gray-600);margin-bottom:32px;transition:.2s}
+.fp-back:hover{color:var(--navy)}
+.fp-back svg{width:16px;height:16px}
+
+/* TABS */
+.auth-tabs{display:flex;background:var(--gray-100);border-radius:var(--r-lg);padding:4px;margin-bottom:32px}
+.auth-tab{flex:1;padding:10px;border:none;background:transparent;font-size:14px;font-weight:700;color:var(--gray-600);border-radius:var(--r-md);cursor:pointer;font-family:var(--font-body);transition:.2s}
+.auth-tab.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+
+/* SOCIAL BUTTONS */
+.social-auth{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.social-auth-btn{display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--gray-200);background:#fff;border-radius:var(--r-md);padding:11px;font-size:13.5px;font-weight:600;color:var(--gray-900);cursor:pointer;font-family:var(--font-body);transition:.2s}
+.social-auth-btn:hover{border-color:var(--gray-400);background:var(--gray-100)}
+.social-auth-btn svg{width:18px;height:18px;flex-shrink:0}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+.divider span{font-size:12px;color:var(--gray-400);font-weight:600;white-space:nowrap}
+
+/* FORM FIELDS */
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13.5px;font-weight:600;color:var(--gray-900);margin-bottom:6px}
+.form-group label span{color:var(--red)}
+.input-wrap{position:relative}
+.form-input{width:100%;border:1.5px solid var(--gray-200);border-radius:var(--r-md);padding:11px 14px;font-size:14.5px;font-family:var(--font-body);color:var(--gray-900);background:#fff;transition:.2s;outline:none}
+.form-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
+.form-input.error{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.08)}
+.form-input.success{border-color:var(--green)}
+.input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray-400);pointer-events:none}
+.input-icon svg{width:16px;height:16px}
+.has-icon .form-input{padding-left:38px}
+.toggle-pw{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--gray-400);transition:.2s;padding:2px}
+.toggle-pw:hover{color:var(--gray-600)}
+.toggle-pw svg{width:17px;height:17px;display:block}
+.form-error{font-size:12px;color:var(--red);font-weight:500;margin-top:4px;display:none}
+.form-error.show{display:block}
+.form-hint{font-size:12px;color:var(--gray-400);margin-top:4px}
+
+/* FIELD ROWS */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* PASSWORD STRENGTH */
+.pw-strength{margin-top:8px}
+.pw-bars{display:flex;gap:4px;margin-bottom:4px}
+.pw-bar{flex:1;height:3px;background:var(--gray-200);border-radius:var(--r-full);transition:.3s}
+.pw-bar.weak{background:var(--red)}
+.pw-bar.fair{background:var(--amber)}
+.pw-bar.good{background:var(--blue)}
+.pw-bar.strong{background:var(--green)}
+.pw-label{font-size:11px;font-weight:600;color:var(--gray-400)}
+.pw-label.weak{color:var(--red)}
+.pw-label.fair{color:var(--amber)}
+.pw-label.good{color:var(--blue)}
+.pw-label.strong{color:var(--green)}
+.pw-rules{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.pw-rule{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-400)}
+.pw-rule.met{color:var(--green)}
+.pw-rule svg{width:12px;height:12px}
+
+/* CHECKBOX */
+.check-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px}
+.check-row input[type=checkbox]{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--navy);cursor:pointer}
+.check-row label{font-size:13px;color:var(--gray-600);line-height:1.5;cursor:pointer}
+.check-row label a{color:var(--blue);font-weight:600}
+.check-row-inline{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.check-row-inline .check-left{display:flex;align-items:center;gap:8px}
+.check-row-inline input[type=checkbox]{width:15px;height:15px;accent-color:var(--navy);cursor:pointer}
+.check-row-inline label{font-size:13px;color:var(--gray-600);cursor:pointer}
+.forgot-link{font-size:13px;color:var(--blue);font-weight:600;transition:.2s}
+.forgot-link:hover{color:var(--navy)}
+
+/* SUBMIT */
+.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:var(--r-lg);font-size:16px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+.btn-submit:hover:not(:disabled){background:var(--orange-dk);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.btn-submit .spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.btn-submit.loading .spinner{display:block}
+.btn-submit.loading .btn-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.switch-text{text-align:center;font-size:13.5px;color:var(--gray-600)}
+.switch-text a{color:var(--blue);font-weight:700}
+
+/* SUCCESS STATES */
+.auth-success{display:none;text-align:center;padding:16px 0}
+.success-icon{width:72px;height:72px;background:var(--green-lt);border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;animation:popIn .4s ease}
+@keyframes popIn{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.success-icon svg{width:36px;height:36px;color:var(--green)}
+.auth-success h3{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:10px}
+.auth-success p{font-size:14.5px;color:var(--gray-600);line-height:1.7;margin-bottom:24px}
+.btn-to-dash{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;border-radius:var(--r-lg);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-to-dash:hover{background:var(--navy-mid)}
+
+/* FORGOT PASSWORD PANEL */
+.forgot-panel{display:none}
+.fp-title{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:8px}
+.fp-sub{font-size:14px;color:var(--gray-600);margin-bottom:28px;line-height:1.6}
+.btn-back-login{background:none;border:none;color:var(--blue);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font-body);display:flex;align-items:center;gap:5px;padding:0;margin-top:12px;transition:.2s}
+.btn-back-login:hover{color:var(--navy)}
+.btn-back-login svg{width:15px;height:15px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .page{grid-template-columns:1fr}
+  .brand-panel{display:none}
+  .form-panel{padding:40px 24px;justify-content:flex-start;padding-top:56px}
+  .form-panel-inner{max-width:100%}
+}
+@media(max-width:480px){
+  .form-row{grid-template-columns:1fr}
+  .social-auth{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT BRAND PANEL -->
+  <div class="brand-panel">
+    <a href="index.html" class="bp-logo">
+      <div class="bp-logo-mark">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#fff"/></svg>
+      </div>
+      <div>
+        <div class="bp-logo-text">SeamlessTech</div>
+        <div class="bp-logo-sub">Technologies Hub</div>
+      </div>
+    </a>
+
+    <div class="bp-content">
+      <div class="bp-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Student & Customer Portal
+      </div>
+      <h2 class="bp-title">Your Tech Journey<br>Starts <em>Here</em></h2>
+      <p class="bp-sub">Access your courses, track orders, manage your profile, and get support — all in one place.</p>
+      <div class="bp-perks">
+        <div class="bp-perk">
+          <div class="bp-perk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="bp-perk-text">
+            <strong>Course Access</strong>
+            <span>Pick up any lesson, any time, on any device</span>
+          </div>
+        </div>
+        <div class="bp-perk">
+          <div class="bp-perk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div class="bp-perk-text">
+            <strong>Order Tracking</strong>
+            <span>View all your purchases and repair bookings</span>
+          </div>
+        </div>
+        <div class="bp-perk">
+          <div class="bp-perk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="bp-perk-text">
+            <strong>Certificate Downloads</strong>
+            <span>Get your completion certificates instantly</span>
+          </div>
+        </div>
+        <div class="bp-perk">
+          <div class="bp-perk-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="bp-perk-text">
+            <strong>Direct Support</strong>
+            <span>Message instructors and our support team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bp-testimonial">
+      <p class="bp-quote">"I enrolled in the Web Development Bootcamp and had my first client within 3 weeks of finishing. The dashboard makes it so easy to track your progress."</p>
+      <div class="bp-author">
+        <div class="bp-ava">AK</div>
+        <div>
+          <div class="bp-author-name">Adwoa Kyei</div>
+          <div class="bp-author-meta">Web Development Graduate</div>
+        </div>
+        <div class="bp-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM PANEL -->
+  <div class="form-panel">
+    <div class="form-panel-inner">
+      <a href="index.html" class="fp-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to site
+      </a>
+
+      <!-- MAIN AUTH (tabs + forms) -->
+      <div id="authMain">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+          <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+        </div>
+
+        <!-- SOCIAL AUTH -->
+        <div class="social-auth">
+          <button class="social-auth-btn" onclick="socialAuth('Google')">
+            <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button class="social-auth-btn" onclick="socialAuth('Facebook')">
+            <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+            Facebook
+          </button>
+        </div>
+
+        <div class="divider"><span>or continue with email</span></div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" onsubmit="submitLogin(event)" novalidate style="display:block">
+          <div class="form-group">
+            <label for="loginEmail">Email Address <span>*</span></label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <span class="form-error" id="err-loginEmail">Please enter a valid email address</span>
+          </div>
+          <div class="form-group">
+            <label for="loginPw">Password <span>*</span></label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <input type="password" id="loginPw" class="form-input" placeholder="Your password" autocomplete="current-password">
+              <button type="button" class="toggle-pw" onclick="togglePw('loginPw',this)" aria-label="Show password">
+                <svg id="loginPw-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <span class="form-error" id="err-loginPw">Please enter your password</span>
+          </div>
+          <div class="check-row-inline">
+            <div class="check-left">
+              <input type="checkbox" id="rememberMe">
+              <label for="rememberMe">Remember me</label>
+            </div>
+            <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn-submit" id="loginBtn">
+            <span class="btn-text">Sign In</span>
+            <div class="spinner"></div>
+          </button>
+          <p class="switch-text">Don't have an account? <a href="#" onclick="switchTab('register');return false">Create one free</a></p>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="registerForm" onsubmit="submitRegister(event)" novalidate style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regFirst">First Name <span>*</span></label>
+              <input type="text" id="regFirst" class="form-input" placeholder="Kwame" autocomplete="given-name">
+              <span class="form-error" id="err-regFirst">Required</span>
+            </div>
+            <div class="form-group">
+              <label for="regLast">Last Name <span>*</span></label>
+              <input type="text" id="regLast" class="form-input" placeholder="Asante" autocomplete="family-name">
+              <span class="form-error" id="err-regLast">Required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address <span>*</span></label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <input type="email" id="regEmail" class="form-input" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <span class="form-error" id="err-regEmail">Enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Phone / WhatsApp</label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .99 1.18A2 2 0 0 1 2.97 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg></span>
+              <input type="tel" id="regPhone" class="form-input" placeholder="+233 XX XXX XXXX" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPw">Password <span>*</span></label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <input type="password" id="regPw" class="form-input" placeholder="Create a strong password" autocomplete="new-password" oninput="checkStrength(this.value)">
+              <button type="button" class="toggle-pw" onclick="togglePw('regPw',this)" aria-label="Show password">
+                <svg id="regPw-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="pw-strength" id="pwStrengthWrap" style="display:none">
+              <div class="pw-bars">
+                <div class="pw-bar" id="pwBar1"></div>
+                <div class="pw-bar" id="pwBar2"></div>
+                <div class="pw-bar" id="pwBar3"></div>
+                <div class="pw-bar" id="pwBar4"></div>
+              </div>
+              <span class="pw-label" id="pwLabel">Weak</span>
+            </div>
+            <span class="form-error" id="err-regPw">Password must be at least 8 characters</span>
+          </div>
+          <div class="form-group">
+            <label for="regPwConfirm">Confirm Password <span>*</span></label>
+            <div class="input-wrap has-icon">
+              <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <input type="password" id="regPwConfirm" class="form-input" placeholder="Repeat password" autocomplete="new-password">
+              <button type="button" class="toggle-pw" onclick="togglePw('regPwConfirm',this)" aria-label="Show password">
+                <svg id="regPwConfirm-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <span class="form-error" id="err-regPwConfirm">Passwords do not match</span>
+          </div>
+          <div class="check-row">
+            <input type="checkbox" id="regTerms">
+            <label for="regTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to receiving account and course updates by email.</label>
+          </div>
+          <span class="form-error" id="err-regTerms" style="margin-bottom:12px;margin-top:-8px;display:none">You must accept the terms to create an account</span>
+          <button type="submit" class="btn-submit" id="registerBtn">
+            <span class="btn-text">Create Account</span>
+            <div class="spinner"></div>
+          </button>
+          <p class="switch-text">Already have an account? <a href="#" onclick="switchTab('login');return false">Sign in</a></p>
+        </form>
+      </div>
+
+      <!-- FORGOT PASSWORD PANEL -->
+      <div class="forgot-panel" id="forgotPanel">
+        <p class="fp-title">Reset Password</p>
+        <p class="fp-sub">Enter your email and we'll send you a link to reset your password. Check your spam folder if it doesn't arrive within a few minutes.</p>
+        <div class="form-group">
+          <label for="forgotEmail">Email Address <span>*</span></label>
+          <div class="input-wrap has-icon">
+            <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <input type="email" id="forgotEmail" class="form-input" placeholder="you@example.com">
+          </div>
+          <span class="form-error" id="err-forgotEmail">Enter a valid email address</span>
+        </div>
+        <button class="btn-submit" onclick="submitForgot(event)">
+          <span class="btn-text">Send Reset Link</span>
+          <div class="spinner"></div>
+        </button>
+        <div id="forgotSuccess" style="display:none;text-align:center;padding:12px;background:var(--green-lt);border-radius:var(--r-md);font-size:13.5px;color:var(--green);font-weight:600">
+          ✓ Reset link sent — check your inbox
+        </div>
+        <button class="btn-back-login" onclick="showLogin()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Sign In
+        </button>
+      </div>
+
+      <!-- LOGIN SUCCESS -->
+      <div class="auth-success" id="loginSuccess">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Welcome back!</h3>
+        <p>You're signed in. Redirecting you to your dashboard…</p>
+        <button class="btn-to-dash" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+      </div>
+
+      <!-- REGISTER SUCCESS -->
+      <div class="auth-success" id="registerSuccess">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Account Created!</h3>
+        <p>Welcome to Seamless Technologies Hub. We've sent a confirmation email — click the link inside to verify your account.</p>
+        <button class="btn-to-dash" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TAB SWITCHING ─────────────────────────────────────────────────────────────
+let activeTab = 'login';
+
+function switchTab(tab){
+  activeTab = tab;
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+  document.getElementById('loginForm').style.display    = tab === 'login'    ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+  clearErrors();
+}
+
+// Check URL param on load
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('tab') === 'register') switchTab('register');
+});
+
+// ── PASSWORD SHOW/HIDE ────────────────────────────────────────────────────────
+function togglePw(id, btn){
+  const input = document.getElementById(id);
+  const isText = input.type === 'text';
+  input.type = isText ? 'password' : 'text';
+  btn.querySelector('svg').innerHTML = isText
+    ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'
+    : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/>';
+}
+
+// ── PASSWORD STRENGTH ─────────────────────────────────────────────────────────
+function checkStrength(val){
+  const wrap = document.getElementById('pwStrengthWrap');
+  if(!val){ wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+
+  let score = 0;
+  if(val.length >= 8)  score++;
+  if(val.length >= 12) score++;
+  if(/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+  if(/[0-9]/.test(val)) score++;
+  if(/[^A-Za-z0-9]/.test(val)) score++;
+
+  const level = score <= 1 ? 'weak' : score <= 2 ? 'fair' : score <= 3 ? 'good' : 'strong';
+  const labels = {weak:'Weak',fair:'Fair',good:'Good',strong:'Strong'};
+  const fills  = {weak:1,fair:2,good:3,strong:4};
+
+  [1,2,3,4].forEach(i => {
+    const bar = document.getElementById(`pwBar${i}`);
+    bar.className = 'pw-bar';
+    if(i <= fills[level]) bar.classList.add(level);
+  });
+  const lbl = document.getElementById('pwLabel');
+  lbl.className = `pw-label ${level}`;
+  lbl.textContent = labels[level];
+}
+
+// ── VALIDATION HELPERS ────────────────────────────────────────────────────────
+function setErr(id, errId, show){
+  const el  = document.getElementById(id);
+  const err = document.getElementById(errId);
+  el.classList.toggle('error', show);
+  err.classList.toggle('show', show);
+  return !show;
+}
+
+function clearErrors(){
+  document.querySelectorAll('.form-input').forEach(el => el.classList.remove('error'));
+  document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
+}
+
+// ── SUBMIT LOGIN ──────────────────────────────────────────────────────────────
+function submitLogin(e){
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const pw    = document.getElementById('loginPw').value;
+  const v1 = setErr('loginEmail','err-loginEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  const v2 = setErr('loginPw',   'err-loginPw',    pw.length < 1);
+  if(!v1 || !v2) return;
+
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('authMain').style.display = 'none';
+    document.getElementById('loginSuccess').style.display = 'block';
+  }, 1400);
+}
+
+// ── SUBMIT REGISTER ───────────────────────────────────────────────────────────
+function submitRegister(e){
+  e.preventDefault();
+  const first   = document.getElementById('regFirst').value.trim();
+  const last    = document.getElementById('regLast').value.trim();
+  const email   = document.getElementById('regEmail').value.trim();
+  const pw      = document.getElementById('regPw').value;
+  const confirm = document.getElementById('regPwConfirm').value;
+  const terms   = document.getElementById('regTerms').checked;
+
+  const v1 = setErr('regFirst','err-regFirst',first.length < 2);
+  const v2 = setErr('regLast', 'err-regLast', last.length  < 2);
+  const v3 = setErr('regEmail','err-regEmail',!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  const v4 = setErr('regPw',   'err-regPw',   pw.length < 8);
+  const v5 = setErr('regPwConfirm','err-regPwConfirm', pw !== confirm);
+  const termsErr = document.getElementById('err-regTerms');
+  termsErr.style.display = terms ? 'none' : 'block';
+
+  if(!v1||!v2||!v3||!v4||!v5||!terms) return;
+
+  const btn = document.getElementById('registerBtn');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('authMain').style.display = 'none';
+    document.getElementById('registerSuccess').style.display = 'block';
+  }, 1600);
+}
+
+// ── FORGOT PASSWORD ───────────────────────────────────────────────────────────
+function showForgot(e){
+  e.preventDefault();
+  document.getElementById('authMain').style.display   = 'none';
+  document.getElementById('forgotPanel').style.display = 'block';
+}
+function showLogin(){
+  document.getElementById('forgotPanel').style.display = 'none';
+  document.getElementById('authMain').style.display    = 'block';
+  switchTab('login');
+}
+function submitForgot(e){
+  e.preventDefault();
+  const email = document.getElementById('forgotEmail').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    document.getElementById('forgotEmail').classList.add('error');
+    document.getElementById('err-forgotEmail').classList.add('show');
+    return;
+  }
+  e.target.classList.add('loading'); e.target.disabled = true;
+  setTimeout(() => {
+    e.target.style.display = 'none';
+    document.getElementById('forgotSuccess').style.display = 'block';
+  }, 1200);
+}
+
+// ── SOCIAL AUTH ───────────────────────────────────────────────────────────────
+function socialAuth(provider){
+  alert(`${provider} sign-in will be connected once the backend is configured.`);
+}
+</script>
+</body>
+</html>
