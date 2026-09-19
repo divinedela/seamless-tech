@@ -82,7 +82,7 @@
 | Page | File | Status |
 |---|---|---|
 | Homepage | `index.html` | ✅ Done — approved |
-| Shop / Product Listing | `shop.html` | ⬜ Next |
+| Shop / Product Listing | `shop.html` | ✅ Done |
 | Product Detail | `product.html` | ⬜ |
 | Courses Page | `courses.html` | ⬜ |
 | Course Detail | `course-detail.html` | ⬜ |
