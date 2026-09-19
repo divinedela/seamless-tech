@@ -86,7 +86,7 @@
 | Product Detail | `product.html` | ✅ Done |
 | Courses Page | `courses.html` | ✅ Done |
 | Course Detail | `course-detail.html` | ✅ Done |
-| Services Page | `services.html` | ⬜ |
+| Services Page | `services.html` | ✅ Done |
 | Cart + Checkout | `checkout.html` | ✅ Done |
 | About Us | `about.html` | ⬜ |
 | Contact | `contact.html` | ⬜ |

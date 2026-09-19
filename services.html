@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IT Services — Seamless Technologies Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3A6B;--blue:#1565C0;--blue-lt:#E8F0FE;
+  --orange:#F97316;--orange-dk:#EA6508;--white:#FFFFFF;--off-white:#F5F7FA;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#6B7280;--gray-900:#111827;
+  --green:#16A34A;--red:#DC2626;--amber:#F59E0B;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--gray-900);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ANNOUNCE */
+.announce{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
+.announce strong{color:var(--orange)}
+
+/* HEADER */
+.header{background:#fff;border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm)}
+.hdr-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-mark{width:36px;height:36px;background:var(--navy);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px}
+.logo-text{font-family:var(--font-head);font-weight:800;font-size:17px;color:var(--navy);line-height:1.1}
+.logo-text span{color:var(--orange)}
+.logo-sub{font-size:9px;font-weight:600;color:var(--gray-600);letter-spacing:.05em;text-transform:uppercase}
+nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+nav a{font-size:13.5px;font-weight:600;color:var(--gray-600);padding:6px 11px;border-radius:var(--r-sm);transition:.2s;white-space:nowrap}
+nav a:hover{background:var(--blue-lt);color:var(--blue)}
+nav a.active{color:var(--navy);background:var(--blue-lt)}
+.hdr-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hdr-icon{width:38px;height:38px;border:none;background:none;cursor:pointer;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:.2s;position:relative}
+.hdr-icon:hover{background:var(--gray-100);color:var(--navy)}
+.cart-badge{position:absolute;top:4px;right:4px;background:var(--orange);color:#fff;border-radius:var(--r-full);font-size:9px;font-weight:700;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+.btn-login{background:var(--navy);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:.2s}
+.btn-login:hover{background:var(--navy-mid)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gray-900);border-radius:2px}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-200);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-nav a{padding:10px 12px;border-radius:var(--r-sm);font-size:14px;font-weight:600;color:var(--gray-700)}
+.mobile-nav a:hover,.mobile-nav a.active{background:var(--blue-lt);color:var(--blue)}
+.mobile-nav.open{display:flex}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0d2545 60%,#0f2e5a 100%);padding:80px 24px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-inner{max-width:1280px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);border-radius:var(--r-full);padding:6px 16px;font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:20px}
+.hero-title{font-family:var(--font-head);font-size:clamp(32px,5vw,58px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px}
+.hero-title em{color:var(--orange);font-style:normal}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 36px;line-height:1.7}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px}
+.hero-chip{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-full);padding:8px 18px;font-size:13.5px;font-weight:600;color:#fff;cursor:pointer;transition:.2s}
+.hero-chip:hover{background:rgba(249,115,22,.25);border-color:var(--orange)}
+.hero-chip svg{width:16px;height:16px;color:var(--orange)}
+.hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;border:none;padding:14px 32px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-primary:hover{background:var(--orange-dk);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);padding:14px 32px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* STATS STRIP */
+.stats-strip{background:#fff;border-bottom:1px solid var(--gray-200);padding:28px 24px}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+.stat-label{font-size:13px;color:var(--gray-600);margin-top:4px;font-weight:500}
+
+/* SERVICES GRID */
+.services-section{padding:80px 24px;background:var(--off-white)}
+.section-header{text-align:center;margin-bottom:56px}
+.section-eyebrow{display:inline-block;background:var(--blue-lt);color:var(--blue);border-radius:var(--r-full);padding:5px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+.section-title{font-family:var(--font-head);font-size:clamp(26px,4vw,38px);font-weight:800;color:var(--gray-900);margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--gray-600);max-width:560px;margin:0 auto}
+.services-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* FLIP CARDS */
+.flip-wrap{perspective:1000px;height:280px}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:.5s}
+.flip-wrap:hover .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:var(--r-xl);backface-visibility:hidden;padding:32px;display:flex;flex-direction:column}
+.flip-front{background:#fff;box-shadow:var(--shadow-md)}
+.flip-back{background:var(--navy);transform:rotateY(180deg)}
+.svc-icon{width:56px;height:56px;border-radius:var(--r-lg);background:rgba(249,115,22,.1);display:flex;align-items:center;justify-content:center;margin-bottom:18px;flex-shrink:0}
+.svc-icon svg{width:28px;height:28px;color:var(--orange)}
+.svc-title{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--gray-900);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--gray-600);line-height:1.65;flex:1}
+.svc-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--orange);margin-top:16px}
+.flip-back .svc-title{color:#fff}
+.flip-back .svc-desc{color:rgba(255,255,255,.75)}
+.back-bullets{display:flex;flex-direction:column;gap:7px;margin-top:12px;flex:1}
+.back-bullet{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,.85)}
+.back-bullet svg{width:14px;height:14px;color:var(--orange);flex-shrink:0;margin-top:2px}
+.flip-back .svc-link{color:var(--orange);margin-top:auto}
+
+/* SERVICE DETAIL SECTIONS */
+.svc-detail{padding:80px 24px}
+.svc-detail:nth-child(even){background:var(--off-white)}
+.svc-detail-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.svc-detail-inner.reverse{direction:rtl}
+.svc-detail-inner.reverse>*{direction:ltr}
+.svc-detail-img{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-xl);aspect-ratio:4/3}
+.svc-detail-img img{width:100%;height:100%;object-fit:cover}
+.svc-detail-content{}
+.svc-detail-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.2);border-radius:var(--r-full);padding:5px 14px;font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.svc-detail-eyebrow svg{width:14px;height:14px}
+.svc-detail-title{font-family:var(--font-head);font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--gray-900);margin-bottom:14px;line-height:1.25}
+.svc-detail-sub{font-size:15px;color:var(--gray-600);line-height:1.75;margin-bottom:24px}
+.svc-includes{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.svc-inc-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-900)}
+.svc-inc-item svg{width:18px;height:18px;color:var(--green);flex-shrink:0;margin-top:1px}
+.svc-price-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-lt);border-radius:var(--r-md);padding:10px 18px;font-size:14px;font-weight:600;color:var(--blue);margin-bottom:24px}
+.svc-price-tag svg{width:16px;height:16px}
+.btn-book{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;border:none;padding:13px 28px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-book:hover{background:var(--orange-dk);transform:translateY(-1px)}
+
+/* PROCESS */
+.process-section{padding:80px 24px;background:var(--navy)}
+.process-inner{max-width:1280px;margin:0 auto}
+.process-inner .section-title{color:#fff}
+.process-inner .section-sub{color:rgba(255,255,255,.7)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:2px;background:linear-gradient(90deg,var(--orange),rgba(249,115,22,.3));pointer-events:none}
+.process-step{text-align:center;position:relative}
+.step-num{width:56px;height:56px;border-radius:var(--r-full);background:var(--orange);color:#fff;font-family:var(--font-head);font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(249,115,22,.15)}
+.step-title{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.step-desc{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials{padding:80px 24px;background:#fff}
+.testimonials-grid{max-width:1280px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testi-card{background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:28px;position:relative}
+.testi-quote{font-size:40px;line-height:1;color:var(--orange);font-family:Georgia,serif;position:absolute;top:20px;right:24px;opacity:.3}
+.testi-text{font-size:15px;color:var(--gray-900);line-height:1.75;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-ava{width:44px;height:44px;border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.testi-name{font-weight:700;font-size:14px;color:var(--gray-900)}
+.testi-meta{font-size:12px;color:var(--gray-600)}
+.testi-stars{display:flex;gap:2px;margin-bottom:12px}
+.testi-stars svg{width:14px;height:14px;fill:var(--amber)}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,var(--navy) 0%,#0f2e5a 100%);padding:80px 24px}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center}
+.cta-inner h2{font-family:var(--font-head);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#fff;margin-bottom:12px}
+.cta-inner p{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.pay-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pay-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-full);padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.9)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 24px 0}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo{margin-bottom:14px}
+.footer-brand .logo-text{color:#fff}
+.footer-desc{font-size:13.5px;line-height:1.7;margin-bottom:18px;color:rgba(255,255,255,.6)}
+.social-row{display:flex;gap:8px}
+.social-btn{width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:.2s}
+.social-btn:hover{background:var(--orange);color:#fff}
+.social-btn svg{width:16px;height:16px}
+.footer-col h4{font-family:var(--font-head);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#fff;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,.6);transition:.2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-contact-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.footer-contact-item svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--orange)}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.5);transition:.2s}
+.footer-bottom-links a:hover{color:#fff}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+.overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:400px;max-width:100vw;background:#fff;z-index:201;transform:translateX(100%);transition:.3s cubic-bezier(.4,0,0,.1);display:flex;flex-direction:column;box-shadow:var(--shadow-xl)}
+.cart-drawer.open{transform:translateX(0)}
+.cd-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--gray-200)}
+.cd-head h3{font-family:var(--font-head);font-weight:800;font-size:16px}
+.cd-close{background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--r-sm);color:var(--gray-600);transition:.2s}
+.cd-close:hover{background:var(--gray-100)}
+.cd-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cd-empty{text-align:center;padding:48px 20px;color:var(--gray-600)}
+.cd-empty svg{width:56px;height:56px;margin:0 auto 16px;color:var(--gray-300)}
+.cd-empty h4{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:6px}
+.cd-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-200)}
+.cd-item-img{width:64px;height:64px;border-radius:var(--r-md);object-fit:cover;flex-shrink:0;background:var(--gray-100)}
+.cd-item-info{flex:1;min-width:0}
+.cd-item-name{font-size:13.5px;font-weight:600;color:var(--gray-900);line-height:1.4;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-item-price{font-size:13px;color:var(--orange);font-weight:700}
+.cd-item-controls{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cd-qty-btn{width:26px;height:26px;border:1px solid var(--gray-200);background:#fff;border-radius:var(--r-sm);cursor:pointer;font-size:15px;font-weight:600;color:var(--gray-700);display:flex;align-items:center;justify-content:center;transition:.2s}
+.cd-qty-btn:hover{border-color:var(--navy);color:var(--navy)}
+.cd-qty-val{font-size:13px;font-weight:600;min-width:20px;text-align:center}
+.cd-item-remove{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:12px;margin-left:auto;transition:.2s}
+.cd-item-remove:hover{color:var(--red)}
+.cd-foot{padding:16px 20px;border-top:1px solid var(--gray-200)}
+.cd-subtotal{display:flex;justify-content:space-between;font-size:14px;margin-bottom:14px}
+.cd-subtotal strong{font-family:var(--font-head);font-size:16px;color:var(--gray-900)}
+.cd-subtotal span{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--orange)}
+.cd-checkout{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;margin-bottom:8px}
+.cd-checkout:hover{background:var(--orange-dk)}
+.cd-view{width:100%;background:transparent;color:var(--navy);border:2px solid var(--gray-200);padding:12px;border-radius:var(--r-md);font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:.2s}
+.cd-view:hover{border-color:var(--navy);background:var(--gray-100)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .process-steps::before{display:none}
+}
+@media(max-width:900px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .svc-detail-inner{grid-template-columns:1fr}
+  .svc-detail-inner.reverse{direction:ltr}
+  .svc-detail-img{max-width:100%}
+  .testimonials-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .services-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .hero-chips{gap:8px}
+}
+@media(max-width:380px){
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Same-day repairs available — Walk in or call <strong>+233 XX XXX XXXX</strong></div>
+
+<header class="header">
+  <div class="hdr-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg></div>
+      <div><div class="logo-text">Seamless<span>Tech</span></div><div class="logo-sub">Technologies Hub</div></div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="courses.html">Courses</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="hdr-icon" onclick="openCart()" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+      <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+      <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="shop.html">Shop</a>
+    <a href="courses.html">Courses</a><a href="services.html" class="active">Services</a>
+    <a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="login.html">Login / Register</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Professional IT Services — Accra, Ghana
+    </div>
+    <h1 class="hero-title">Expert IT Solutions<br>for <em>Every Need</em></h1>
+    <p class="hero-sub">From laptop repairs to enterprise networking — fast, reliable, and affordable tech services delivered by certified professionals.</p>
+    <div class="hero-chips">
+      <a href="#repairs" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Device Repairs
+      </a>
+      <a href="#networking" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/><path d="M5 8v4c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 14v2"/></svg>
+        Networking
+      </a>
+      <a href="#cctv" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        CCTV & Security
+      </a>
+      <a href="#consultation" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        IT Consultation
+      </a>
+      <a href="#installations" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        OS Installations
+      </a>
+      <a href="#training" class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        IT Training
+      </a>
+    </div>
+    <div class="hero-cta-row">
+      <button class="btn-primary" onclick="window.location.href='contact.html'">Book a Service</button>
+      <button class="btn-outline-white" onclick="document.getElementById('services-overview').scrollIntoView({behavior:'smooth'})">View All Services</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Devices Repaired</div></div>
+    <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Business Clients</div></div>
+    <div class="stat-item"><div class="stat-num">48h</div><div class="stat-label">Average Turnaround</div></div>
+    <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Client Rating</div></div>
+  </div>
+</div>
+
+<!-- SERVICES GRID (flip cards) -->
+<section class="services-section" id="services-overview">
+  <div class="section-header">
+    <div class="section-eyebrow">What We Do</div>
+    <h2 class="section-title">All IT Services</h2>
+    <p class="section-sub">Hover any card to see what's included. Click to jump to details.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="svc-title">Device Repair & Diagnostics</div>
+          <div class="svc-desc">Laptops, desktops, phones & tablets. Fast diagnostics, genuine parts, and warranty on all repairs.</div>
+          <a href="#repairs" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">Device Repair</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Screen replacements</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Motherboard & chip repairs</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Battery replacements</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Data recovery</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Virus & malware removal</div>
+          </div>
+          <a href="#repairs" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/><path d="M5 8v4c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 14v2"/></svg></div>
+          <div class="svc-title">Networking & Infrastructure</div>
+          <div class="svc-desc">Office networks, Wi-Fi installations, structured cabling, and server setup for businesses of any size.</div>
+          <a href="#networking" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">Networking</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>LAN/WAN setup & configuration</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi access point installation</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Structured cabling & patching</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Firewall & router configuration</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Network monitoring & support</div>
+          </div>
+          <a href="#networking" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+          <div class="svc-title">CCTV & Security Systems</div>
+          <div class="svc-desc">Professional CCTV design, supply, and installation for homes, offices, and retail spaces. Remote viewing included.</div>
+          <a href="#cctv" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">CCTV & Security</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Site survey & camera placement</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>IP & analog camera supply</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>DVR/NVR setup & configuration</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Remote mobile viewing setup</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Access control systems</div>
+          </div>
+          <a href="#cctv" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="svc-title">IT Consultation</div>
+          <div class="svc-desc">Strategic advice for businesses — IT planning, procurement guidance, cybersecurity audits, and digital transformation roadmaps.</div>
+          <a href="#consultation" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">IT Consultation</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>IT infrastructure assessment</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hardware & software procurement</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cybersecurity audits</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cloud migration planning</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Digital transformation strategy</div>
+          </div>
+          <a href="#consultation" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg></div>
+          <div class="svc-title">OS & Software Installation</div>
+          <div class="svc-desc">Clean Windows/macOS/Linux installations, driver setup, licensed software deployment, and system optimisation.</div>
+          <a href="#installations" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">OS & Software</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Windows 10/11 clean install</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Driver installation & updates</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Microsoft Office & Adobe suite</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Antivirus & security setup</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>System performance optimisation</div>
+          </div>
+          <a href="#installations" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div class="svc-title">IT Training & Education</div>
+          <div class="svc-desc">Hands-on corporate training workshops for staff. Microsoft Office, cybersecurity awareness, and custom tech courses.</div>
+          <a href="#training" class="svc-link">Learn more →</a>
+        </div>
+        <div class="flip-back">
+          <div class="svc-title">IT Training</div>
+          <div class="back-bullets">
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Corporate group workshops</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Microsoft Office for staff</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cybersecurity awareness</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Online courses (self-paced)</div>
+            <div class="back-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Certification exam prep</div>
+          </div>
+          <a href="#training" class="svc-link">See details →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REPAIRS -->
+<section class="svc-detail" id="repairs">
+  <div class="svc-detail-inner">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?auto=format&fit=crop&w=800&q=85" alt="Device Repair">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Device Repair & Diagnostics
+      </div>
+      <h2 class="svc-detail-title">Fast Repairs, Genuine Parts, Warranty Guaranteed</h2>
+      <p class="svc-detail-sub">Our certified technicians diagnose and repair laptops, desktops, phones, and tablets — with most repairs completed same day or within 48 hours. We use genuine or high-quality compatible parts and provide a 90-day warranty on all repairs.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Screen & display replacement (LCD/OLED)</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Motherboard & chip-level repairs</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Battery, keyboard & charging port replacement</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Data recovery & backup</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Virus, malware & spyware removal</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free diagnostics on walk-in</div>
+      </div>
+      <div class="svc-price-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Starting from GH₵ 80 · Free diagnostics
+      </div>
+      <button class="btn-book" onclick="window.location.href='contact.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Book a Repair
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORKING -->
+<section class="svc-detail" id="networking">
+  <div class="svc-detail-inner reverse">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=85" alt="Networking">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/><path d="M5 8v4c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V8"/><path d="M12 14v2"/></svg>
+        Networking & Infrastructure
+      </div>
+      <h2 class="svc-detail-title">Reliable Networks for Homes & Businesses</h2>
+      <p class="svc-detail-sub">Whether you're setting up a small home office or an enterprise-grade office network, we design, install, and maintain the infrastructure that keeps your business connected. Cisco and Mikrotik certified engineers.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>LAN/WAN design and installation</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi access point planning & deployment</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Structured cabling & patch panels</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Router, switch & firewall configuration</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>VPN & remote access setup</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ongoing network monitoring & support</div>
+      </div>
+      <div class="svc-price-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Starting from GH₵ 500 · Free site assessment
+      </div>
+      <button class="btn-book" onclick="window.location.href='contact.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Request a Quote
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CCTV -->
+<section class="svc-detail" id="cctv">
+  <div class="svc-detail-inner">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=85" alt="CCTV Installation">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        CCTV & Security Systems
+      </div>
+      <h2 class="svc-detail-title">Protect What Matters — Watch From Anywhere</h2>
+      <p class="svc-detail-sub">We supply and install professional-grade CCTV systems for homes, shops, offices, and warehouses across Accra. Remote live viewing from your smartphone, 24/7 recording, and night vision as standard.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free site survey & camera positioning plan</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>IP & HD analog camera supply & installation</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>DVR/NVR & storage setup</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Remote viewing via phone/PC</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Night vision & motion detection</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Access control & intercom systems</div>
+      </div>
+      <div class="svc-price-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        4-camera package from GH₵ 1,800 installed
+      </div>
+      <button class="btn-book" onclick="window.location.href='contact.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Quote
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTATION -->
+<section class="svc-detail" id="consultation">
+  <div class="svc-detail-inner reverse">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=85" alt="IT Consultation">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        IT Consultation
+      </div>
+      <h2 class="svc-detail-title">Strategic Tech Guidance for Growing Businesses</h2>
+      <p class="svc-detail-sub">Stop wasting money on the wrong technology. Our consultants help Ghanaian businesses make smart IT investments, improve cybersecurity, and plan digital transformation with a clear roadmap.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full IT infrastructure audit</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hardware & software procurement advice</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cybersecurity vulnerability assessment</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cloud adoption & migration planning</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>IT budget planning & cost optimisation</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Written recommendations report</div>
+      </div>
+      <div class="svc-price-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        From GH₵ 300/session · First call free
+      </div>
+      <button class="btn-book" onclick="window.location.href='contact.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Book Free Consultation
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLATIONS -->
+<section class="svc-detail" id="installations">
+  <div class="svc-detail-inner">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1544819667-9bfc1de23d4e?auto=format&fit=crop&w=800&q=85" alt="OS Installation">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        OS & Software Installation
+      </div>
+      <h2 class="svc-detail-title">Clean, Fast, Properly Configured Systems</h2>
+      <p class="svc-detail-sub">A slow or corrupted system can cripple productivity. We perform clean OS installations, install all necessary drivers and software, and optimise your system to run at peak performance — same day.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Windows 10 / 11 clean installation</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>All drivers & Windows updates installed</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Microsoft Office 365 / 2021 setup</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Adobe Creative Cloud installation</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Antivirus & security software</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Data backup before formatting</div>
+      </div>
+      <div class="svc-price-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        OS installation from GH₵ 120
+      </div>
+      <button class="btn-book" onclick="window.location.href='contact.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Book This Service
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="svc-detail" id="training">
+  <div class="svc-detail-inner reverse">
+    <div class="svc-detail-img">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=85" alt="IT Training">
+    </div>
+    <div class="svc-detail-content">
+      <div class="svc-detail-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        IT Training & Education
+      </div>
+      <h2 class="svc-detail-title">Upskill Your Team, Grow Your Business</h2>
+      <p class="svc-detail-sub">We run customised corporate training workshops in Accra for teams of any size. From basic computer literacy to advanced cybersecurity, we deliver practical, hands-on training that sticks. Online self-paced courses also available.</p>
+      <div class="svc-includes">
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Corporate workshops (on-site or virtual)</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Microsoft Office (Word, Excel, PowerPoint)</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cybersecurity awareness for staff</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Graphic design & digital marketing</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Certificate of completion for participants</div>
+        <div class="svc-inc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Online self-paced courses available</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-book" onclick="window.location.href='contact.html'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Enquire About Training
+        </button>
+        <a href="courses.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-lt);color:var(--blue);border:none;padding:13px 24px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s">
+          Browse Online Courses →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="section-header">
+      <div class="section-eyebrow" style="background:rgba(249,115,22,.15);color:var(--orange)">How It Works</div>
+      <h2 class="section-title">Simple 4-Step Process</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65)">Getting started is easy — we handle everything from first contact to completed service.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Contact Us</div>
+        <div class="step-desc">Call, WhatsApp, or fill out our contact form. Describe your issue and we'll respond within 2 hours.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Free Diagnosis</div>
+        <div class="step-desc">Drop in or we visit you. We assess the problem and provide a clear quote — no hidden fees.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">We Fix It</div>
+        <div class="step-desc">Our certified technicians get to work. Most repairs done same day or within 48 hours.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Pickup & Pay</div>
+        <div class="step-desc">Collect your device (or we deliver). Pay by MoMo, card, or cash. 90-day warranty included.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-eyebrow">Client Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub">Real feedback from businesses and individuals we've served across Accra.</p>
+    </div>
+  </div>
+  <div class="testimonials-grid" style="max-width:1280px;margin:0 auto">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-text">My laptop screen broke the day before an important presentation. Seamless Tech replaced it within 4 hours and even backed up all my files. Absolute lifesavers — I couldn't believe the speed.</p>
+      <div class="testi-author">
+        <div class="testi-ava" style="background:#1565C0">AK</div>
+        <div>
+          <div class="testi-name">Abena Kyei</div>
+          <div class="testi-meta">Marketing Manager, Accra</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-text">We had Seamless Tech set up our entire office network for our 3-floor building — 40 workstations, Wi-Fi, and a CCTV system. Professional, on time, and the network has been rock-solid since installation.</p>
+      <div class="testi-author">
+        <div class="testi-ava" style="background:#F97316">KO</div>
+        <div>
+          <div class="testi-name">Kofi Osei</div>
+          <div class="testi-meta">CEO, Osei Trading Co.</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="testi-text">Their IT consultation saved us money. They reviewed our software subscriptions and found GH₵ 2,000/month in unnecessary tools. The free first session alone was worth calling them.</p>
+      <div class="testi-author">
+        <div class="testi-ava" style="background:#16A34A">YA</div>
+        <div>
+          <div class="testi-name">Yaa Asantewaa</div>
+          <div class="testi-meta">Operations Director, Fintech Startup</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to Get Started?</h2>
+    <p>Walk in to our Accra office or contact us now — same-day service available for most repairs.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="window.location.href='contact.html'">Contact Us Today</button>
+      <button class="btn-outline-white" onclick="window.location.href='shop.html'">Shop for Devices</button>
+    </div>
+    <div class="pay-chips">
+      <span class="pay-chip">MTN MoMo</span>
+      <span class="pay-chip">Telecel Cash</span>
+      <span class="pay-chip">AirtelTigo</span>
+      <span class="pay-chip">Debit / Credit Card</span>
+      <span class="pay-chip">Bank Transfer</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg></div>
+        <div><div class="logo-text">Seamless<span style="color:var(--orange)">Tech</span></div><div class="logo-sub" style="color:rgba(255,255,255,.4)">Technologies Hub</div></div>
+      </a>
+      <p class="footer-desc">Empowering Lives Through Technology &amp; Digital Skills — Accra, Ghana.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li><li><a href="courses.html">Courses</a></li>
+        <li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>IT Services</h4>
+      <ul>
+        <li><a href="#repairs">Device Repairs</a></li><li><a href="#networking">Networking</a></li>
+        <li><a href="#cctv">CCTV Installation</a></li><li><a href="#consultation">IT Consultation</a></li>
+        <li><a href="#installations">OS Installations</a></li><li><a href="#training">IT Training</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Accra, Ghana
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +233 XX XXX XXXX
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@seamlesstech.com.gh
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Seamless Technologies Hub. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head">
+    <h3>Shopping Cart (<span id="cdCount">0</span>)</h3>
+    <button class="cd-close" onclick="closeCart()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cd-body" id="cdBody"></div>
+  <div class="cd-foot" id="cdFoot" style="display:none">
+    <div class="cd-subtotal">
+      <strong>Subtotal</strong><span id="cdTotal">GH₵ 0</span>
+    </div>
+    <button class="cd-checkout" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+    <button class="cd-view" onclick="window.location.href='checkout.html'">View Cart</button>
+  </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('sth_cart') || '[]');
+
+document.addEventListener('DOMContentLoaded', () => { updateCartBadge(); renderCart(); });
+
+function saveCart(){ localStorage.setItem('sth_cart', JSON.stringify(cart)); }
+function updateCartBadge(){
+  const t = cart.reduce((s,i) => s+i.qty, 0);
+  const b = document.getElementById('cartBadge');
+  b.textContent = t; b.style.display = t > 0 ? 'flex' : 'none';
+}
+function openCart(){ document.getElementById('overlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); renderCart(); }
+function closeCart(){ document.getElementById('overlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
+function renderCart(){
+  const body = document.getElementById('cdBody');
+  const foot = document.getElementById('cdFoot');
+  document.getElementById('cdCount').textContent = cart.reduce((s,i) => s+i.qty, 0);
+  if(!cart.length){
+    body.innerHTML = `<div class="cd-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><h4>Your cart is empty</h4><p>Shop our devices or enroll in a course</p></div>`;
+    foot.style.display='none'; return;
+  }
+  body.innerHTML = cart.map(item => `<div class="cd-item"><img class="cd-item-img" src="${item.img}" alt="${item.name}"><div class="cd-item-info"><div class="cd-item-name">${item.name}</div><div class="cd-item-price">GH₵ ${(item.price*item.qty).toLocaleString()}</div><div class="cd-item-controls"><button class="cd-qty-btn" onclick="changeQty('${item.id}',-1)">−</button><span class="cd-qty-val">${item.qty}</span><button class="cd-qty-btn" onclick="changeQty('${item.id}',1)">+</button><button class="cd-item-remove" onclick="removeItem('${item.id}')">✕ Remove</button></div></div></div>`).join('');
+  const sub = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  document.getElementById('cdTotal').textContent = `GH₵ ${sub.toLocaleString()}`;
+  foot.style.display='block';
+}
+function changeQty(id, delta){ const item=cart.find(i=>i.id===id); if(!item)return; item.qty=Math.max(1,item.qty+delta); saveCart(); updateCartBadge(); renderCart(); }
+function removeItem(id){ cart=cart.filter(i=>i.id!==id); saveCart(); updateCartBadge(); renderCart(); }
+function toggleMobileNav(){ document.getElementById('mobileNav').classList.toggle('open'); }
+</script>
+</body>
+</html>
