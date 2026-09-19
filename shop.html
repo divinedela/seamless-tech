@@ -1210,7 +1210,7 @@ function renderProducts() {
 
   grid.innerHTML = paged.map(p => `
     <div class="prod-card">
-      <div class="prod-img-wrap">
+      <a href="product.html?id=${p.id}" class="prod-img-wrap" style="display:block;text-decoration:none;">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
         <div class="prod-badges">
           ${p.badge==='hot'  ? '<span class="badge badge-hot">HOT</span>'   : ''}
@@ -1221,13 +1221,13 @@ function renderProducts() {
           ${p.cond==='refurbished' ? '<span class="badge badge-used">Refurb</span>' : ''}
         </div>
         <div class="prod-actions">
-          <button class="prod-action-btn" title="Wishlist"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
-          <button class="prod-action-btn" title="Quick View"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="prod-action-btn" title="Wishlist" onclick="event.preventDefault()"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="prod-action-btn" title="Quick View" onclick="event.preventDefault()"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
         </div>
-      </div>
+      </a>
       <div class="prod-body">
         <div class="prod-brand">${p.brand}</div>
-        <div class="prod-name">${p.name}</div>
+        <a href="product.html?id=${p.id}" class="prod-name" style="text-decoration:none;color:inherit;">${p.name}</a>
         <div class="prod-meta">${[p.ram,p.stor].filter(Boolean).join(' · ') || p.cond}</div>
         <div class="prod-foot">
           <div>
@@ -1367,17 +1367,17 @@ document.getElementById('searchInput').addEventListener('input', function() {
   }
   grid.innerHTML = results.map(p => `
     <div class="prod-card">
-      <div class="prod-img-wrap"><img src="${p.img}" alt="${p.name}" loading="lazy">
+      <a href="product.html?id=${p.id}" class="prod-img-wrap" style="display:block;text-decoration:none;"><img src="${p.img}" alt="${p.name}" loading="lazy">
         <div class="prod-badges">
           ${p.badge==='hot'  ? '<span class="badge badge-hot">HOT</span>'   : ''}
           ${p.badge==='sale' ? '<span class="badge badge-sale">SALE</span>' : ''}
           ${p.badge==='new'  ? '<span class="badge badge-new">NEW</span>'   : ''}
           ${!p.stock         ? '<span class="badge badge-oos">Out of Stock</span>' : ''}
         </div>
-      </div>
+      </a>
       <div class="prod-body">
         <div class="prod-brand">${p.brand}</div>
-        <div class="prod-name">${p.name}</div>
+        <a href="product.html?id=${p.id}" class="prod-name" style="text-decoration:none;color:inherit;">${p.name}</a>
         <div class="prod-meta">${[p.ram,p.stor].filter(Boolean).join(' · ') || ''}</div>
         <div class="prod-foot">
           <div>

@@ -83,7 +83,7 @@
 |---|---|---|
 | Homepage | `index.html` | ✅ Done — approved |
 | Shop / Product Listing | `shop.html` | ✅ Done |
-| Product Detail | `product.html` | ⬜ |
+| Product Detail | `product.html` | ✅ Done |
 | Courses Page | `courses.html` | ⬜ |
 | Course Detail | `course-detail.html` | ⬜ |
 | Services Page | `services.html` | ⬜ |
