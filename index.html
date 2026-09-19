@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seamless Technologies Hub — Empowering Lives Through Technology & Digital Skills</title>
+  <meta name="description" content="Ghana's one-stop hub for quality laptops, digital courses, IT training, device repairs, and tech consultations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────── */
+    :root {
+      --navy:       #0B1F3A;
+      --navy-mid:   #1A3A6B;
+      --blue:       #1565C0;
+      --blue-lt:    #E8F0FE;
+      --orange:     #F97316;
+      --orange-dk:  #EA6508;
+      --white:      #FFFFFF;
+      --off-white:  #F5F7FA;
+      --gray-100:   #F3F4F6;
+      --gray-200:   #E5E7EB;
+      --gray-400:   #9CA3AF;
+      --gray-600:   #6B7280;
+      --gray-900:   #111827;
+      --green:      #16A34A;
+      --red:        #DC2626;
+      --amber:      #F59E0B;
+
+      --font-head: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-xl: 0 16px 48px rgba(0,0,0,0.18);
+
+      --r-sm:   6px;
+      --r-md:   10px;
+      --r-lg:   16px;
+      --r-xl:   24px;
+      --r-full: 9999px;
+
+      --ease: 200ms ease;
+      --max-w: 1280px;
+    }
+
+    /* ─── RESET ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ─── TYPOGRAPHY HELPERS ─────────────────────────── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(249,115,22,0.10);
+      border: 1px solid rgba(249,115,22,0.20);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.12;
+      letter-spacing: -0.3px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--gray-600);
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-head .section-sub { max-width: 560px; margin: 12px auto 0; }
+
+    /* ─── BUTTONS ────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 15px;
+      transition: all var(--ease);
+      cursor: pointer;
+      border: none;
+    }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.35); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.40); }
+    .btn-ghost:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--gray-200); }
+    .btn-outline:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .btn-sm { padding: 9px 18px; font-size: 13px; }
+
+    /* ─── BADGES ─────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--r-full);
+      line-height: 1.4;
+    }
+    .badge-hot  { background: var(--navy);   color: var(--white); }
+    .badge-sale { background: var(--red);    color: var(--white); }
+    .badge-new  { background: var(--orange); color: var(--white); }
+    .badge-oos  { background: var(--gray-400); color: var(--white); }
+
+    /* ═══════════════════════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════════════ */
+    .announce-bar {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .announce-bar strong { color: var(--orange); }
+    .announce-bar a { color: var(--white); text-decoration: underline; margin-left: 8px; }
+
+    /* ═══════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow var(--ease);
+    }
+    .site-header.scrolled { box-shadow: var(--shadow-md); }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      height: 72px;
+      gap: 8px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      margin-right: 32px;
+    }
+    .logo-mark {
+      width: 40px; height: 40px;
+      background: var(--navy);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-mark svg { width: 22px; height: 22px; fill: var(--orange); }
+    .logo-name { font-family: var(--font-head); }
+    .logo-name strong { display: block; font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.1; }
+    .logo-name span   { font-size: 10px; color: var(--gray-400); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Nav links */
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+    }
+    .nav-a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--gray-900);
+      padding: 7px 11px;
+      border-radius: var(--r-sm);
+      transition: all var(--ease);
+      white-space: nowrap;
+    }
+    .nav-a:hover { color: var(--blue); background: var(--blue-lt); }
+    .nav-a.active { color: var(--blue); font-weight: 600; }
+
+    /* Search */
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-100);
+      border: 1.5px solid transparent;
+      border-radius: var(--r-full);
+      padding: 8px 16px;
+      margin-left: auto;
+      transition: all var(--ease);
+    }
+    .search-wrap:focus-within {
+      border-color: var(--blue);
+      background: var(--white);
+      box-shadow: 0 0 0 3px var(--blue-lt);
+    }
+    .search-wrap svg { width: 15px; height: 15px; flex-shrink: 0; fill: var(--gray-400); }
+    .search-wrap input {
+      border: none; background: none; outline: none;
+      font-size: 14px; font-family: var(--font-body);
+      color: var(--gray-900); width: 180px;
+    }
+    .search-wrap input::placeholder { color: var(--gray-400); }
+
+    /* Icon buttons */
+    .icon-btn {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--r-sm);
+      color: var(--gray-600);
+      transition: all var(--ease);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .icon-btn:hover { background: var(--gray-100); color: var(--navy); }
+    .icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
+    .cart-badge {
+      position: absolute; top: 5px; right: 5px;
+      width: 17px; height: 17px;
+      background: var(--orange); color: var(--white);
+      font-size: 9px; font-weight: 800;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .btn-login-nav {
+      flex-shrink: 0;
+      background: var(--navy); color: var(--white);
+      padding: 9px 20px;
+      border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 700;
+      font-family: var(--font-head);
+      transition: background var(--ease);
+    }
+    .btn-login-nav:hover { background: var(--blue); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--gray-900); border-radius: 2px; transition: all 300ms ease; }
+
+    /* Mobile nav dropdown */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 12px 0 20px;
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-a { padding: 11px 24px; border-radius: 0; }
+
+    /* ═══════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════ */
+    .hero {
+      background: var(--navy);
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 40%, rgba(21,101,192,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 90%, rgba(249,115,22,0.12) 0%, transparent 50%);
+    }
+    /* Decorative grid lines */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.28);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: var(--r-full);
+      margin-bottom: 22px;
+    }
+    .hero-pulse {
+      width: 7px; height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(38px, 5.5vw, 62px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.06;
+      letter-spacing: -0.8px;
+      margin-bottom: 22px;
+    }
+    .hero-title .accent { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.70;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+
+    .hero-trust {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+    .hero-trust-item svg { width: 16px; height: 16px; stroke: var(--orange); fill: none; flex-shrink: 0; }
+
+    /* Hero visual */
+    .hero-visual { position: relative; }
+    .hero-img {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      aspect-ratio: 4/3;
+    }
+    .hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Floating cards */
+    .hero-float {
+      position: absolute;
+      background: var(--white);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-lg);
+    }
+    .hf-1 {
+      bottom: -22px; left: -28px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hf-1-icon {
+      width: 44px; height: 44px;
+      background: var(--blue-lt);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hf-1-icon svg { width: 22px; height: 22px; fill: var(--blue); }
+    .hf-1 strong { display: block; font-family: var(--font-head); font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .hf-1 span   { font-size: 12px; color: var(--gray-600); }
+    .hf-2 {
+      top: 18px; right: -20px;
+      background: var(--orange);
+      color: var(--white);
+      text-align: center;
+      padding: 14px 20px;
+      min-width: 110px;
+    }
+    .hf-2 strong { display: block; font-family: var(--font-head); font-size: 24px; font-weight: 800; line-height: 1; }
+    .hf-2 span   { font-size: 11px; opacity: 0.88; }
+    .hf-3 {
+      top: 50%; right: -24px;
+      transform: translateY(-50%);
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hf-3 svg { width: 22px; height: 22px; fill: var(--green); flex-shrink: 0; }
+    .hf-3 strong { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--navy); }
+
+    /* ═══════════════════════════════════════════════════
+       SOCIAL PROOF STRIP
+    ═══════════════════════════════════════════════════ */
+    .proof-strip {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 28px 0;
+    }
+    .proof-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .proof-icon {
+      width: 50px; height: 50px;
+      background: var(--navy);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .proof-icon svg { width: 22px; height: 22px; fill: var(--orange); }
+    .proof-num   { font-family: var(--font-head); font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .proof-label { font-size: 13px; color: var(--gray-600); }
+    .proof-divider { width: 1px; height: 48px; background: var(--gray-200); }
+
+    /* ═══════════════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════════════ */
+    .services-sec { padding: 96px 0; background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .svc-card {
+      padding: 32px 28px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--r-lg);
+      transition: all 280ms ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .svc-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      opacity: 0;
+      transition: opacity 280ms ease;
+    }
+    .svc-card:hover { border-color: var(--navy); transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-card > * { position: relative; z-index: 1; }
+
+    .svc-icon {
+      width: 56px; height: 56px;
+      background: rgba(249,115,22,0.10);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      transition: background var(--ease);
+    }
+    .svc-icon svg { width: 28px; height: 28px; fill: var(--orange); }
+    .svc-card:hover .svc-icon { background: rgba(249,115,22,0.18); }
+
+    .svc-title { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; transition: color var(--ease); }
+    .svc-desc  { font-size: 14px; color: var(--gray-600); line-height: 1.7; transition: color var(--ease); }
+    .svc-card:hover .svc-title { color: var(--white); }
+    .svc-card:hover .svc-desc  { color: rgba(255,255,255,0.72); }
+
+    .svc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+    }
+    .svc-link svg { width: 15px; height: 15px; stroke: currentColor; fill: none; transition: transform var(--ease); }
+    .svc-card:hover .svc-link svg { transform: translateX(4px); }
+
+    /* ═══════════════════════════════════════════════════
+       PRODUCTS
+    ═══════════════════════════════════════════════════ */
+    .products-sec { padding: 96px 0; background: var(--off-white); }
+
+    .sec-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 16px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .prod-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 280ms ease;
+      position: relative;
+    }
+    .prod-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+
+    .prod-img-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--gray-100);
+    }
+    .prod-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+    .prod-card:hover .prod-img-wrap img { transform: scale(1.06); }
+
+    .prod-badges {
+      position: absolute; top: 12px; left: 12px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+
+    .prod-quick {
+      position: absolute; top: 12px; right: 12px;
+      display: flex; flex-direction: column; gap: 7px;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 250ms ease;
+    }
+    .prod-card:hover .prod-quick { opacity: 1; transform: translateX(0); }
+
+    .prod-quick-btn {
+      width: 36px; height: 36px;
+      background: var(--white);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md);
+      color: var(--gray-600);
+      transition: all var(--ease);
+    }
+    .prod-quick-btn:hover { background: var(--navy); color: var(--white); }
+    .prod-quick-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
+
+    .prod-body { padding: 16px; }
+    .prod-brand { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+    .prod-name  { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 6px; }
+    .prod-meta  { font-size: 12px; color: var(--gray-400); margin-bottom: 14px; line-height: 1.5; }
+
+    .prod-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .prod-price { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: var(--navy); }
+    .prod-old   { font-size: 12px; color: var(--gray-400); text-decoration: line-through; display: block; margin-top: 1px; }
+
+    .atc-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--navy); color: var(--white);
+      padding: 9px 15px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 700;
+      transition: all var(--ease);
+      flex-shrink: 0;
+    }
+    .atc-btn:hover { background: var(--orange); }
+    .atc-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+
+    /* ═══════════════════════════════════════════════════
+       CATEGORIES
+    ═══════════════════════════════════════════════════ */
+    .cats-sec { padding: 64px 0; background: var(--white); }
+
+    .cats-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 6px 0 16px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .cats-scroll::-webkit-scrollbar { display: none; }
+
+    .cat-chip {
+      flex-shrink: 0;
+      display: flex; align-items: center; gap: 9px;
+      padding: 12px 20px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--r-full);
+      font-family: var(--font-head);
+      font-size: 14px; font-weight: 600;
+      color: var(--navy);
+      transition: all var(--ease);
+      cursor: pointer;
+      white-space: nowrap;
+      background: var(--white);
+    }
+    .cat-chip:hover, .cat-chip.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .cat-chip .emoji { font-size: 17px; }
+
+    /* ═══════════════════════════════════════════════════
+       COURSES
+    ═══════════════════════════════════════════════════ */
+    .courses-sec {
+      padding: 96px 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .courses-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .courses-sec .section-title { color: var(--white); }
+    .courses-sec .section-sub   { color: rgba(255,255,255,0.60); }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .course-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all 280ms ease;
+    }
+    .course-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(249,115,22,0.45);
+      transform: translateY(-5px);
+    }
+
+    .course-thumb { aspect-ratio: 16/9; overflow: hidden; }
+    .course-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+    .course-card:hover .course-thumb img { transform: scale(1.06); }
+
+    .course-body { padding: 22px; }
+    .course-cat   { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .course-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 14px; }
+
+    .course-meta { display: flex; gap: 18px; margin-bottom: 18px; }
+    .c-meta-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.55);
+    }
+    .c-meta-item svg { width: 14px; height: 14px; stroke: var(--orange); fill: none; flex-shrink: 0; }
+
+    .course-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+    }
+    .course-price { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--orange); }
+    .course-old   { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: line-through; margin-left: 8px; vertical-align: middle; }
+
+    .enroll-btn {
+      background: var(--orange); color: var(--white);
+      padding: 9px 20px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 700;
+      transition: all var(--ease);
+    }
+    .enroll-btn:hover { background: var(--orange-dk); transform: translateY(-1px); }
+
+    /* ═══════════════════════════════════════════════════
+       WHY CHOOSE US
+    ═══════════════════════════════════════════════════ */
+    .why-sec { padding: 96px 0; background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .why-card { text-align: center; padding: 36px 24px; }
+    .why-icon {
+      width: 66px; height: 66px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-md);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      transition: all var(--ease);
+    }
+    .why-card:hover .why-icon { background: var(--navy); box-shadow: var(--shadow-lg); }
+    .why-icon svg { width: 28px; height: 28px; stroke: var(--blue); fill: none; transition: stroke var(--ease); }
+    .why-card:hover .why-icon svg { stroke: var(--orange); }
+
+    .why-title { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .why-desc  { font-size: 14px; color: var(--gray-600); line-height: 1.70; }
+
+    /* ═══════════════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════════════ */
+    .testi-sec { padding: 96px 0; background: var(--white); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      padding: 32px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--r-lg);
+      position: relative;
+      transition: all 280ms ease;
+    }
+    .testi-card:hover { border-color: var(--orange); box-shadow: var(--shadow-md); }
+
+    .testi-quote {
+      font-size: 72px; line-height: 1;
+      color: var(--orange); opacity: 0.15;
+      font-family: Georgia, serif;
+      position: absolute;
+      top: 12px; right: 22px;
+      user-select: none;
+    }
+
+    .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .stars svg { width: 15px; height: 15px; fill: var(--amber); }
+
+    .testi-text {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.78;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid var(--orange);
+      flex-shrink: 0;
+    }
+    .author-name { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--navy); }
+    .author-role { font-size: 12px; color: var(--gray-600); }
+
+    /* ═══════════════════════════════════════════════════
+       CTA BANNER
+    ═══════════════════════════════════════════════════ */
+    .cta-sec {
+      padding: 88px 0;
+      background: linear-gradient(135deg, var(--navy) 0%, #1A3A6B 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-sec::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(249,115,22,0.07);
+      top: -200px; right: -100px;
+    }
+    .cta-sec::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(21,101,192,0.15);
+      bottom: -150px; left: -80px;
+    }
+    .cta-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-inner .section-title { color: var(--white); }
+    .cta-inner .section-sub   { color: rgba(255,255,255,0.65); max-width: 520px; margin: 16px auto 40px; }
+
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .pay-row {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pay-label { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .pay-chip {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.75);
+      font-size: 12px; font-weight: 600;
+      padding: 5px 13px;
+      border-radius: var(--r-full);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════ */
+    .site-footer { background: #060E1D; color: rgba(255,255,255,0.65); }
+
+    .footer-top { padding: 80px 0 60px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+    }
+
+    .ft-about .logo-name strong { color: var(--white); font-size: 17px; }
+    .ft-about .logo-name span   { color: rgba(255,255,255,0.35); }
+
+    .ft-tagline {
+      font-size: 14px;
+      line-height: 1.70;
+      color: rgba(255,255,255,0.50);
+      margin: 18px 0 24px;
+    }
+
+    .ft-socials { display: flex; gap: 9px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.07);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55);
+      transition: all var(--ease);
+    }
+    .social-btn:hover { background: var(--orange); color: var(--white); }
+    .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .ft-col h4 {
+      font-family: var(--font-head);
+      font-size: 12px; font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .ft-links { display: flex; flex-direction: column; gap: 11px; }
+    .ft-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.50);
+      transition: color var(--ease);
+    }
+    .ft-links a:hover { color: var(--orange); }
+
+    .ft-contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 14px;
+    }
+    .ft-contact-row svg { width: 15px; height: 15px; stroke: var(--orange); fill: none; flex-shrink: 0; margin-top: 2px; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.30); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.30); transition: color var(--ease); }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* ═══════════════════════════════════════════════════
+       CART DRAWER
+    ═══════════════════════════════════════════════════ */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.52);
+      z-index: 300;
+      opacity: 0; pointer-events: none;
+      transition: opacity 320ms ease;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      width: 400px; max-width: 100vw;
+      height: 100vh;
+      background: var(--white);
+      z-index: 301;
+      transform: translateX(100%);
+      transition: transform 360ms cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-xl);
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cd-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cd-head h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--navy); }
+    .cd-close {
+      width: 36px; height: 36px;
+      background: var(--gray-100);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray-600);
+      transition: all var(--ease);
+      cursor: pointer;
+    }
+    .cd-close:hover { background: var(--navy); color: var(--white); }
+    .cd-close svg { width: 17px; height: 17px; stroke: currentColor; fill: none; }
+
+    .cd-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+    .cd-empty { text-align: center; padding: 60px 0; }
+    .cd-empty svg { width: 60px; height: 60px; stroke: var(--gray-200); fill: none; margin: 0 auto 16px; }
+    .cd-empty p { font-size: 15px; color: var(--gray-400); }
+
+    .cd-item {
+      display: flex; gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .cd-item img { width: 64px; height: 64px; object-fit: cover; border-radius: var(--r-sm); flex-shrink: 0; }
+    .cd-item-name { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .cd-item-price { font-size: 13px; color: var(--gray-600); margin-bottom: 8px; }
+    .cd-qty { display: flex; align-items: center; gap: 8px; }
+    .cd-qty button {
+      width: 28px; height: 28px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 4px;
+      font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--ease);
+      cursor: pointer;
+      background: none;
+    }
+    .cd-qty button:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .cd-qty span { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
+    .cd-item-total { font-family: var(--font-head); font-size: 15px; font-weight: 800; color: var(--orange); margin-left: auto; white-space: nowrap; }
+
+    .cd-foot { padding: 20px 24px; border-top: 1px solid var(--gray-200); }
+    .cd-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .cd-total-row span { font-size: 14px; color: var(--gray-600); }
+    .cd-total-row strong { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--navy); }
+    .cd-checkout {
+      width: 100%;
+      background: var(--orange); color: var(--white);
+      padding: 15px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-head);
+      font-size: 16px; font-weight: 700;
+      border: none; cursor: pointer;
+      transition: background var(--ease);
+    }
+    .cd-checkout:hover { background: var(--orange-dk); }
+
+    /* ═══════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid      { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid   { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid     { grid-template-columns: 1fr; }
+      .hero-visual   { display: none; }
+      .hero          { padding: 64px 0; min-height: unset; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .courses-grid  { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid    { grid-template-columns: repeat(2, 1fr); }
+      .main-nav, .search-wrap { display: none; }
+      .hamburger     { display: flex; }
+      .proof-divider { display: none; }
+      .sec-row       { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .courses-grid  { grid-template-columns: 1fr; }
+      .testi-grid    { grid-template-columns: 1fr; }
+      .why-grid      { grid-template-columns: 1fr 1fr; }
+      .footer-grid   { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-actions  { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .cta-actions   { flex-direction: column; align-items: center; }
+      .proof-grid    { justify-content: flex-start; gap: 20px; }
+      .announce-bar  { font-size: 11px; }
+    }
+
+    @media (max-width: 380px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid      { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ───────────────────────────── -->
+<div class="announce-bar">
+  Free delivery on orders above <strong>GH₵ 500</strong> &nbsp;·&nbsp;
+  MTN MoMo · Telecel Cash · AirtelTigo accepted &nbsp;·&nbsp;
+  <a href="#">Book a repair today →</a>
+</div>
+
+<!-- ── HEADER ─────────────────────────────────────── -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="nav-wrap">
+
+      <a href="/" class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="logo-name">
+          <strong>Seamless Tech</strong>
+          <span>Technologies Hub</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="#" class="nav-a active">Home</a>
+        <a href="#" class="nav-a">Shop</a>
+        <a href="#" class="nav-a">Courses</a>
+        <a href="#" class="nav-a">IT Training</a>
+        <a href="#" class="nav-a">Services</a>
+        <a href="#" class="nav-a">Repairs</a>
+        <a href="#" class="nav-a">Blog</a>
+        <a href="#" class="nav-a">About</a>
+      </nav>
+
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>
+        <input type="text" placeholder="Search products, courses…" id="searchInput">
+      </div>
+
+      <button class="icon-btn" title="Wishlist" style="margin-left:8px;">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+
+      <button class="icon-btn" title="Cart" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+
+      <a href="#" class="btn-login-nav" style="margin-left:4px;">Login</a>
+
+      <button class="hamburger" onclick="toggleMobile()" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#" class="nav-a active">Home</a>
+    <a href="#" class="nav-a">Shop</a>
+    <a href="#" class="nav-a">Courses</a>
+    <a href="#" class="nav-a">IT Training</a>
+    <a href="#" class="nav-a">Services</a>
+    <a href="#" class="nav-a">Repairs</a>
+    <a href="#" class="nav-a">Blog</a>
+    <a href="#" class="nav-a">About Us</a>
+    <a href="#" class="nav-a">Contact</a>
+  </nav>
+</header>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div>
+        <div class="hero-eyebrow">
+          <span class="hero-pulse"></span>
+          Ghana's #1 Tech &amp; Digital Skills Hub
+        </div>
+
+        <h1 class="hero-title">
+          Your One-Stop Hub<br>
+          for <span class="accent">Technology,</span><br>
+          Digital Skills &amp;<br>
+          Innovation
+        </h1>
+
+        <p class="hero-sub">
+          Buy quality laptops, learn trending digital skills, repair devices,
+          and transform your future through technology.
+          Empowering lives across Ghana.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Shop Laptops
+          </a>
+          <a href="#" class="btn btn-ghost">Explore Courses</a>
+          <a href="#" class="btn btn-ghost">Book IT Service</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure Checkout
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 4v4h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Fast Delivery
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            24/7 Support via WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img">
+          <img src="https://images.unsplash.com/photo-1496181091706-4426723394693?auto=format&fit=crop&w=900&q=85"
+               alt="Professional working on laptop">
+        </div>
+
+        <div class="hero-float hf-1">
+          <div class="hf-1-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+          </div>
+          <div>
+            <strong>500+</strong>
+            <span>Tech Products</span>
+          </div>
+        </div>
+
+        <div class="hero-float hf-2">
+          <strong>1,200+</strong>
+          <span>Students Enrolled</span>
+        </div>
+
+        <div class="hero-float hf-3">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="fill:var(--green)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01" stroke="var(--green)" stroke-width="2" fill="none"/></svg>
+          <strong>Repairs Done Same Day</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF STRIP ─────────────────────────── -->
+<div class="proof-strip">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+        </div>
+        <div>
+          <div class="proof-num">500+</div>
+          <div class="proof-label">Tech Products</div>
+        </div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="proof-icon">
+          <svg viewBox="0 0 24 24" fill="var(--orange)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="proof-num">1,200+</div>
+          <div class="proof-label">Students Enrolled</div>
+        </div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="proof-icon">
+          <svg viewBox="0 0 24 24" fill="var(--orange)"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
+          <div class="proof-num">800+</div>
+          <div class="proof-label">Devices Repaired</div>
+        </div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="proof-icon">
+          <svg viewBox="0 0 24 24" stroke="var(--orange)" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="proof-num">2,500+</div>
+          <div class="proof-label">Happy Clients</div>
+        </div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="proof-icon">
+          <svg viewBox="0 0 24 24" fill="var(--orange)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div>
+          <div class="proof-num">4.9 / 5</div>
+          <div class="proof-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES ───────────────────────────────────── -->
+<section class="services-sec">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">What We Offer</div>
+      <h2 class="section-title">Everything Tech, All in One Place</h2>
+      <p class="section-sub">From buying gadgets to mastering digital skills and getting your devices repaired — we've got you covered.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+        </div>
+        <div class="svc-title">Laptop &amp; Gadget Sales</div>
+        <p class="svc-desc">Buy quality laptops, desktops, phones, and accessories from trusted brands. Verified, affordable, and ready to ship.</p>
+        <a href="#" class="svc-link">Shop Now <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="svc-title">Digital Courses</div>
+        <p class="svc-desc">Learn in-demand skills from beginner to advanced — graphic design, coding, cybersecurity, digital marketing, and more.</p>
+        <a href="#" class="svc-link">Explore Courses <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="svc-title">IT Training</div>
+        <p class="svc-desc">Customized hands-on IT training for individuals and organizations. Certified instructors, real-world curriculum.</p>
+        <a href="#" class="svc-link">Get Trained <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="svc-title">Device Repairs</div>
+        <p class="svc-desc">Professional laptop and mobile phone repairs. Fast turnaround, transparent pricing, expert technicians.</p>
+        <a href="#" class="svc-link">Book Repair <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="svc-title">IT Consultation</div>
+        <p class="svc-desc">Expert technology advisory for businesses. Network design, system setup, security audits, and infrastructure planning.</p>
+        <a href="#" class="svc-link">Book Consultation <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="svc-title">Installations</div>
+        <p class="svc-desc">Windows, Linux, CCTV, networking, and security system installations for homes and businesses across Ghana.</p>
+        <a href="#" class="svc-link">Request Install <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED PRODUCTS ──────────────────────────── -->
+<section class="products-sec">
+  <div class="container">
+    <div class="sec-row">
+      <div>
+        <div class="eyebrow">Trending Now</div>
+        <h2 class="section-title">Featured Products</h2>
+      </div>
+      <a href="#" class="btn btn-outline">View All Products</a>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- ── SHOP BY CATEGORY ───────────────────────────── -->
+<section class="cats-sec">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Browse</div>
+      <h2 class="section-title">Shop by Category</h2>
+    </div>
+    <div class="cats-scroll">
+      <div class="cat-chip active"><span class="emoji">💻</span> Laptops</div>
+      <div class="cat-chip"><span class="emoji">📱</span> Phones</div>
+      <div class="cat-chip"><span class="emoji">🖥️</span> Desktops</div>
+      <div class="cat-chip"><span class="emoji">🖱️</span> Accessories</div>
+      <div class="cat-chip"><span class="emoji">🎒</span> Laptop Bags</div>
+      <div class="cat-chip"><span class="emoji">🔌</span> Chargers &amp; Cables</div>
+      <div class="cat-chip"><span class="emoji">💾</span> Storage</div>
+      <div class="cat-chip"><span class="emoji">🎮</span> Gaming</div>
+      <div class="cat-chip"><span class="emoji">🔊</span> Audio</div>
+      <div class="cat-chip"><span class="emoji">📷</span> Cameras</div>
+      <div class="cat-chip"><span class="emoji">🖨️</span> Printers</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COURSES ─────────────────────────────────────── -->
+<section class="courses-sec">
+  <div class="container">
+    <div class="section-head" style="position:relative;z-index:1;">
+      <div class="eyebrow">Learn &amp; Grow</div>
+      <h2 class="section-title">Trending Digital Courses</h2>
+      <p class="section-sub">Learn future-proof skills — earn certificates, build your portfolio, and transform your career.</p>
+    </div>
+    <div class="courses-grid" id="coursesGrid"></div>
+    <div style="text-align:center;margin-top:48px;position:relative;z-index:1;">
+      <a href="#" class="btn btn-primary">View All Courses</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY CHOOSE US ──────────────────────────────── -->
+<section class="why-sec">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Our Promise</div>
+      <h2 class="section-title">Why Seamless Technologies Hub?</h2>
+      <p class="section-sub">Quality products, expert services, and affordable learning — everything you need to thrive in the digital age.</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div class="why-title">Quality Products</div>
+        <p class="why-desc">Genuine, tested products from trusted brands. Every item verified before it reaches you.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="why-title">Affordable Pricing</div>
+        <p class="why-desc">Best prices on tech products and courses in Ghana. Excellent value for every cedi you spend.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-title">Expert Technicians</div>
+        <p class="why-desc">Certified IT professionals handling all repairs, installations, and consultations.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="why-title">Flexible Learning</div>
+        <p class="why-desc">Self-paced online courses with lifetime access, certificates, and a student dashboard.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="why-title">Customized IT Training</div>
+        <p class="why-desc">Corporate training programs tailored to your team's skill level and business goals.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.35 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="why-title">Trusted Technical Support</div>
+        <p class="why-desc">Quick response via WhatsApp, call, or email. We're here when you need us most.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="why-title">Secure Online Shopping</div>
+        <p class="why-desc">SSL-secured checkout. Pay with MTN MoMo, Telecel Cash, AirtelTigo, or debit card.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="why-title">2,500+ Happy Clients</div>
+        <p class="why-desc">Thousands of satisfied customers across Ghana trust us for their tech needs every day.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────── -->
+<section class="testi-sec">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Client Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub">Real stories from real customers who transformed their lives with technology through Seamless Tech.</p>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"Seamless Technologies helped me buy my first laptop at an affordable price. The whole process was smooth and they even helped me set it up. Highly recommend to anyone in Ghana!"</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=88&q=80" alt="Kwame Asante">
+          <div>
+            <div class="author-name">Kwame Asante</div>
+            <div class="author-role">Software Student, Accra</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"Their digital training changed my career journey. I enrolled in the Graphic Design Masterclass and landed a freelance contract within just 3 months. Absolutely life-changing!"</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=88&q=80" alt="Abena Mensah">
+          <div>
+            <div class="author-name">Abena Mensah</div>
+            <div class="author-role">Freelance Designer, Kumasi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"Fast repair service and excellent customer support. My laptop screen was replaced in one day at a very affordable price. Professional, transparent, and genuinely reliable."</p>
+        <div class="testi-author">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=88&q=80" alt="Kofi Boateng">
+          <div>
+            <div class="author-name">Kofi Boateng</div>
+            <div class="author-role">Business Owner, Tema</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ─────────────────────────────────── -->
+<section class="cta-sec">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="eyebrow" style="justify-content:center;">Get Started Today</div>
+      <h2 class="section-title">Ready to Transform Your<br>Digital Experience?</h2>
+      <p class="section-sub">Whether you want to buy a laptop, master digital skills, or repair your device — Seamless Technologies Hub is here for you.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Shop Now
+        </a>
+        <a href="#" class="btn btn-ghost">Enroll Today</a>
+      </div>
+      <div class="pay-row">
+        <span class="pay-label">Accepted payments:</span>
+        <span class="pay-chip">MTN MoMo</span>
+        <span class="pay-chip">Telecel Cash</span>
+        <span class="pay-chip">AirtelTigo Money</span>
+        <span class="pay-chip">Debit / Credit Card</span>
+        <span class="pay-chip">Bank Transfer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="ft-about">
+          <a href="/" class="logo" style="margin-right:0;">
+            <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#F97316"/></svg></div>
+            <div class="logo-name"><strong>Seamless Tech</strong><span>Technologies Hub</span></div>
+          </a>
+          <p class="ft-tagline">"Empowering Lives Through Technology &amp; Digital Skills" — Ghana's premier hub for gadgets, digital learning, and IT services.</p>
+          <div class="ft-socials">
+            <a href="#" class="social-btn" title="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" title="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="2" fill="none"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+            <a href="#" class="social-btn" title="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+            </a>
+            <a href="#" class="social-btn" title="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="social-btn" title="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="ft-col">
+          <h4>Quick Links</h4>
+          <div class="ft-links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Shop</a>
+            <a href="#">Courses</a>
+            <a href="#">IT Training</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+
+        <div class="ft-col">
+          <h4>Services</h4>
+          <div class="ft-links">
+            <a href="#">Device Repairs</a>
+            <a href="#">IT Consultation</a>
+            <a href="#">Installations</a>
+            <a href="#">Corporate Training</a>
+            <a href="#">CCTV &amp; Networking</a>
+            <a href="#">Software Setup</a>
+          </div>
+        </div>
+
+        <div class="ft-col">
+          <h4>Contact Us</h4>
+          <div class="ft-contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +233 XX XXX XXXX
+          </div>
+          <div class="ft-contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            WhatsApp: +233 XX XXX XXXX
+          </div>
+          <div class="ft-contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            info@seamlesstech.com.gh
+          </div>
+          <div class="ft-contact-row">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Accra, Ghana
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 Seamless Technologies Hub. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── CART OVERLAY + DRAWER ──────────────────────── -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head">
+    <h3>Cart (<span id="cdCount">0</span>)</h3>
+    <button class="cd-close" onclick="closeCart()">
+      <svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cd-body" id="cdBody">
+    <div class="cd-empty">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cd-foot" id="cdFoot" style="display:none;">
+    <div class="cd-total-row">
+      <span>Total</span>
+      <strong id="cdTotal">GH₵ 0</strong>
+    </div>
+    <button class="cd-checkout">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────── -->
+<script>
+/* ── DATA ──────────────────────────────────────────── */
+const PRODUCTS = [
+  {
+    id: 1, brand: 'HP', name: 'EliteBook 840 G8',
+    meta: 'Intel Core i7 · 16GB RAM · 512GB SSD',
+    price: 4599, old: 5200,
+    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=400&q=80',
+    badge: 'hot', stock: true
+  },
+  {
+    id: 2, brand: 'Dell', name: 'Latitude 5420',
+    meta: 'Intel Core i5 · 8GB RAM · 256GB SSD',
+    price: 3299, old: 3800,
+    img: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=400&q=80',
+    badge: 'sale', stock: true
+  },
+  {
+    id: 3, brand: 'Lenovo', name: 'ThinkPad X1 Carbon',
+    meta: 'Intel Core i7 · 16GB RAM · 1TB SSD',
+    price: 5899, old: null,
+    img: 'https://images.unsplash.com/photo-1496181091706-4426723394693?auto=format&fit=crop&w=400&q=80',
+    badge: 'new', stock: true
+  },
+  {
+    id: 4, brand: 'Logitech', name: 'MX Master 3 Wireless Mouse',
+    meta: 'Bluetooth · Ergonomic · 4000 DPI',
+    price: 399, old: 480,
+    img: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=80',
+    badge: null, stock: true
+  },
+  {
+    id: 5, brand: 'Samsung', name: 'Galaxy A54 5G',
+    meta: '6.4" AMOLED · 128GB · 5000mAh',
+    price: 2199, old: 2500,
+    img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80',
+    badge: 'sale', stock: true
+  },
+  {
+    id: 6, brand: 'Seagate', name: 'External Hard Drive 1TB',
+    meta: 'USB 3.0 · Portable · Fast Transfer',
+    price: 549, old: null,
+    img: 'https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&w=400&q=80',
+    badge: null, stock: true
+  },
+  {
+    id: 7, brand: 'HP', name: 'Universal Laptop Charger 65W',
+    meta: 'Fast Charge · Surge Protection · Multi-tip',
+    price: 199, old: 250,
+    img: 'https://images.unsplash.com/photo-1625895197185-efcec01cffe0?auto=format&fit=crop&w=400&q=80',
+    badge: null, stock: true
+  },
+  {
+    id: 8, brand: 'ASUS', name: 'ROG Strix Gaming Laptop',
+    meta: 'Intel Core i9 · 32GB RAM · RTX 4070',
+    price: 8999, old: 10500,
+    img: 'https://images.unsplash.com/photo-1593640495253-23196b27a87f?auto=format&fit=crop&w=400&q=80',
+    badge: 'hot', stock: false
+  }
+];
+
+const COURSES = [
+  {
+    id: 1, cat: 'Design',
+    title: 'Graphic Design Masterclass',
+    duration: '8 Weeks', lessons: '42 Lessons',
+    price: 299, old: 499,
+    img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 2, cat: 'Development',
+    title: 'Website Development Bootcamp',
+    duration: '12 Weeks', lessons: '68 Lessons',
+    price: 399, old: 699,
+    img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 3, cat: 'Cybersecurity',
+    title: 'Cybersecurity Fundamentals',
+    duration: '6 Weeks', lessons: '35 Lessons',
+    price: 249, old: 449,
+    img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80'
+  }
+];
+
+/* ── CART STATE ─────────────────────────────────────── */
+let cart = JSON.parse(localStorage.getItem('sth_cart') || '[]');
+
+function saveCart() {
+  localStorage.setItem('sth_cart', JSON.stringify(cart));
+}
+
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p || !p.stock) return;
+  const existing = cart.find(x => x.id === id);
+  if (existing) { existing.qty++; } else { cart.push({ ...p, qty: 1 }); }
+  saveCart();
+  renderCart();
+  openCart();
+}
+
+function updateQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  saveCart();
+  renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  document.getElementById('cartBadge').textContent = count;
+  document.getElementById('cdCount').textContent   = count;
+  document.getElementById('cdTotal').textContent   = 'GH₵ ' + total.toLocaleString();
+
+  const body = document.getElementById('cdBody');
+  const foot = document.getElementById('cdFoot');
+
+  if (cart.length === 0) {
+    body.innerHTML = `<div class="cd-empty">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <p>Your cart is empty</p></div>`;
+    foot.style.display = 'none';
+  } else {
+    body.innerHTML = cart.map(item => `
+      <div class="cd-item">
+        <img src="${item.img}" alt="${item.name}">
+        <div style="flex:1;min-width:0;">
+          <div class="cd-item-name">${item.name}</div>
+          <div class="cd-item-price">GH₵ ${item.price.toLocaleString()} each</div>
+          <div class="cd-qty">
+            <button onclick="updateQty(${item.id}, -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="updateQty(${item.id}, 1)">+</button>
+          </div>
+        </div>
+        <div class="cd-item-total">GH₵ ${(item.price * item.qty).toLocaleString()}</div>
+      </div>`).join('');
+    foot.style.display = 'block';
+  }
+}
+
+function openCart() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function toggleCart() {
+  const open = document.getElementById('cartDrawer').classList.contains('open');
+  open ? closeCart() : openCart();
+}
+
+/* ── RENDER PRODUCTS ────────────────────────────────── */
+function renderProducts() {
+  document.getElementById('productsGrid').innerHTML = PRODUCTS.map(p => `
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <div class="prod-badges">
+          ${p.badge === 'hot'  ? '<span class="badge badge-hot">HOT</span>'   : ''}
+          ${p.badge === 'sale' ? '<span class="badge badge-sale">SALE</span>' : ''}
+          ${p.badge === 'new'  ? '<span class="badge badge-new">NEW</span>'   : ''}
+          ${!p.stock           ? '<span class="badge badge-oos">Out of Stock</span>' : ''}
+        </div>
+        <div class="prod-quick">
+          <button class="prod-quick-btn" title="Add to Wishlist">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="prod-quick-btn" title="Quick View">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">${p.brand}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-meta">${p.meta}</div>
+        <div class="prod-foot">
+          <div>
+            <span class="prod-price">GH₵ ${p.price.toLocaleString()}</span>
+            ${p.old ? `<span class="prod-old">GH₵ ${p.old.toLocaleString()}</span>` : ''}
+          </div>
+          ${p.stock
+            ? `<button class="atc-btn" onclick="addToCart(${p.id})">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Add
+              </button>`
+            : `<span style="font-size:12px;color:var(--gray-400);font-weight:500;">Out of stock</span>`
+          }
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+/* ── RENDER COURSES ─────────────────────────────────── */
+function renderCourses() {
+  document.getElementById('coursesGrid').innerHTML = COURSES.map(c => `
+    <div class="course-card">
+      <div class="course-thumb">
+        <img src="${c.img}" alt="${c.title}" loading="lazy">
+      </div>
+      <div class="course-body">
+        <div class="course-cat">${c.cat}</div>
+        <div class="course-title">${c.title}</div>
+        <div class="course-meta">
+          <div class="c-meta-item">
+            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${c.duration}
+          </div>
+          <div class="c-meta-item">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            ${c.lessons}
+          </div>
+        </div>
+        <div class="course-foot">
+          <div>
+            <span class="course-price">GH₵ ${c.price}</span>
+            <span class="course-old">GH₵ ${c.old}</span>
+          </div>
+          <a href="#" class="enroll-btn">Enroll Now</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+/* ── CATEGORY CHIPS ─────────────────────────────────── */
+document.querySelectorAll('.cat-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+});
+
+/* ── MOBILE NAV ─────────────────────────────────────── */
+function toggleMobile() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+
+/* ── STICKY HEADER ──────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 12);
+}, { passive: true });
+
+/* ── INIT ───────────────────────────────────────────── */
+renderProducts();
+renderCourses();
+renderCart();
+</script>
+</body>
+</html>
