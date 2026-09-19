@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Course Detail — Seamless Technologies Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3A6B;--blue:#1565C0;--blue-lt:#E8F0FE;
+  --orange:#F97316;--orange-dk:#EA6508;--white:#FFFFFF;--off-white:#F5F7FA;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#6B7280;--gray-900:#111827;
+  --green:#16A34A;--red:#DC2626;--amber:#F59E0B;--purple:#7C3AED;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--gray-900);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ANNOUNCE */
+.announce{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
+.announce strong{color:var(--orange)}
+
+/* HEADER */
+.header{background:#fff;border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm)}
+.hdr-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-mark{width:36px;height:36px;background:var(--navy);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px}
+.logo-text{font-family:var(--font-head);font-weight:800;font-size:17px;color:var(--navy);line-height:1.1}
+.logo-text span{color:var(--orange)}
+.logo-sub{font-size:9px;font-weight:600;color:var(--gray-600);letter-spacing:.05em;text-transform:uppercase}
+nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+nav a{font-size:13.5px;font-weight:600;color:var(--gray-600);padding:6px 11px;border-radius:var(--r-sm);transition:.2s;white-space:nowrap}
+nav a:hover{background:var(--blue-lt);color:var(--blue)}
+nav a.active{color:var(--navy);background:var(--blue-lt)}
+.hdr-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hdr-icon{width:38px;height:38px;border:none;background:none;cursor:pointer;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:.2s;position:relative}
+.hdr-icon:hover{background:var(--gray-100);color:var(--navy)}
+.cart-badge{position:absolute;top:4px;right:4px;background:var(--orange);color:#fff;border-radius:var(--r-full);font-size:9px;font-weight:700;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+.btn-login{background:var(--navy);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:.2s}
+.btn-login:hover{background:var(--navy-mid)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gray-900);border-radius:2px}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-200);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-nav a{padding:10px 12px;border-radius:var(--r-sm);font-size:14px;font-weight:600;color:var(--gray-700)}
+.mobile-nav a:hover,.mobile-nav a.active{background:var(--blue-lt);color:var(--blue)}
+.mobile-nav.open{display:flex}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--navy);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:8px;font-size:13px}
+.breadcrumb a{color:rgba(255,255,255,0.7);font-weight:500;transition:.2s}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb .sep{color:rgba(255,255,255,0.35);font-size:11px}
+.breadcrumb .current{color:#fff;font-weight:600}
+
+/* HERO */
+.course-hero{background:linear-gradient(135deg,var(--navy) 0%,#0d2545 60%,#0f2e5a 100%);padding:48px 0 0}
+.hero-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+.hero-left{padding-bottom:48px}
+.course-cat-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:var(--r-full);padding:5px 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.hero-title{font-family:var(--font-head);font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:24px;max-width:560px}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:20px}
+.hero-rating{display:flex;align-items:center;gap:6px}
+.rating-score{font-size:18px;font-weight:800;color:var(--amber)}
+.stars{display:flex;gap:2px}
+.stars svg{width:16px;height:16px;fill:var(--amber)}
+.rating-count{font-size:13px;color:rgba(255,255,255,0.6)}
+.hero-stat{display:flex;align-items:center;gap:6px;font-size:13.5px;color:rgba(255,255,255,0.75);font-weight:500}
+.hero-stat svg{width:15px;height:15px;opacity:.8}
+.hero-instructor{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.instructor-avatar{width:40px;height:40px;border-radius:var(--r-full);background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
+.instructor-info{font-size:13.5px;color:rgba(255,255,255,0.75)}
+.instructor-info strong{color:#fff;font-weight:600}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+.hero-tag{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);border-radius:var(--r-full);padding:4px 12px;font-size:12px;font-weight:500}
+
+/* STICKY CARD */
+.hero-card-wrap{position:sticky;top:80px}
+.hero-card{background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-xl);overflow:hidden;transform:translateY(-24px)}
+.hero-card-img{position:relative;aspect-ratio:16/9;overflow:hidden}
+.hero-card-img img{width:100%;height:100%;object-fit:cover}
+.play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);cursor:pointer;transition:.2s}
+.play-btn:hover{background:rgba(0,0,0,0.5)}
+.play-btn svg{width:56px;height:56px;fill:white;opacity:.92;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))}
+.preview-label{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;border-radius:var(--r-full);white-space:nowrap}
+.hero-card-body{padding:24px}
+.card-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.card-price{font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--gray-900)}
+.card-old{font-size:16px;color:var(--gray-400);text-decoration:line-through}
+.card-save{background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:3px 8px;border-radius:var(--r-sm)}
+.card-offer{font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:5px}
+.card-offer svg{width:14px;height:14px}
+.btn-enroll{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:var(--r-lg);font-size:16px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;margin-bottom:10px;display:block;text-align:center}
+.btn-enroll:hover{background:var(--orange-dk);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,0.4)}
+.btn-wishlist{width:100%;background:transparent;color:var(--navy);border:2px solid var(--gray-200);padding:12px;border-radius:var(--r-lg);font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:.2s;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:7px}
+.btn-wishlist:hover{border-color:var(--navy);background:var(--gray-100)}
+.card-includes{display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid var(--gray-200)}
+.card-includes h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-600);margin-bottom:4px}
+.inc-item{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--gray-900)}
+.inc-item svg{width:16px;height:16px;color:var(--green);flex-shrink:0}
+.card-share{display:flex;align-items:center;justify-content:center;gap:16px;padding-top:16px;border-top:1px solid var(--gray-200);margin-top:8px}
+.share-btn{background:none;border:none;cursor:pointer;font-size:12px;color:var(--gray-600);font-weight:600;display:flex;flex-direction:column;align-items:center;gap:4px;transition:.2s}
+.share-btn:hover{color:var(--navy)}
+.share-btn svg{width:20px;height:20px}
+
+/* MAIN CONTENT */
+.course-body{max-width:1280px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+.course-main{min-width:0}
+.section-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:32px;margin-bottom:24px}
+.section-card h2{font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--gray-900);margin-bottom:20px}
+
+/* WHAT YOU'LL LEARN */
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.learn-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-900);line-height:1.5}
+.learn-item svg{width:18px;height:18px;color:var(--green);flex-shrink:0;margin-top:1px}
+
+/* REQUIREMENTS */
+.req-list{display:flex;flex-direction:column;gap:10px}
+.req-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-900)}
+.req-item::before{content:'•';color:var(--orange);font-size:18px;line-height:1.2;flex-shrink:0}
+
+/* CURRICULUM */
+.curriculum-summary{display:flex;gap:20px;font-size:13px;color:var(--gray-600);margin-bottom:20px;flex-wrap:wrap}
+.curriculum-summary strong{color:var(--gray-900)}
+.section-list{display:flex;flex-direction:column;gap:8px}
+.curr-section{border:1px solid var(--gray-200);border-radius:var(--r-md);overflow:hidden}
+.curr-section-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--gray-100);cursor:pointer;user-select:none;gap:12px}
+.curr-section-head:hover{background:var(--gray-200)}
+.curr-sec-title{font-weight:700;font-size:14px;color:var(--gray-900);flex:1}
+.curr-sec-meta{font-size:12px;color:var(--gray-600);white-space:nowrap}
+.curr-chevron{width:18px;height:18px;color:var(--gray-600);transition:.2s;flex-shrink:0}
+.curr-section.open .curr-chevron{transform:rotate(180deg)}
+.curr-lessons{display:none;flex-direction:column}
+.curr-section.open .curr-lessons{display:flex}
+.curr-lesson{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--gray-200);font-size:13.5px;color:var(--gray-900)}
+.curr-lesson svg{width:16px;height:16px;color:var(--gray-400);flex-shrink:0}
+.curr-lesson.preview svg{color:var(--blue)}
+.lesson-name{flex:1}
+.lesson-dur{font-size:12px;color:var(--gray-600);white-space:nowrap}
+.preview-badge{font-size:10px;font-weight:700;color:var(--blue);background:var(--blue-lt);padding:2px 7px;border-radius:var(--r-full)}
+.show-more-btn{background:none;border:1px solid var(--gray-200);color:var(--navy);font-size:13.5px;font-weight:600;padding:10px 20px;border-radius:var(--r-md);cursor:pointer;font-family:var(--font-body);transition:.2s;margin-top:12px}
+.show-more-btn:hover{background:var(--gray-100)}
+
+/* INSTRUCTOR */
+.instructor-card{display:flex;gap:20px;align-items:flex-start}
+.instructor-ava-lg{width:80px;height:80px;border-radius:var(--r-full);background:linear-gradient(135deg,var(--navy),var(--navy-mid));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:28px;color:#fff;flex-shrink:0}
+.instructor-details h3{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--gray-900);margin-bottom:4px}
+.instructor-title{font-size:13.5px;color:var(--blue);font-weight:600;margin-bottom:10px}
+.instructor-stats{display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.inst-stat{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gray-600)}
+.inst-stat svg{width:14px;height:14px}
+.instructor-bio{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* REVIEWS */
+.reviews-overview{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--gray-200)}
+.rev-big{text-align:center}
+.rev-score{font-family:var(--font-head);font-size:56px;font-weight:800;color:var(--gray-900);line-height:1}
+.rev-stars{display:flex;justify-content:center;gap:3px;margin:6px 0}
+.rev-stars svg{width:18px;height:18px;fill:var(--amber)}
+.rev-total{font-size:13px;color:var(--gray-600)}
+.rev-bars{display:flex;flex-direction:column;gap:8px;flex:1}
+.rev-bar-row{display:flex;align-items:center;gap:12px;font-size:13px}
+.rev-bar-label{color:var(--blue);white-space:nowrap;font-weight:500;min-width:32px;text-align:right}
+.rev-bar-track{flex:1;background:var(--gray-200);border-radius:var(--r-full);height:8px;overflow:hidden}
+.rev-bar-fill{height:100%;background:var(--amber);border-radius:var(--r-full);transition:.6s}
+.rev-bar-pct{color:var(--gray-600);min-width:30px}
+.reviews-list{display:flex;flex-direction:column;gap:20px}
+.review-card{padding-bottom:20px;border-bottom:1px solid var(--gray-200)}
+.review-card:last-child{border-bottom:none;padding-bottom:0}
+.rev-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.rev-ava{width:40px;height:40px;border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
+.rev-name{font-weight:700;font-size:14px}
+.rev-date{font-size:12px;color:var(--gray-400);margin-top:1px}
+.rev-stars-sm{display:flex;gap:2px}
+.rev-stars-sm svg{width:13px;height:13px;fill:var(--amber)}
+.rev-body{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* RELATED */
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rel-card{border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;transition:.2s}
+.rel-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.rel-img{aspect-ratio:16/9;overflow:hidden}
+.rel-img img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.rel-card:hover .rel-img img{transform:scale(1.04)}
+.rel-body{padding:14px}
+.rel-cat{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.rel-title{font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--gray-900);line-height:1.4;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rel-price{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--navy)}
+.rel-old{font-size:12px;color:var(--gray-400);text-decoration:line-through;margin-left:6px}
+
+/* SIDEBAR (desktop) — hidden on small, hero-card shows */
+.course-sidebar{display:none}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,var(--navy) 0%,#0f2e5a 100%);padding:64px 24px}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center}
+.cta-inner h2{font-family:var(--font-head);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#fff;margin-bottom:12px}
+.cta-inner p{font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-btn-primary{background:var(--orange);color:#fff;border:none;padding:14px 32px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.cta-btn-primary:hover{background:var(--orange-dk);transform:translateY(-1px)}
+.cta-btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.4);padding:14px 32px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.cta-btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.pay-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pay-chip{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--r-full);padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.9)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:56px 24px 0}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo{margin-bottom:14px}
+.footer-brand .logo-text{color:#fff}
+.footer-desc{font-size:13.5px;line-height:1.7;margin-bottom:18px;color:rgba(255,255,255,0.6)}
+.social-row{display:flex;gap:8px}
+.social-btn{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);transition:.2s}
+.social-btn:hover{background:var(--orange);color:#fff}
+.social-btn svg{width:16px;height:16px}
+.footer-col h4{font-family:var(--font-head);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#fff;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,0.6);transition:.2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-contact-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:rgba(255,255,255,0.6);margin-bottom:10px}
+.footer-contact-item svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--orange)}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,0.5);transition:.2s}
+.footer-bottom-links a:hover{color:#fff}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+.overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:400px;max-width:100vw;background:#fff;z-index:201;transform:translateX(100%);transition:.3s cubic-bezier(.4,0,0,.1);display:flex;flex-direction:column;box-shadow:var(--shadow-xl)}
+.cart-drawer.open{transform:translateX(0)}
+.cd-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--gray-200)}
+.cd-head h3{font-family:var(--font-head);font-weight:800;font-size:16px}
+.cd-close{background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--r-sm);color:var(--gray-600);transition:.2s}
+.cd-close:hover{background:var(--gray-100);color:var(--gray-900)}
+.cd-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cd-empty{text-align:center;padding:48px 20px;color:var(--gray-600)}
+.cd-empty svg{width:56px;height:56px;margin:0 auto 16px;color:var(--gray-300)}
+.cd-empty h4{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:6px}
+.cd-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-200)}
+.cd-item-img{width:64px;height:64px;border-radius:var(--r-md);object-fit:cover;flex-shrink:0;background:var(--gray-100)}
+.cd-item-info{flex:1;min-width:0}
+.cd-item-name{font-size:13.5px;font-weight:600;color:var(--gray-900);line-height:1.4;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-item-price{font-size:13px;color:var(--orange);font-weight:700}
+.cd-item-controls{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cd-qty-btn{width:26px;height:26px;border:1px solid var(--gray-200);background:#fff;border-radius:var(--r-sm);cursor:pointer;font-size:15px;font-weight:600;color:var(--gray-700);display:flex;align-items:center;justify-content:center;transition:.2s}
+.cd-qty-btn:hover{border-color:var(--navy);color:var(--navy)}
+.cd-qty-val{font-size:13px;font-weight:600;min-width:20px;text-align:center}
+.cd-item-remove{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:12px;margin-left:auto;transition:.2s}
+.cd-item-remove:hover{color:var(--red)}
+.cd-foot{padding:16px 20px;border-top:1px solid var(--gray-200)}
+.cd-subtotal{display:flex;justify-content:space-between;font-size:14px;margin-bottom:14px}
+.cd-subtotal strong{font-family:var(--font-head);font-size:16px;color:var(--gray-900)}
+.cd-subtotal span{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--orange)}
+.cd-checkout{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;margin-bottom:8px}
+.cd-checkout:hover{background:var(--orange-dk)}
+.cd-view{width:100%;background:transparent;color:var(--navy);border:2px solid var(--gray-200);padding:12px;border-radius:var(--r-md);font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:.2s}
+.cd-view:hover{border-color:var(--navy);background:var(--gray-100)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero-card-wrap{position:static;order:-1;transform:none;margin-bottom:24px}
+  .hero-left{padding-bottom:32px}
+  .hero-card{transform:none;border-radius:var(--r-lg)}
+  .course-body{grid-template-columns:1fr;gap:0}
+  .course-sidebar{display:none!important}
+  .learn-grid{grid-template-columns:1fr}
+  .reviews-overview{grid-template-columns:1fr}
+  .rev-big{display:flex;align-items:center;gap:20px;text-align:left}
+}
+@media(max-width:640px){
+  .hero-inner,.course-body{padding:0 16px}
+  .hero-left{padding-bottom:24px}
+  .hero-meta{gap:12px}
+  .related-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:380px){
+  .footer-grid{grid-template-columns:1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">All courses include a <strong>Certificate of Completion</strong> — Learn at your own pace</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="hdr-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">Seamless<span>Tech</span></div>
+        <div class="logo-sub">Technologies Hub</div>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="courses.html" class="active">Courses</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="hdr-icon" onclick="openCart()" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+      <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+    <a href="courses.html" class="active">Courses</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login / Register</a>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="courses.html">Courses</a>
+    <span class="sep">›</span>
+    <span class="current" id="bcTitle">Loading…</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="course-hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="course-cat-pill" id="heroCat">Loading…</div>
+      <h1 class="hero-title" id="heroTitle">Loading…</h1>
+      <p class="hero-sub" id="heroSub">Loading…</p>
+      <div class="hero-meta">
+        <div class="hero-rating">
+          <span class="rating-score" id="heroRating">4.8</span>
+          <div class="stars" id="heroStars"></div>
+          <span class="rating-count" id="heroReviews">(0 ratings)</span>
+        </div>
+        <div class="hero-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span id="heroStudents">0 students</span>
+        </div>
+        <div class="hero-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span id="heroWeeks">0 weeks</span>
+        </div>
+        <div class="hero-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Certificate Included
+        </div>
+      </div>
+      <div class="hero-instructor" id="heroInstructor"></div>
+      <div class="hero-tags" id="heroTags"></div>
+    </div>
+
+    <!-- Sticky card -->
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <div class="hero-card-img">
+          <img id="heroCardImg" src="" alt="Course preview">
+          <div class="play-btn" onclick="playPreview()">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="preview-label">Preview this course</div>
+        </div>
+        <div class="hero-card-body">
+          <div class="card-price-row">
+            <span class="card-price" id="cardPrice">GH₵ —</span>
+            <span class="card-old" id="cardOld"></span>
+            <span class="card-save" id="cardSave"></span>
+          </div>
+          <div class="card-offer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="offerText">Limited time offer</span>
+          </div>
+          <button class="btn-enroll" id="btnEnroll" onclick="enrollNow()">Enroll Now — GH₵ —</button>
+          <button class="btn-wishlist" onclick="addWishlist()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Add to Wishlist
+          </button>
+          <div class="card-includes">
+            <h4>This course includes:</h4>
+            <div class="inc-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span id="incLessons">— on-demand lessons</span>
+            </div>
+            <div class="inc-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Full lifetime access
+            </div>
+            <div class="inc-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Access on mobile &amp; desktop
+            </div>
+            <div class="inc-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Certificate of Completion
+            </div>
+            <div class="inc-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Community &amp; instructor Q&amp;A
+            </div>
+          </div>
+          <div class="card-share">
+            <button class="share-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              Share
+            </button>
+            <button class="share-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Wishlist
+            </button>
+            <button class="share-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Refer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE BODY -->
+<div class="course-body">
+  <div class="course-main">
+
+    <!-- WHAT YOU'LL LEARN -->
+    <div class="section-card">
+      <h2>What You'll Learn</h2>
+      <div class="learn-grid" id="learnGrid"></div>
+    </div>
+
+    <!-- REQUIREMENTS -->
+    <div class="section-card">
+      <h2>Requirements</h2>
+      <div class="req-list" id="reqList"></div>
+    </div>
+
+    <!-- CURRICULUM -->
+    <div class="section-card">
+      <h2>Course Curriculum</h2>
+      <div class="curriculum-summary" id="currSummary"></div>
+      <div class="section-list" id="sectionList"></div>
+      <button class="show-more-btn" id="showMoreBtn" onclick="toggleAllSections()">Show All Sections</button>
+    </div>
+
+    <!-- INSTRUCTOR -->
+    <div class="section-card">
+      <h2>Your Instructor</h2>
+      <div class="instructor-card" id="instructorCard"></div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="section-card">
+      <h2>Student Reviews</h2>
+      <div class="reviews-overview">
+        <div class="rev-big">
+          <div class="rev-score" id="revScore">4.8</div>
+          <div class="rev-stars" id="revStarsLg"></div>
+          <div class="rev-total" id="revTotal"></div>
+        </div>
+        <div class="rev-bars" id="revBars"></div>
+      </div>
+      <div class="reviews-list" id="reviewsList"></div>
+    </div>
+
+  </div>
+
+  <!-- DESKTOP SIDEBAR (hidden — hero card is sticky) -->
+  <div class="course-sidebar"></div>
+</div>
+
+<!-- RELATED COURSES -->
+<section style="background:var(--off-white);padding:56px 24px">
+  <div style="max-width:1280px;margin:0 auto">
+    <h2 style="font-family:var(--font-head);font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--gray-900);margin-bottom:28px">Students Also Enrolled In</h2>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Start Learning Today</h2>
+    <p>Join over 1,200 students building digital skills in Ghana. Pay in GH₵ — no foreign transaction fees.</p>
+    <div class="cta-btns">
+      <button class="cta-btn-primary" onclick="enrollNow()">Enroll Now</button>
+      <button class="cta-btn-secondary" onclick="window.location.href='courses.html'">Browse All Courses</button>
+    </div>
+    <div class="pay-chips">
+      <span class="pay-chip">MTN MoMo</span>
+      <span class="pay-chip">Telecel Cash</span>
+      <span class="pay-chip">AirtelTigo</span>
+      <span class="pay-chip">Debit / Credit Card</span>
+      <span class="pay-chip">Bank Transfer</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg>
+        </div>
+        <div>
+          <div class="logo-text">Seamless<span style="color:var(--orange)">Tech</span></div>
+          <div class="logo-sub" style="color:rgba(255,255,255,0.4)">Technologies Hub</div>
+        </div>
+      </a>
+      <p class="footer-desc">Empowering Lives Through Technology &amp; Digital Skills — Accra, Ghana.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>IT Services</h4>
+      <ul>
+        <li><a href="services.html">All Services</a></li>
+        <li><a href="services.html#repairs">Device Repairs</a></li>
+        <li><a href="services.html#networking">Networking</a></li>
+        <li><a href="services.html#cctv">CCTV Installation</a></li>
+        <li><a href="services.html#consultation">IT Consultation</a></li>
+        <li><a href="services.html#installations">OS Installations</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Accra, Ghana
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +233 XX XXX XXXX
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@seamlesstech.com.gh
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Seamless Technologies Hub. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head">
+    <h3>Shopping Cart (<span id="cdCount">0</span>)</h3>
+    <button class="cd-close" onclick="closeCart()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cd-body" id="cdBody"></div>
+  <div class="cd-foot" id="cdFoot" style="display:none">
+    <div class="cd-subtotal">
+      <strong>Subtotal</strong>
+      <span id="cdTotal">GH₵ 0</span>
+    </div>
+    <button class="cd-checkout" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+    <button class="cd-view" onclick="window.location.href='checkout.html'">View Cart</button>
+  </div>
+</div>
+
+<!-- SVG DEFS for half-star -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="halfGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#E5E7EB"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const COURSES = [
+  {
+    id:1, cat:'design', catLabel:'Graphic Design',
+    title:'Graphic Design Masterclass',
+    sub:'Master Adobe Photoshop, Illustrator & Canva. Build a professional portfolio with real-world projects from brand identity to social media graphics.',
+    price:299, old:499, weeks:8, lessons:42, students:1842, rating:4.8, reviews:247,
+    level:'Beginner', instructor:'Ama Boateng', instructorTitle:'Senior Graphic Designer & Brand Consultant',
+    badge:'bestseller',
+    img:'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=900&q=85',
+    catColor:'#7C3AED',
+    learns:[
+      'Photoshop fundamentals & advanced techniques','Illustrator vector design from scratch',
+      'Brand identity design & logo creation','Social media graphics & templates',
+      'Typography principles & font pairing','Color theory & visual hierarchy',
+      'Print vs digital design best practices','Build a professional design portfolio'
+    ],
+    requirements:['Access to a computer (Windows or Mac)','No prior design experience needed','Adobe Creative Cloud trial (free) or Canva (free)'],
+    sections:[
+      { title:'Introduction to Graphic Design', lessons:['Welcome & Course Overview · 5:20 · preview','What is Graphic Design? · 8:45','Design Principles: Balance, Contrast & Alignment · 12:10 · preview','Choosing Your Tools · 6:30'] },
+      { title:'Photoshop Fundamentals', lessons:['Photoshop Interface Tour · 10:15','Layers, Masks & Smart Objects · 18:40','Photo Retouching & Colour Correction · 22:15','Creating Social Media Banners · 25:30'] },
+      { title:'Illustrator & Vector Design', lessons:['Illustrator Interface & Setup · 8:50','Pen Tool Mastery · 20:10 · preview','Logo Design Project · 35:20','Icons & Illustration Basics · 18:00'] },
+      { title:'Brand Identity Design', lessons:['What is a Brand? · 7:40','Moodboards & Research · 12:30','Full Brand Identity Project · 45:00','Presenting to Clients · 10:20'] },
+      { title:'Portfolio & Career', lessons:['Building Your Design Portfolio · 14:30','Freelancing on Fiverr & Upwork · 11:00','Pricing Your Services · 9:20','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Ama Boateng is a Ghanaian brand designer with 8+ years of experience working with top African startups and NGOs. She has trained over 3,000 students across Accra and online.',
+    revDist:[62,22,10,4,2],
+    sampleReviews:[
+      { name:'Kwame A.', color:'#1565C0', text:'This course completely changed my career path. Ama explains every concept clearly and the projects are real-world. Got my first freelance client 2 weeks after finishing!', stars:5, date:'2 weeks ago' },
+      { name:'Efua M.', color:'#16A34A', text:'Best design course available in Ghana. The brand identity module alone is worth the price. Highly recommend to anyone starting out.', stars:5, date:'1 month ago' },
+      { name:'Kofi T.', color:'#7C3AED', text:'Great course overall. I wish there were more advanced Illustrator lessons but for a beginner course this is excellent value.', stars:4, date:'2 months ago' }
+    ]
+  },
+  {
+    id:2, cat:'development', catLabel:'Web Development',
+    title:'Website Development Bootcamp',
+    sub:'Go from zero to full-stack web developer. Build real websites with HTML, CSS, JavaScript, and deploy them live. Perfect for complete beginners.',
+    price:399, old:699, weeks:12, lessons:68, students:2341, rating:4.9, reviews:389,
+    level:'Beginner', instructor:'Kweku Mensah', instructorTitle:'Full-Stack Developer & Tech Lead',
+    badge:'bestseller',
+    img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85',
+    catColor:'#1565C0',
+    learns:[
+      'HTML5 semantic markup & accessibility','CSS3 layouts: Flexbox & Grid',
+      'JavaScript fundamentals to ES6+','DOM manipulation & event handling',
+      'Responsive design for all screen sizes','Git & GitHub version control',
+      'Deploy live websites for free','Build 5 real projects for your portfolio'
+    ],
+    requirements:['Any computer with an internet connection','No coding experience required','Text editor (VS Code — free)'],
+    sections:[
+      { title:'HTML Fundamentals', lessons:['How the Web Works · 8:10 · preview','Your First HTML Page · 12:30 · preview','Semantic HTML5 Tags · 15:40','Forms & Input Elements · 18:20'] },
+      { title:'CSS Styling & Layouts', lessons:['CSS Selectors & Specificity · 14:00','Box Model Deep Dive · 11:30','Flexbox Layout · 22:40 · preview','CSS Grid · 25:10','Responsive Design & Media Queries · 20:00'] },
+      { title:'JavaScript Essentials', lessons:['Variables, Types & Operators · 16:00','Functions & Scope · 19:30','Arrays & Objects · 22:10','DOM Manipulation · 28:40 · preview','Events & Callbacks · 18:00','Fetch API & JSON · 24:30'] },
+      { title:'Project: Build a Portfolio Site', lessons:['Project Planning & Wireframes · 10:00','Building the HTML Structure · 18:00','Styling with CSS · 25:00','Adding JavaScript Interactivity · 20:00','Deploying to Netlify · 12:00'] },
+      { title:'Git & Deployment', lessons:['Intro to Git & GitHub · 14:00','Branching & Pull Requests · 12:00','Deploying to GitHub Pages · 8:00','Course Wrap-Up & Next Steps · 6:00'] }
+    ],
+    bio:'Kweku Mensah is a full-stack developer and tech educator based in Accra. He has built software for fintech and health companies across West Africa and mentors junior developers at local tech hubs.',
+    revDist:[78,14,6,1,1],
+    sampleReviews:[
+      { name:'Adwoa P.', color:'#F97316', text:'I had zero coding knowledge before this course. Now I have a live portfolio website and just landed my first web dev contract. Kweku is an amazing teacher — patient and very detailed.', stars:5, date:'3 weeks ago' },
+      { name:'Nana K.', color:'#1565C0', text:'The JavaScript section is the best explanation of JS fundamentals I\'ve ever seen. Worth every pesewa. I\'m now confident enough to apply for junior dev roles.', stars:5, date:'1 month ago' },
+      { name:'Yaw B.', color:'#16A34A', text:'Excellent bootcamp. The pace is good and projects are practical. Would love more backend content but for frontend this is top tier.', stars:5, date:'6 weeks ago' }
+    ]
+  },
+  {
+    id:3, cat:'security', catLabel:'Cybersecurity',
+    title:'Cybersecurity Fundamentals',
+    sub:'Understand how hackers think and how to defend against them. Learn network security, ethical hacking basics, and how to protect systems and data.',
+    price:249, old:449, weeks:6, lessons:35, students:987, rating:4.7, reviews:156,
+    level:'Beginner', instructor:'Kofi Asare', instructorTitle:'Certified Ethical Hacker (CEH) & Security Analyst',
+    badge:null,
+    img:'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=85',
+    catColor:'#DC2626',
+    learns:[
+      'Core cybersecurity concepts & terminology','Types of cyber attacks & threat actors',
+      'Network security fundamentals','Password security & authentication methods',
+      'Social engineering & phishing defence','Intro to ethical hacking & penetration testing',
+      'Securing your personal devices & data','Security tools: Wireshark, Nmap basics'
+    ],
+    requirements:['Basic computer knowledge','Curiosity and willingness to learn','No hacking experience required'],
+    sections:[
+      { title:'Introduction to Cybersecurity', lessons:['The Cybersecurity Landscape · 10:00 · preview','Types of Threats & Attackers · 12:30','Security Principles: CIA Triad · 8:40 · preview'] },
+      { title:'Network Security', lessons:['How Networks Work · 14:00','Firewalls & IDS/IPS · 11:30','VPNs & Encryption · 16:00','Wireless Network Security · 13:20'] },
+      { title:'Ethical Hacking Basics', lessons:['What is Ethical Hacking? · 9:00','Reconnaissance & Scanning · 20:00','Intro to Kali Linux · 18:30','Basic Penetration Testing Lab · 30:00'] },
+      { title:'Social Engineering & Phishing', lessons:['Phishing Attacks Explained · 12:00','Protecting Against Social Engineering · 10:30','Email Security Best Practices · 9:00'] },
+      { title:'Career in Cybersecurity', lessons:['Certifications Roadmap (CompTIA, CEH) · 11:00','Building Your Home Lab · 15:00','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Kofi Asare is a Certified Ethical Hacker with experience in penetration testing and security auditing for banks and telecoms in Ghana. He consults for major organisations on cybersecurity strategy.',
+    revDist:[55,28,12,3,2],
+    sampleReviews:[
+      { name:'Esi D.', color:'#DC2626', text:'Excellent introduction to cybersecurity. Kofi explains complex topics in a very accessible way. The ethical hacking section really opened my eyes to how vulnerable systems can be.', stars:5, date:'1 month ago' },
+      { name:'Samuel O.', color:'#0B1F3A', text:'Good course for beginners. I\'d love a follow-up advanced course. The phishing section saved me from an actual attack at work!', stars:4, date:'2 months ago' },
+      { name:'Ama S.', color:'#7C3AED', text:'Very practical content. Completed the home lab exercises and it really helped cement the concepts. Highly recommended for IT professionals in Ghana.', stars:5, date:'3 months ago' }
+    ]
+  },
+  {
+    id:4, cat:'marketing', catLabel:'Digital Marketing',
+    title:'Digital Marketing Masterclass',
+    sub:'Master Facebook Ads, Google Ads, SEO, email marketing, and content strategy. Learn to run profitable campaigns and grow businesses online.',
+    price:279, old:449, weeks:8, lessons:48, students:1456, rating:4.8, reviews:203,
+    level:'Beginner', instructor:'Abena Dankwa', instructorTitle:'Digital Marketing Strategist & Founder',
+    badge:'new',
+    img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85',
+    catColor:'#F97316',
+    learns:[
+      'Facebook & Instagram Ads strategy','Google Ads (Search, Display, YouTube)',
+      'SEO fundamentals & keyword research','Email marketing & automation',
+      'Content marketing & copywriting','Analytics & tracking with GA4',
+      'Social media strategy & growth','Running profitable ad campaigns'
+    ],
+    requirements:['A smartphone or computer','No marketing experience needed','A Facebook/Instagram account (free)'],
+    sections:[
+      { title:'Digital Marketing Foundations', lessons:['What is Digital Marketing? · 9:00 · preview','The Customer Journey · 11:30','Building Your Brand Online · 13:00 · preview'] },
+      { title:'Social Media & Meta Ads', lessons:['Facebook Business Manager Setup · 8:00','Creating Your First Ad Campaign · 18:30','Targeting & Audiences · 22:00','Retargeting & Lookalikes · 16:00'] },
+      { title:'SEO & Google Ads', lessons:['Intro to SEO · 14:00','Keyword Research with Free Tools · 18:40','Google Ads Search Campaigns · 20:00','Landing Page Optimisation · 15:00'] },
+      { title:'Email & Content Marketing', lessons:['Email Marketing with Mailchimp · 16:00','Writing High-Converting Copy · 14:30','Content Calendar Planning · 10:00'] },
+      { title:'Analytics & Strategy', lessons:['Google Analytics 4 Setup · 12:00','Reading Your Data · 16:00','Campaign Strategy & Budget Allocation · 18:00','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Abena Dankwa is a digital marketing strategist who has helped over 200 Ghanaian SMEs grow online. She founded a digital agency in Accra and has spoken at marketing conferences across Africa.',
+    revDist:[65,20,10,3,2],
+    sampleReviews:[
+      { name:'Kojo M.', color:'#F97316', text:'I ran my first profitable Facebook Ads campaign within a week of completing this course. Abena gives very practical, no-fluff content that works for the Ghanaian market specifically.', stars:5, date:'2 weeks ago' },
+      { name:'Akosua B.', color:'#16A34A', text:'The SEO section alone was worth it. My small business website traffic doubled in 3 months after applying what I learned. Thank you Abena!', stars:5, date:'1 month ago' },
+      { name:'Emmanuel A.', color:'#1565C0', text:'Really good course. The Meta Ads section is excellent. Would love more coverage of TikTok ads since that\'s growing in Ghana but overall very satisfied.', stars:4, date:'5 weeks ago' }
+    ]
+  },
+  {
+    id:5, cat:'data', catLabel:'Data Analysis',
+    title:'Data Analysis with Excel & Google Sheets',
+    sub:'Transform raw data into powerful insights. Learn Excel formulas, pivot tables, data visualisation, and how to make data-driven business decisions.',
+    price:199, old:349, weeks:5, lessons:28, students:743, rating:4.6, reviews:98,
+    level:'Beginner', instructor:'Yaa Owusu', instructorTitle:'Data Analyst & Business Intelligence Consultant',
+    badge:null,
+    img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=85',
+    catColor:'#16A34A',
+    learns:[
+      'Excel fundamentals & keyboard shortcuts','VLOOKUP, INDEX-MATCH & advanced formulas',
+      'Pivot Tables & Power Query','Data cleaning & transformation',
+      'Charts & data visualisation','Google Sheets for collaboration',
+      'Statistical analysis basics','Real-world business data projects'
+    ],
+    requirements:['Microsoft Excel (any version) or Google Sheets (free)','No prior Excel experience needed','Basic maths understanding'],
+    sections:[
+      { title:'Excel Foundations', lessons:['Excel Interface & Navigation · 8:00 · preview','Data Entry & Formatting · 11:00','Essential Formulas (SUM, IF, COUNTIF) · 16:00 · preview'] },
+      { title:'Advanced Formulas & Functions', lessons:['VLOOKUP & HLOOKUP · 18:00','INDEX-MATCH · 15:30','Date & Text Functions · 12:00','Nested IF Statements · 14:00'] },
+      { title:'Pivot Tables & Charts', lessons:['Creating Pivot Tables · 20:00','Pivot Charts & Slicers · 16:00','Dynamic Dashboards · 22:00'] },
+      { title:'Data Cleaning & Analysis', lessons:['Identifying & Fixing Dirty Data · 14:00','Power Query Basics · 18:00','Statistical Analysis in Excel · 16:00'] },
+      { title:'Capstone Project', lessons:['Business Sales Analysis Project · 35:00','Presenting Your Findings · 12:00','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Yaa Owusu is a data analyst and BI consultant who has worked with companies in banking, retail, and logistics across Ghana. She is passionate about making data skills accessible to everyone.',
+    revDist:[48,32,14,4,2],
+    sampleReviews:[
+      { name:'Fiifi A.', color:'#16A34A', text:'I use Excel every day at work but this course showed me so many things I didn\'t know. The VLOOKUP and pivot table sections are brilliant. Worth every cedi.', stars:5, date:'3 weeks ago' },
+      { name:'Maame O.', color:'#F97316', text:'Short, focused, and very practical. Yaa explains things clearly. The capstone project really helped consolidate everything. Great for anyone in accounting or admin.', stars:4, date:'2 months ago' }
+    ]
+  },
+  {
+    id:6, cat:'networking', catLabel:'Computer Networking',
+    title:'Computer Networking Basics',
+    sub:'Understand how networks work from the ground up. Cover TCP/IP, routing, switching, network troubleshooting, and prepare for CompTIA Network+ certification.',
+    price:229, old:399, weeks:7, lessons:40, students:621, rating:4.7, reviews:87,
+    level:'Beginner', instructor:'Nana Amponsah', instructorTitle:'Network Engineer (CCNA) & IT Infrastructure Specialist',
+    badge:null,
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85',
+    catColor:'#0B1F3A',
+    learns:[
+      'OSI Model & TCP/IP stack explained','IP addressing, subnetting & CIDR',
+      'Ethernet, switching & VLANs','Routing protocols (RIP, OSPF basics)',
+      'DNS, DHCP & network services','Wireless networking & Wi-Fi standards',
+      'Network troubleshooting methodology','Foundation for CompTIA Network+'
+    ],
+    requirements:['Basic computer skills','No networking experience needed','Curiosity about how the internet works'],
+    sections:[
+      { title:'Networking Fundamentals', lessons:['What is a Network? · 9:00 · preview','Network Types: LAN, WAN, MAN · 11:00','OSI Model Explained · 18:30 · preview','TCP/IP Model · 14:00'] },
+      { title:'IP Addressing', lessons:['IPv4 Addressing · 16:00','Subnetting Made Simple · 25:00','IPv6 Basics · 12:00','CIDR Notation · 10:00'] },
+      { title:'Switching & Routing', lessons:['How Switches Work · 14:00','VLANs & Trunking · 18:00','Routing Concepts · 16:00','Static vs Dynamic Routing · 14:00'] },
+      { title:'Network Services', lessons:['DNS Deep Dive · 12:00','DHCP & NAT · 11:00','HTTP/HTTPS & Web Traffic · 10:00'] },
+      { title:'Troubleshooting & Career', lessons:['Network Troubleshooting Tools · 18:00','Common Network Problems & Fixes · 15:00','CompTIA Network+ Exam Overview · 10:00','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Nana Amponsah is a Cisco Certified Network Associate (CCNA) with 10 years of experience designing and managing networks for enterprises and ISPs in Ghana and West Africa.',
+    revDist:[52,30,12,4,2],
+    sampleReviews:[
+      { name:'Kwabena A.', color:'#0B1F3A', text:'Nana is an excellent instructor. The subnetting section is the clearest explanation I\'ve found anywhere. This course prepared me well for my CCNA studies.', stars:5, date:'1 month ago' },
+      { name:'Serwa M.', color:'#7C3AED', text:'Very solid foundation course. I went from not understanding what a router does to being able to set up a small office network. Practical and well-paced.', stars:5, date:'2 months ago' }
+    ]
+  },
+  {
+    id:7, cat:'ai', catLabel:'AI & Machine Learning',
+    title:'AI Fundamentals & Machine Learning',
+    sub:'Demystify artificial intelligence and machine learning. Understand how AI systems work, explore real-world applications, and write your first ML models with Python.',
+    price:349, old:599, weeks:10, lessons:55, students:2018, rating:4.9, reviews:312,
+    level:'Intermediate', instructor:'Kwame Acheampong', instructorTitle:'AI Engineer & Data Scientist',
+    badge:'hot',
+    img:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=85',
+    catColor:'#7C3AED',
+    learns:[
+      'What AI, ML & Deep Learning actually mean','Supervised & unsupervised learning',
+      'Python for data science & ML','Working with pandas, NumPy & scikit-learn',
+      'Training, testing & evaluating models','Neural networks & deep learning basics',
+      'AI ethics & responsible use','Building real ML projects'
+    ],
+    requirements:['Basic programming knowledge helpful (not required)','Curiosity about AI','Free Google Colab account (no GPU needed)'],
+    sections:[
+      { title:'AI & ML Foundations', lessons:['AI vs ML vs Deep Learning · 12:00 · preview','How Machine Learning Works · 16:30','Types of ML: Supervised, Unsupervised, RL · 14:00 · preview','AI in Ghana & Africa Today · 9:00'] },
+      { title:'Python for ML', lessons:['Python Crash Course for ML · 25:00','NumPy & Pandas Essentials · 22:00','Data Visualisation with Matplotlib · 16:00'] },
+      { title:'Supervised Learning', lessons:['Linear Regression · 20:00','Logistic Regression · 18:00','Decision Trees & Random Forests · 22:00','Model Evaluation & Metrics · 16:00'] },
+      { title:'Unsupervised Learning & Neural Nets', lessons:['K-Means Clustering · 16:00','Intro to Neural Networks · 20:00','Deep Learning with Keras · 25:00','Transfer Learning · 18:00'] },
+      { title:'Real-World Projects & Ethics', lessons:['Spam Detection Project · 30:00','Image Classification Project · 35:00','AI Ethics & Bias · 14:00','Career Paths in AI · 10:00','Course Wrap-Up · 5:00'] }
+    ],
+    bio:'Kwame Acheampong is an AI engineer with a Master\'s in Machine Learning from a leading UK university. He builds AI products for fintech and agritech startups in Africa and mentors the next generation of African AI engineers.',
+    revDist:[82,12,4,1,1],
+    sampleReviews:[
+      { name:'Aba A.', color:'#7C3AED', text:'This is the most up-to-date and practical AI course available in Ghana. Kwame has a gift for explaining complex mathematics in simple terms. I\'m now building my own ML models at work!', stars:5, date:'1 week ago' },
+      { name:'Kodjo N.', color:'#1565C0', text:'Absolutely worth every cedi. The Python for ML section is thorough and the hands-on projects are challenging in a good way. Best course I\'ve taken on the platform.', stars:5, date:'3 weeks ago' },
+      { name:'Nana E.', color:'#F97316', text:'Exceptional quality. The neural networks section blew my mind. Kwame makes AI accessible and the Ghana/Africa context he adds makes it very relevant to our market.', stars:5, date:'1 month ago' }
+    ]
+  }
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let course = null;
+let cart = JSON.parse(localStorage.getItem('sth_cart') || '[]');
+let allExpanded = false;
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1;
+  course = COURSES.find(c => c.id === id) || COURSES[0];
+  renderCourse();
+  renderCart();
+  updateCartBadge();
+});
+
+// ── RENDER COURSE ─────────────────────────────────────────────────────────────
+function renderCourse() {
+  const c = course;
+  document.title = `${c.title} — Seamless Technologies Hub`;
+
+  // Breadcrumb
+  document.getElementById('bcTitle').textContent = c.title;
+
+  // Hero
+  document.getElementById('heroCat').textContent = c.catLabel;
+  document.getElementById('heroTitle').textContent = c.title;
+  document.getElementById('heroSub').textContent = c.sub;
+  document.getElementById('heroRating').textContent = c.rating;
+  document.getElementById('heroStars').innerHTML = buildStars(c.rating, 16);
+  document.getElementById('heroReviews').textContent = `(${c.reviews.toLocaleString()} ratings)`;
+  document.getElementById('heroStudents').textContent = `${c.students.toLocaleString()} students`;
+  document.getElementById('heroWeeks').textContent = `${c.weeks} weeks · ${c.lessons} lessons`;
+
+  // Instructor row
+  const initials = c.instructor.split(' ').map(n => n[0]).join('');
+  document.getElementById('heroInstructor').innerHTML = `
+    <div class="instructor-avatar" style="background:${c.catColor}">${initials}</div>
+    <div class="instructor-info">
+      Instructor: <strong>${c.instructor}</strong><br>
+      <span style="font-size:12px;opacity:.7">${c.instructorTitle}</span>
+    </div>`;
+
+  // Tags
+  const tags = [`${c.level} Level`, `${c.weeks} Weeks`, `${c.lessons} Lessons`, 'Certificate', 'GH₵ Pricing'];
+  document.getElementById('heroTags').innerHTML = tags.map(t => `<span class="hero-tag">${t}</span>`).join('');
+
+  // Card
+  document.getElementById('heroCardImg').src = c.img;
+  document.getElementById('heroCardImg').alt = c.title;
+  document.getElementById('cardPrice').textContent = `GH₵ ${c.price.toLocaleString()}`;
+  document.getElementById('cardOld').textContent = `GH₵ ${c.old.toLocaleString()}`;
+  const savePct = Math.round((1 - c.price / c.old) * 100);
+  document.getElementById('cardSave').textContent = `${savePct}% off`;
+  document.getElementById('offerText').textContent = `${savePct}% off — Limited time`;
+  document.getElementById('btnEnroll').textContent = `Enroll Now — GH₵ ${c.price.toLocaleString()}`;
+  document.getElementById('incLessons').textContent = `${c.lessons} on-demand lessons`;
+
+  // What you'll learn
+  document.getElementById('learnGrid').innerHTML = c.learns.map(l => `
+    <div class="learn-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      ${l}
+    </div>`).join('');
+
+  // Requirements
+  document.getElementById('reqList').innerHTML = c.requirements.map(r => `
+    <div class="req-item">${r}</div>`).join('');
+
+  // Curriculum
+  const totalLessons = c.sections.reduce((sum, s) => sum + s.lessons.length, 0);
+  document.getElementById('currSummary').innerHTML = `
+    <span><strong>${c.sections.length}</strong> sections</span>
+    <span><strong>${totalLessons}</strong> lessons</span>
+    <span><strong>${c.weeks * 3}h ${Math.floor(Math.random()*50)+10}m</strong> total length</span>
+    <span>Self-paced</span>`;
+
+  document.getElementById('sectionList').innerHTML = c.sections.map((sec, si) => `
+    <div class="curr-section ${si === 0 ? 'open' : ''}" id="sec-${si}">
+      <div class="curr-section-head" onclick="toggleSection(${si})">
+        <span class="curr-sec-title">${sec.title}</span>
+        <span class="curr-sec-meta">${sec.lessons.length} lessons</span>
+        <svg class="curr-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="curr-lessons">
+        ${sec.lessons.map(l => {
+          const parts = l.split(' · ');
+          const name = parts[0];
+          const dur = parts[1] || '';
+          const isPreview = parts.includes('preview');
+          return `<div class="curr-lesson ${isPreview ? 'preview' : ''}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span class="lesson-name">${name}</span>
+            ${isPreview ? '<span class="preview-badge">Preview</span>' : ''}
+            <span class="lesson-dur">${dur}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+
+  // Instructor
+  document.getElementById('instructorCard').innerHTML = `
+    <div class="instructor-ava-lg" style="background:linear-gradient(135deg,${c.catColor},${c.catColor}aa)">${initials}</div>
+    <div class="instructor-details">
+      <h3>${c.instructor}</h3>
+      <div class="instructor-title">${c.instructorTitle}</div>
+      <div class="instructor-stats">
+        <div class="inst-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          ${c.rating} Instructor Rating
+        </div>
+        <div class="inst-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          ${c.students.toLocaleString()} Students
+        </div>
+        <div class="inst-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          ${c.lessons} Lessons
+        </div>
+      </div>
+      <p class="instructor-bio">${c.bio}</p>
+    </div>`;
+
+  // Reviews
+  document.getElementById('revScore').textContent = c.rating;
+  document.getElementById('revStarsLg').innerHTML = buildStars(c.rating, 18);
+  document.getElementById('revTotal').textContent = `${c.reviews.toLocaleString()} student ratings`;
+
+  const total = c.revDist.reduce((a, b) => a + b, 0);
+  document.getElementById('revBars').innerHTML = [5,4,3,2,1].map((star, i) => {
+    const pct = Math.round((c.revDist[i] / total) * 100);
+    return `<div class="rev-bar-row">
+      <span class="rev-bar-label">${star} ★</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:${pct}%"></div></div>
+      <span class="rev-bar-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('reviewsList').innerHTML = c.sampleReviews.map(r => {
+    const initials = r.name.split(' ').map(n => n[0]).join('');
+    return `<div class="review-card">
+      <div class="rev-head">
+        <div class="rev-ava" style="background:${r.color}">${initials}</div>
+        <div>
+          <div class="rev-name">${r.name}</div>
+          <div class="rev-date">${r.date}</div>
+        </div>
+        <div class="rev-stars-sm" style="margin-left:auto">${buildStars(r.stars, 13)}</div>
+      </div>
+      <p class="rev-body">${r.text}</p>
+    </div>`;
+  }).join('');
+
+  // Related (exclude current, take up to 3)
+  const related = COURSES.filter(rc => rc.id !== c.id).slice(0, 3);
+  document.getElementById('relatedGrid').innerHTML = related.map(r => {
+    const savePct = Math.round((1 - r.price / r.old) * 100);
+    return `<a href="course-detail.html?id=${r.id}" class="rel-card">
+      <div class="rel-img"><img src="${r.img}" alt="${r.title}" loading="lazy"></div>
+      <div class="rel-body">
+        <div class="rel-cat">${r.catLabel}</div>
+        <div class="rel-title">${r.title}</div>
+        <div style="display:flex;align-items:center">
+          <span class="rel-price">GH₵ ${r.price.toLocaleString()}</span>
+          <span class="rel-old">GH₵ ${r.old.toLocaleString()}</span>
+          <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--green)">${savePct}% off</span>
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+// ── STARS ─────────────────────────────────────────────────────────────────────
+function buildStars(rating, size = 16) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    if (rating >= i) {
+      html += `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><polygon fill="#F59E0B" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    } else if (rating >= i - 0.5) {
+      html += `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><polygon fill="url(#halfGrad)" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    } else {
+      html += `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><polygon fill="#E5E7EB" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    }
+  }
+  return html;
+}
+
+// ── CURRICULUM ────────────────────────────────────────────────────────────────
+function toggleSection(idx) {
+  const el = document.getElementById(`sec-${idx}`);
+  el.classList.toggle('open');
+}
+
+function toggleAllSections() {
+  const sections = document.querySelectorAll('.curr-section');
+  allExpanded = !allExpanded;
+  sections.forEach(s => allExpanded ? s.classList.add('open') : (s.id !== 'sec-0' && s.classList.remove('open')));
+  document.getElementById('showMoreBtn').textContent = allExpanded ? 'Collapse All Sections' : 'Show All Sections';
+}
+
+// ── ENROLL ────────────────────────────────────────────────────────────────────
+function enrollNow() {
+  // Courses are added as cart items so user can proceed to checkout
+  const existing = cart.find(i => i.id === `course-${course.id}`);
+  if (!existing) {
+    cart.push({
+      id: `course-${course.id}`,
+      brand: 'Course',
+      name: course.title,
+      img: course.img,
+      price: course.price,
+      old: course.old,
+      qty: 1
+    });
+    saveCart();
+    updateCartBadge();
+  }
+  openCart();
+}
+
+function addWishlist() {
+  const btn = document.querySelector('.btn-wishlist');
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="var(--red)" stroke="var(--red)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Saved to Wishlist`;
+}
+
+function playPreview() {
+  alert('Course preview coming soon!');
+}
+
+// ── CART ──────────────────────────────────────────────────────────────────────
+function saveCart() { localStorage.setItem('sth_cart', JSON.stringify(cart)); }
+
+function updateCartBadge() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = total;
+  badge.style.display = total > 0 ? 'flex' : 'none';
+}
+
+function openCart() {
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  renderCart();
+}
+
+function closeCart() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+}
+
+function renderCart() {
+  const body = document.getElementById('cdBody');
+  const foot = document.getElementById('cdFoot');
+  document.getElementById('cdCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+
+  if (cart.length === 0) {
+    body.innerHTML = `<div class="cd-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <h4>Your cart is empty</h4>
+      <p>Browse courses and add them here</p>
+    </div>`;
+    foot.style.display = 'none';
+    return;
+  }
+
+  body.innerHTML = cart.map(item => `
+    <div class="cd-item">
+      <img class="cd-item-img" src="${item.img}" alt="${item.name}">
+      <div class="cd-item-info">
+        <div class="cd-item-name">${item.name}</div>
+        <div class="cd-item-price">GH₵ ${(item.price * item.qty).toLocaleString()}</div>
+        <div class="cd-item-controls">
+          <button class="cd-qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+          <span class="cd-qty-val">${item.qty}</span>
+          <button class="cd-qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          <button class="cd-item-remove" onclick="removeItem('${item.id}')">✕ Remove</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('cdTotal').textContent = `GH₵ ${subtotal.toLocaleString()}`;
+  foot.style.display = 'block';
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty = Math.max(1, item.qty + delta);
+  saveCart();
+  updateCartBadge();
+  renderCart();
+}
+
+function removeItem(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+  updateCartBadge();
+  renderCart();
+}
+
+// ── MOBILE NAV ────────────────────────────────────────────────────────────────
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+</script>
+</body>
+</html>
