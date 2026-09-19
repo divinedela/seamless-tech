@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses — Seamless Technologies Hub</title>
+  <meta name="description" content="Learn in-demand tech skills online. Graphic Design, Web Development, Cybersecurity, AI and more — taught by Ghanaian instructors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #0B1F3A;
+      --navy-mid:  #1A3A6B;
+      --blue:      #1565C0;
+      --blue-lt:   #E8F0FE;
+      --orange:    #F97316;
+      --orange-dk: #EA6508;
+      --white:     #FFFFFF;
+      --off-white: #F5F7FA;
+      --gray-100:  #F3F4F6;
+      --gray-200:  #E5E7EB;
+      --gray-300:  #D1D5DB;
+      --gray-400:  #9CA3AF;
+      --gray-600:  #6B7280;
+      --gray-900:  #111827;
+      --green:     #16A34A;
+      --green-lt:  #DCFCE7;
+      --red:       #DC2626;
+      --amber:     #F59E0B;
+      --purple:    #7C3AED;
+      --purple-lt: #EDE9FE;
+      --font-head: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-xl: 0 16px 48px rgba(0,0,0,0.18);
+      --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+      --ease: 200ms ease; --max-w: 1280px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--gray-900); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ═══════════════════════════════════════
+       ANNOUNCE + HEADER
+    ═══════════════════════════════════════ */
+    .announce-bar { background: var(--navy); color: rgba(255,255,255,0.85); text-align: center; padding: 10px 24px; font-size: 13px; font-weight: 500; }
+    .announce-bar strong { color: var(--orange); }
+    .announce-bar a { color: var(--white); text-decoration: underline; margin-left: 8px; }
+
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--gray-200); transition: box-shadow var(--ease); }
+    .site-header.scrolled { box-shadow: var(--shadow-md); }
+    .nav-wrap { display: flex; align-items: center; height: 72px; gap: 8px; }
+
+    .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-right: 32px; }
+    .logo-mark { width: 40px; height: 40px; background: var(--navy); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 22px; height: 22px; fill: var(--orange); }
+    .logo-name strong { display: block; font-family: var(--font-head); font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.1; }
+    .logo-name span   { font-size: 10px; color: var(--gray-400); letter-spacing: 1px; text-transform: uppercase; }
+
+    .main-nav { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .nav-a { font-size: 13.5px; font-weight: 500; color: var(--gray-900); padding: 7px 11px; border-radius: var(--r-sm); transition: all var(--ease); white-space: nowrap; }
+    .nav-a:hover { color: var(--blue); background: var(--blue-lt); }
+    .nav-a.active { color: var(--blue); font-weight: 600; }
+
+    .search-wrap { display: flex; align-items: center; gap: 8px; background: var(--gray-100); border: 1.5px solid transparent; border-radius: var(--r-full); padding: 8px 16px; margin-left: auto; transition: all var(--ease); }
+    .search-wrap:focus-within { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px var(--blue-lt); }
+    .search-wrap svg { width: 15px; height: 15px; flex-shrink: 0; stroke: var(--gray-400); fill: none; }
+    .search-wrap input { border: none; background: none; outline: none; font-size: 14px; font-family: var(--font-body); color: var(--gray-900); width: 180px; }
+    .search-wrap input::placeholder { color: var(--gray-400); }
+
+    .icon-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: var(--r-sm); color: var(--gray-600); transition: all var(--ease); position: relative; flex-shrink: 0; }
+    .icon-btn:hover { background: var(--gray-100); color: var(--navy); }
+    .icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
+    .cart-badge { position: absolute; top: 5px; right: 5px; width: 17px; height: 17px; background: var(--orange); color: var(--white); font-size: 9px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .btn-login-nav { flex-shrink: 0; background: var(--navy); color: var(--white); padding: 9px 20px; border-radius: var(--r-sm); font-size: 13px; font-weight: 700; font-family: var(--font-head); transition: background var(--ease); }
+    .btn-login-nav:hover { background: var(--blue); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer; margin-left: auto; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--gray-900); border-radius: 2px; }
+    .mobile-nav { display: none; flex-direction: column; background: var(--white); border-top: 1px solid var(--gray-200); padding: 12px 0 20px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-a { padding: 11px 24px; border-radius: 0; }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .courses-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0D2748 50%, #112240 100%);
+      position: relative; overflow: hidden;
+      padding: 72px 0 64px;
+    }
+    .courses-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(249,115,22,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(21,101,192,0.10) 0%, transparent 50%);
+    }
+    /* subtle dot grid */
+    .courses-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 780px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.30);
+      color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 7px 16px; border-radius: var(--r-full);
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow svg { width: 14px; height: 14px; stroke: var(--orange); fill: none; }
+    .hero-h1 {
+      font-family: var(--font-head);
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.5px;
+      margin-bottom: 18px;
+    }
+    .hero-h1 em { color: var(--orange); font-style: normal; }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.70); line-height: 1.65; margin-bottom: 36px; max-width: 580px; margin-left: auto; margin-right: auto; }
+
+    .hero-search {
+      display: flex; align-items: center; gap: 0;
+      background: var(--white); border-radius: var(--r-full);
+      overflow: hidden; max-width: 520px; margin: 0 auto 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.24);
+    }
+    .hero-search svg { width: 18px; height: 18px; stroke: var(--gray-400); fill: none; flex-shrink: 0; margin-left: 20px; }
+    .hero-search input { flex: 1; border: none; outline: none; font-size: 15px; font-family: var(--font-body); color: var(--gray-900); padding: 16px 12px; background: none; }
+    .hero-search input::placeholder { color: var(--gray-400); }
+    .hero-search button { background: var(--orange); color: var(--white); border: none; padding: 0 28px; height: 54px; font-family: var(--font-head); font-size: 14px; font-weight: 700; cursor: pointer; transition: background var(--ease); flex-shrink: 0; }
+    .hero-search button:hover { background: var(--orange-dk); }
+
+    .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.80); font-size: 13px; font-weight: 600;
+      padding: 7px 16px; border-radius: var(--r-full); cursor: pointer;
+      transition: all var(--ease);
+    }
+    .hero-tag:hover, .hero-tag.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    /* ═══════════════════════════════════════
+       STATS STRIP
+    ═══════════════════════════════════════ */
+    .stats-strip { background: var(--white); border-bottom: 1px solid var(--gray-200); }
+    .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
+    .stat-item { display: flex; align-items: center; gap: 14px; padding: 22px 28px; border-right: 1px solid var(--gray-200); }
+    .stat-item:last-child { border-right: none; }
+    .stat-icon { width: 44px; height: 44px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .stat-icon svg { width: 22px; height: 22px; fill: none; stroke-width: 2; }
+    .stat-icon.orange { background: rgba(249,115,22,0.10); }
+    .stat-icon.orange svg { stroke: var(--orange); }
+    .stat-icon.blue { background: var(--blue-lt); }
+    .stat-icon.blue svg { stroke: var(--blue); }
+    .stat-icon.green { background: var(--green-lt); }
+    .stat-icon.green svg { stroke: var(--green); }
+    .stat-icon.purple { background: var(--purple-lt); }
+    .stat-icon.purple svg { stroke: var(--purple); }
+    .stat-num  { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-desc { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       CATEGORY TABS
+    ═══════════════════════════════════════ */
+    .cat-tabs-bar { background: var(--white); border-bottom: 2px solid var(--gray-200); position: sticky; top: 72px; z-index: 100; }
+    .cat-tabs-inner { display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 24px; max-width: var(--max-w); margin: 0 auto; }
+    .cat-tabs-inner::-webkit-scrollbar { display: none; }
+    .cat-tab {
+      flex-shrink: 0; padding: 16px 20px;
+      font-family: var(--font-head); font-size: 14px; font-weight: 600;
+      color: var(--gray-600); border-bottom: 2px solid transparent;
+      margin-bottom: -2px; white-space: nowrap; cursor: pointer;
+      transition: all var(--ease); display: flex; align-items: center; gap: 8px;
+    }
+    .cat-tab:hover { color: var(--navy); }
+    .cat-tab.active { color: var(--orange); border-bottom-color: var(--orange); }
+    .cat-tab .tab-count { background: var(--gray-100); color: var(--gray-600); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: var(--r-full); transition: all var(--ease); }
+    .cat-tab.active .tab-count { background: rgba(249,115,22,0.12); color: var(--orange); }
+
+    /* ═══════════════════════════════════════
+       FILTER BAR
+    ═══════════════════════════════════════ */
+    .filter-bar { background: var(--off-white); border-bottom: 1px solid var(--gray-200); padding: 14px 0; }
+    .filter-inner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .filter-group { display: flex; align-items: center; gap: 8px; }
+    .filter-group-label { font-size: 12px; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+    .filter-pill {
+      padding: 7px 16px; border-radius: var(--r-full);
+      font-size: 13px; font-weight: 600; color: var(--gray-600);
+      background: var(--white); border: 1.5px solid var(--gray-200);
+      cursor: pointer; transition: all var(--ease); white-space: nowrap;
+    }
+    .filter-pill:hover { border-color: var(--orange); color: var(--orange); }
+    .filter-pill.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+    .filter-sep { width: 1px; height: 24px; background: var(--gray-300); flex-shrink: 0; }
+    .filter-sort {
+      display: flex; align-items: center; gap: 8px; margin-left: auto;
+      font-size: 13px; color: var(--gray-600);
+    }
+    .filter-sort svg { width: 14px; height: 14px; stroke: var(--gray-400); fill: none; }
+    .sort-select {
+      border: 1.5px solid var(--gray-200); background: var(--white);
+      border-radius: var(--r-sm); padding: 7px 12px; font-size: 13px;
+      font-family: var(--font-body); color: var(--gray-900); cursor: pointer; outline: none;
+      transition: border-color var(--ease);
+    }
+    .sort-select:focus { border-color: var(--blue); }
+
+    /* ═══════════════════════════════════════
+       COURSES SECTION
+    ═══════════════════════════════════════ */
+    .courses-section { padding: 48px 0 96px; }
+    .results-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+    .results-count { font-size: 14px; color: var(--gray-600); }
+    .results-count strong { color: var(--navy); }
+    .active-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .active-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--blue-lt); color: var(--blue);
+      font-size: 12px; font-weight: 600; padding: 5px 12px;
+      border-radius: var(--r-full); border: 1px solid rgba(21,101,192,0.20);
+    }
+    .active-chip button { display: flex; align-items: center; width: 14px; height: 14px; background: rgba(21,101,192,0.15); border-radius: 50%; padding: 0; transition: background var(--ease); }
+    .active-chip button:hover { background: var(--blue); color: var(--white); }
+    .active-chip button svg { width: 8px; height: 8px; stroke: currentColor; fill: none; margin: auto; }
+    .clear-filters { font-size: 13px; color: var(--red); font-weight: 600; cursor: pointer; }
+    .clear-filters:hover { text-decoration: underline; }
+
+    /* ═══════════════════════════════════════
+       FEATURED BANNER
+    ═══════════════════════════════════════ */
+    .featured-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--r-xl); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 420px;
+      margin-bottom: 40px; position: relative;
+    }
+    .featured-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(249,115,22,0.12) 0%, transparent 60%);
+    }
+    .fb-content { padding: 44px 48px; position: relative; z-index: 1; }
+    .fb-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--orange); color: var(--white);
+      font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: var(--r-full); margin-bottom: 18px;
+    }
+    .fb-label svg { width: 13px; height: 13px; fill: var(--white); }
+    .fb-title { font-family: var(--font-head); font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 12px; }
+    .fb-desc  { font-size: 15px; color: rgba(255,255,255,0.70); line-height: 1.65; margin-bottom: 24px; }
+    .fb-meta  { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+    .fb-meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,0.80); font-weight: 500; }
+    .fb-meta-item svg { width: 15px; height: 15px; stroke: var(--orange); fill: none; }
+    .fb-price-row { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+    .fb-price { font-family: var(--font-head); font-size: 32px; font-weight: 800; color: var(--orange); }
+    .fb-old   { font-size: 18px; color: rgba(255,255,255,0.40); text-decoration: line-through; }
+    .fb-save  { background: rgba(22,163,74,0.20); color: #4ADE80; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: var(--r-full); border: 1px solid rgba(22,163,74,0.30); }
+    .fb-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--orange); color: var(--white);
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-head); font-size: 15px; font-weight: 700;
+      transition: all var(--ease); border: none; cursor: pointer;
+    }
+    .fb-btn:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.35); }
+    .fb-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+    .fb-img { position: relative; overflow: hidden; }
+    .fb-img img { width: 100%; height: 100%; object-fit: cover; }
+    .fb-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,31,58,0.5) 0%, transparent 60%); }
+    .fb-students {
+      position: absolute; bottom: 20px; right: 20px;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: var(--r-lg); padding: 12px 16px;
+      color: var(--white);
+    }
+    .fb-students-num { font-family: var(--font-head); font-size: 20px; font-weight: 800; }
+    .fb-students-lbl { font-size: 11px; color: rgba(255,255,255,0.65); }
+
+    /* ═══════════════════════════════════════
+       COURSE GRID
+    ═══════════════════════════════════════ */
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .course-card {
+      background: var(--white); border-radius: var(--r-lg);
+      border: 1.5px solid var(--gray-200); overflow: hidden;
+      transition: all 280ms ease; position: relative;
+      display: flex; flex-direction: column;
+    }
+    .course-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); border-color: transparent; }
+
+    .course-img-wrap {
+      position: relative; aspect-ratio: 16 / 9;
+      overflow: hidden; background: var(--gray-100);
+    }
+    .course-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
+    .course-card:hover .course-img-wrap img { transform: scale(1.06); }
+
+    .course-badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 5px; }
+    .cbadge { display: inline-flex; align-items: center; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-full); }
+    .cbadge-bestseller { background: var(--amber); color: #451A03; }
+    .cbadge-new        { background: var(--green); color: var(--white); }
+    .cbadge-hot        { background: var(--orange); color: var(--white); }
+
+    .cert-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.90); backdrop-filter: blur(6px);
+      border-radius: var(--r-sm); padding: 6px 10px;
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; color: var(--navy);
+      box-shadow: var(--shadow-sm);
+    }
+    .cert-badge svg { width: 13px; height: 13px; stroke: var(--orange); fill: none; }
+
+    .course-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+
+    .course-cat { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 11px; border-radius: var(--r-full); margin-bottom: 11px; }
+
+    .course-title {
+      font-family: var(--font-head); font-size: 17px; font-weight: 700;
+      color: var(--navy); line-height: 1.3; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .course-title:hover { color: var(--orange); }
+
+    .course-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .course-instructor { font-size: 12px; color: var(--gray-600); margin-bottom: 12px; }
+    .course-instructor strong { color: var(--navy); font-weight: 600; }
+
+    .course-rating { display: flex; align-items: center; gap: 7px; margin-bottom: 12px; }
+    .course-stars { display: flex; gap: 1px; }
+    .course-stars svg { width: 13px; height: 13px; fill: var(--amber); }
+    .course-stars svg.half { fill: url(#halfGrad); }
+    .rating-val { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--navy); }
+    .rating-cnt { font-size: 12px; color: var(--gray-400); }
+
+    .course-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+    .meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--gray-600); }
+    .meta-item svg { width: 13px; height: 13px; stroke: var(--gray-400); fill: none; }
+    .level-pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: var(--r-full); text-transform: capitalize; }
+    .level-beginner     { background: var(--green-lt); color: var(--green); }
+    .level-intermediate { background: var(--blue-lt); color: var(--blue); }
+    .level-advanced     { background: rgba(220,38,38,0.10); color: var(--red); }
+
+    .course-footer { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .course-price-block {}
+    .course-price { font-family: var(--font-head); font-size: 20px; font-weight: 800; color: var(--navy); }
+    .course-old   { font-size: 13px; color: var(--gray-400); text-decoration: line-through; margin-left: 6px; }
+    .course-save  { display: block; font-size: 11px; font-weight: 700; color: var(--green); margin-top: 1px; }
+    .enroll-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--navy); color: var(--white);
+      padding: 10px 18px; border-radius: var(--r-sm);
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      transition: all var(--ease); border: none; cursor: pointer; flex-shrink: 0;
+    }
+    .enroll-btn:hover { background: var(--orange); transform: translateY(-1px); }
+    .enroll-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; transition: transform var(--ease); }
+    .course-card:hover .enroll-btn svg { transform: translateX(3px); }
+
+    /* empty state */
+    .no-courses { text-align: center; padding: 80px 24px; grid-column: 1 / -1; }
+    .no-courses svg { width: 56px; height: 56px; stroke: var(--gray-300); fill: none; margin: 0 auto 16px; }
+    .no-courses h3 { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .no-courses p  { font-size: 15px; color: var(--gray-600); }
+
+    /* ═══════════════════════════════════════
+       LEARNING PATHS / WHY SECTION
+    ═══════════════════════════════════════ */
+    .why-section { padding: 80px 0; background: var(--off-white); border-top: 1px solid var(--gray-200); }
+    .section-head { text-align: center; margin-bottom: 52px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--orange); background: rgba(249,115,22,0.10); border: 1px solid rgba(249,115,22,0.20);
+      padding: 6px 14px; border-radius: var(--r-full); margin-bottom: 16px;
+    }
+    .section-title { font-family: var(--font-head); font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: var(--navy); }
+    .section-sub { font-size: 16px; color: var(--gray-600); max-width: 560px; margin: 12px auto 0; line-height: 1.65; }
+
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      background: var(--white); border-radius: var(--r-lg);
+      border: 1.5px solid var(--gray-200); padding: 32px 28px;
+      transition: all var(--ease); text-align: left;
+    }
+    .why-card:hover { box-shadow: var(--shadow-md); border-color: var(--orange); transform: translateY(-3px); }
+    .why-icon { width: 52px; height: 52px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .why-icon svg { width: 26px; height: 26px; stroke-width: 2; fill: none; }
+    .why-card h3 { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .why-card p  { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+    /* ═══════════════════════════════════════
+       CTA BANNER
+    ═══════════════════════════════════════ */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, #0D2748 100%);
+      padding: 80px 0; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 30% 50%, rgba(249,115,22,0.10) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(21,101,192,0.10) 0%, transparent 50%);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-banner h2 { font-family: var(--font-head); font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
+    .cta-banner h2 em { color: var(--orange); font-style: normal; }
+    .cta-banner p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 36px; line-height: 1.65; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-cta-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--orange); color: var(--white);
+      padding: 16px 36px; border-radius: var(--r-sm);
+      font-family: var(--font-head); font-size: 16px; font-weight: 700;
+      transition: all var(--ease); border: none; cursor: pointer;
+    }
+    .btn-cta-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(249,115,22,0.35); }
+    .btn-cta-primary svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+    .btn-cta-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.30);
+      padding: 14px 32px; border-radius: var(--r-sm);
+      font-family: var(--font-head); font-size: 16px; font-weight: 700;
+      transition: all var(--ease); cursor: pointer;
+    }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.60); }
+    .cta-pay-chips { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+    .cta-pay-label { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .cta-chip { background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.70); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: var(--r-full); }
+
+    /* ═══════════════════════════════════════
+       CART DRAWER
+    ═══════════════════════════════════════ */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.52); z-index: 400; opacity: 0; pointer-events: none; transition: opacity 320ms ease; }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .cart-drawer { position: fixed; top: 0; right: 0; width: 400px; max-width: 100vw; height: 100vh; background: var(--white); z-index: 401; transform: translateX(100%); transition: transform 360ms cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; box-shadow: var(--shadow-xl); }
+    .cart-drawer.open { transform: translateX(0); }
+    .cd-head { padding: 20px 24px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; }
+    .cd-head h3 { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--navy); }
+    .cd-close { width: 36px; height: 36px; background: var(--gray-100); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: var(--gray-600); transition: all var(--ease); cursor: pointer; border: none; }
+    .cd-close:hover { background: var(--navy); color: var(--white); }
+    .cd-close svg { width: 17px; height: 17px; stroke: currentColor; fill: none; }
+    .cd-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+    .cd-empty { text-align: center; padding: 60px 0; }
+    .cd-empty svg { width: 60px; height: 60px; stroke: var(--gray-200); fill: none; margin: 0 auto 16px; }
+    .cd-empty p { font-size: 15px; color: var(--gray-400); }
+    .cd-item { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--gray-100); }
+    .cd-item img { width: 64px; height: 64px; object-fit: cover; border-radius: var(--r-sm); flex-shrink: 0; }
+    .cd-item-name { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .cd-item-price { font-size: 13px; color: var(--gray-600); margin-bottom: 8px; }
+    .cd-qty { display: flex; align-items: center; gap: 8px; }
+    .cd-qty button { width: 28px; height: 28px; border: 1.5px solid var(--gray-200); border-radius: 4px; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all var(--ease); cursor: pointer; background: none; }
+    .cd-qty button:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .cd-qty span { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
+    .cd-item-total { font-family: var(--font-head); font-size: 15px; font-weight: 800; color: var(--orange); margin-left: auto; white-space: nowrap; }
+    .cd-foot { padding: 20px 24px; border-top: 1px solid var(--gray-200); }
+    .cd-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .cd-total-row span { font-size: 14px; color: var(--gray-600); }
+    .cd-total-row strong { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--navy); }
+    .cd-checkout { width: 100%; background: var(--orange); color: var(--white); padding: 15px; border-radius: var(--r-sm); font-family: var(--font-head); font-size: 16px; font-weight: 700; border: none; cursor: pointer; transition: background var(--ease); }
+    .cd-checkout:hover { background: var(--orange-dk); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    .site-footer { background: #060E1D; color: rgba(255,255,255,0.65); }
+    .footer-top { padding: 72px 0 52px; }
+    .footer-grid { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1.5fr; gap: 48px; }
+    .ft-about .logo-name strong { color: var(--white); font-size: 17px; }
+    .ft-about .logo-name span   { color: rgba(255,255,255,0.35); }
+    .ft-tagline { font-size: 14px; line-height: 1.70; color: rgba(255,255,255,0.50); margin: 18px 0 24px; }
+    .ft-socials { display: flex; gap: 9px; }
+    .social-btn { width: 38px; height: 38px; background: rgba(255,255,255,0.07); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); transition: all var(--ease); }
+    .social-btn:hover { background: var(--orange); color: var(--white); }
+    .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .ft-col h4 { font-family: var(--font-head); font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 20px; }
+    .ft-links { display: flex; flex-direction: column; gap: 11px; }
+    .ft-links a { font-size: 14px; color: rgba(255,255,255,0.50); transition: color var(--ease); }
+    .ft-links a:hover { color: var(--orange); }
+    .ft-contact-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.50); margin-bottom: 14px; }
+    .ft-contact-row svg { width: 15px; height: 15px; stroke: var(--orange); fill: none; flex-shrink: 0; margin-top: 2px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.30); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,0.30); transition: color var(--ease); }
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1100px) { .course-grid { grid-template-columns: repeat(2, 1fr); } .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 900px) {
+      .main-nav, .search-wrap { display: none; }
+      .hamburger { display: flex; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .featured-banner { grid-template-columns: 1fr; }
+      .fb-img { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 640px) {
+      .course-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .filter-inner { gap: 8px; }
+      .filter-sort { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .cta-btns { flex-direction: column; align-items: stretch; text-align: center; }
+    }
+    @media (max-width: 380px) { .stats-inner { grid-template-columns: 1fr; } .stat-item { border-right: none; border-bottom: 1px solid var(--gray-200); } }
+  </style>
+</head>
+<body>
+
+<!-- half-star gradient -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="halfGrad">
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#E5E7EB"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  All courses include a <strong>Certificate of Completion</strong> &nbsp;·&nbsp; MTN MoMo · Telecel Cash · AirtelTigo accepted &nbsp;·&nbsp;
+  <a href="#">View all payment options →</a>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="logo-name"><strong>Seamless Tech</strong><span>Technologies Hub</span></div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html"    class="nav-a">Home</a>
+        <a href="shop.html"     class="nav-a">Shop</a>
+        <a href="courses.html"  class="nav-a active">Courses</a>
+        <a href="#"             class="nav-a">IT Training</a>
+        <a href="services.html" class="nav-a">Services</a>
+        <a href="#"             class="nav-a">Repairs</a>
+        <a href="#"             class="nav-a">About</a>
+      </nav>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Search products…">
+      </div>
+      <button class="icon-btn" style="margin-left:8px;">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="icon-btn" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <a href="#" class="btn-login-nav" style="margin-left:4px;">Login</a>
+      <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html"   class="nav-a">Home</a>
+    <a href="shop.html"    class="nav-a">Shop</a>
+    <a href="courses.html" class="nav-a active">Courses</a>
+    <a href="#"            class="nav-a">Services</a>
+    <a href="#"            class="nav-a">About</a>
+    <a href="#"            class="nav-a">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="courses-hero">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Online Learning Platform
+    </div>
+    <h1 class="hero-h1">Learn <em>In-Demand Tech Skills</em><br>Built for Ghana</h1>
+    <p class="hero-sub">Practical, instructor-led courses designed for Ghana's growing digital economy. Earn a certificate, advance your career.</p>
+    <div class="hero-search">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="heroSearch" placeholder="Search courses, skills, topics…" oninput="heroFilter(this.value)">
+      <button onclick="heroFilter(document.getElementById('heroSearch').value)">Search</button>
+    </div>
+    <div class="hero-tags">
+      <span class="hero-tag" onclick="filterCat('design')">Graphic Design</span>
+      <span class="hero-tag" onclick="filterCat('development')">Web Development</span>
+      <span class="hero-tag" onclick="filterCat('ai')">AI &amp; Machine Learning</span>
+      <span class="hero-tag" onclick="filterCat('security')">Cybersecurity</span>
+      <span class="hero-tag" onclick="filterCat('marketing')">Digital Marketing</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-icon orange"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="stat-num">1,200+</div><div class="stat-desc">Students Enrolled</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon blue"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div><div class="stat-num">7</div><div class="stat-desc">Courses Available</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon green"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div><div class="stat-num">4.8/5</div><div class="stat-desc">Average Rating</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon purple"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div><div class="stat-num">Certificate</div><div class="stat-desc">Included With Every Course</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-tabs-bar">
+  <div class="cat-tabs-inner" id="catTabsEl">
+    <div class="cat-tab active" id="ctab-all"          onclick="filterCat('all')">All Courses <span class="tab-count" id="cnt-all">7</span></div>
+    <div class="cat-tab"       id="ctab-design"        onclick="filterCat('design')">Graphic Design <span class="tab-count" id="cnt-design">1</span></div>
+    <div class="cat-tab"       id="ctab-development"   onclick="filterCat('development')">Web Development <span class="tab-count" id="cnt-development">1</span></div>
+    <div class="cat-tab"       id="ctab-security"      onclick="filterCat('security')">Cybersecurity <span class="tab-count" id="cnt-security">1</span></div>
+    <div class="cat-tab"       id="ctab-marketing"     onclick="filterCat('marketing')">Digital Marketing <span class="tab-count" id="cnt-marketing">1</span></div>
+    <div class="cat-tab"       id="ctab-data"          onclick="filterCat('data')">Data Analysis <span class="tab-count" id="cnt-data">1</span></div>
+    <div class="cat-tab"       id="ctab-networking"    onclick="filterCat('networking')">Networking <span class="tab-count" id="cnt-networking">1</span></div>
+    <div class="cat-tab"       id="ctab-ai"            onclick="filterCat('ai')">AI &amp; ML <span class="tab-count" id="cnt-ai">1</span></div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="container filter-inner">
+    <span class="filter-group-label">Level:</span>
+    <div class="filter-group" id="levelPills">
+      <button class="filter-pill active" onclick="filterLevel('all', this)">All</button>
+      <button class="filter-pill" onclick="filterLevel('beginner', this)">Beginner</button>
+      <button class="filter-pill" onclick="filterLevel('intermediate', this)">Intermediate</button>
+      <button class="filter-pill" onclick="filterLevel('advanced', this)">Advanced</button>
+    </div>
+    <div class="filter-sep"></div>
+    <span class="filter-group-label">Duration:</span>
+    <div class="filter-group" id="durPills">
+      <button class="filter-pill active" onclick="filterDur('all', this)">Any</button>
+      <button class="filter-pill" onclick="filterDur('short', this)">&lt; 6 weeks</button>
+      <button class="filter-pill" onclick="filterDur('medium', this)">6–10 weeks</button>
+      <button class="filter-pill" onclick="filterDur('long', this)">10+ weeks</button>
+    </div>
+    <div class="filter-sort">
+      <svg viewBox="0 0 24 24" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <select class="sort-select" id="sortSelect" onchange="sortCourses(this.value)">
+        <option value="featured">Featured</option>
+        <option value="rating">Highest Rated</option>
+        <option value="popular">Most Popular</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES SECTION -->
+<section class="courses-section">
+  <div class="container">
+
+    <!-- Result meta + active chips -->
+    <div class="results-meta">
+      <div class="results-count" id="resultCount">Showing <strong>7</strong> courses</div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div class="active-filters" id="activeFilters"></div>
+      </div>
+    </div>
+
+    <!-- Featured Banner (all courses view) -->
+    <div class="featured-banner" id="featuredBanner">
+      <div class="fb-content">
+        <div class="fb-label">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          #1 Bestseller
+        </div>
+        <h2 class="fb-title">Website Development Bootcamp</h2>
+        <p class="fb-desc">Build real websites with HTML, CSS, JavaScript and React. Go from complete beginner to a job-ready developer in 12 weeks with hands-on projects.</p>
+        <div class="fb-meta">
+          <span class="fb-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 weeks</span>
+          <span class="fb-meta-item"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>68 lessons</span>
+          <span class="fb-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>2,341 students</span>
+          <span class="fb-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificate included</span>
+        </div>
+        <div class="fb-price-row">
+          <span class="fb-price">GH₵ 399</span>
+          <span class="fb-old">GH₵ 699</span>
+          <span class="fb-save">Save 43%</span>
+        </div>
+        <a href="course-detail.html?id=2" class="fb-btn">
+          Enroll Now
+          <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="fb-img">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=840&q=85" alt="Website Development Bootcamp">
+        <div class="fb-img-overlay"></div>
+        <div class="fb-students">
+          <div class="fb-students-num">2,341</div>
+          <div class="fb-students-lbl">Students enrolled</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Grid -->
+    <div class="course-grid" id="courseGrid"></div>
+
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Why Learn With Us</div>
+      <h2 class="section-title">Learning built for Ghana's digital future</h2>
+      <p class="section-sub">Courses designed by instructors who know the local job market — practical, affordable, and job-ready.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(249,115,22,0.10);">
+          <svg viewBox="0 0 24 24" stroke="var(--orange)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3>Instructor-Led Learning</h3>
+        <p>Learn from experienced Ghanaian tech professionals with real industry knowledge. Ask questions, get feedback, and stay on track.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:var(--blue-lt);">
+          <svg viewBox="0 0 24 24" stroke="var(--blue)"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3>Certificate of Completion</h3>
+        <p>Earn a verifiable certificate when you finish each course. Share it on LinkedIn, attach it to job applications, or show clients your skills.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:var(--green-lt);">
+          <svg viewBox="0 0 24 24" stroke="var(--green)"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Learn At Your Own Pace</h3>
+        <p>Access course materials any time, on any device. Watch lessons, complete exercises, and revisit content whenever you need to.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:var(--purple-lt);">
+          <svg viewBox="0 0 24 24" stroke="var(--purple)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community of Learners</h3>
+        <p>Join a community of 1,200+ Ghanaian learners. Connect with classmates, share projects, and get support from instructors and peers.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(249,115,22,0.10);">
+          <svg viewBox="0 0 24 24" stroke="var(--orange)"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Affordable Ghana Pricing</h3>
+        <p>All courses priced in GH₵. Pay with MTN MoMo, Telecel Cash, AirtelTigo, card, or bank transfer — no international card needed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:var(--green-lt);">
+          <svg viewBox="0 0 24 24" stroke="var(--green)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Hands-On Projects</h3>
+        <p>Every course includes real projects you build yourself. Graduate with a portfolio of work that demonstrates your skills to employers and clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container cta-inner">
+    <h2>Ready to upgrade your <em>digital skills?</em></h2>
+    <p>Join 1,200+ Ghanaians learning tech skills at Seamless Technologies Hub. Enroll today and start building the career you want.</p>
+    <div class="cta-btns">
+      <a href="#courseGrid" class="btn-cta-primary">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Browse All Courses
+      </a>
+      <a href="services.html" class="btn-cta-outline">Talk to an Advisor</a>
+    </div>
+    <div class="cta-pay-chips">
+      <span class="cta-pay-label">Pay with:</span>
+      <span class="cta-chip">MTN MoMo</span>
+      <span class="cta-chip">Telecel Cash</span>
+      <span class="cta-chip">AirtelTigo</span>
+      <span class="cta-chip">Debit / Credit Card</span>
+      <span class="cta-chip">Bank Transfer</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="ft-about">
+          <a href="index.html" class="logo" style="margin-right:0;">
+            <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#F97316"/></svg></div>
+            <div class="logo-name"><strong>Seamless Tech</strong><span>Technologies Hub</span></div>
+          </a>
+          <p class="ft-tagline">"Empowering Lives Through Technology & Digital Skills" — Ghana's premier hub for gadgets, digital learning, and IT services.</p>
+          <div class="ft-socials">
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+          </div>
+        </div>
+        <div class="ft-col"><h4>Quick Links</h4><div class="ft-links"><a href="index.html">Home</a><a href="#">About Us</a><a href="shop.html">Shop</a><a href="courses.html">Courses</a><a href="services.html">Services</a><a href="#">Contact</a></div></div>
+        <div class="ft-col"><h4>Courses</h4><div class="ft-links"><a href="#">Graphic Design</a><a href="#">Web Development</a><a href="#">Cybersecurity</a><a href="#">Digital Marketing</a><a href="#">AI Fundamentals</a><a href="#">Data Analysis</a></div></div>
+        <div class="ft-col">
+          <h4>Contact Us</h4>
+          <div class="ft-contact-row"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+233 XX XXX XXXX</div>
+          <div class="ft-contact-row"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@seamlesstech.com.gh</div>
+          <div class="ft-contact-row"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Accra, Ghana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 Seamless Technologies Hub. All Rights Reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Refund Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head"><h3>Cart (<span id="cdCount">0</span>)</h3><button class="cd-close" onclick="closeCart()"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+  <div class="cd-body" id="cdBody"><div class="cd-empty"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><p>Your cart is empty</p></div></div>
+  <div class="cd-foot" id="cdFoot" style="display:none;"><div class="cd-total-row"><span>Total</span><strong id="cdTotal">GH₵ 0</strong></div><button class="cd-checkout" onclick="window.location.href='checkout.html'">Proceed to Checkout</button></div>
+</div>
+
+<script>
+/* ─── COURSE DATA ────────────────────────────────── */
+const COURSES = [
+  {
+    id: 1, cat: 'design', catLabel: 'Graphic Design',
+    catColor: 'rgba(124,58,237,0.12)', catTextColor: 'var(--purple)',
+    title: 'Graphic Design Masterclass',
+    desc: 'Master Photoshop, Illustrator & InDesign. Create stunning visuals for print and digital media from scratch.',
+    instructor: 'Ama Boateng', level: 'beginner',
+    weeks: 8, lessons: 42, students: 1842, rating: 4.8, reviews: 247,
+    price: 299, old: 499, badge: 'bestseller',
+    img: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 2, cat: 'development', catLabel: 'Web Development',
+    catColor: 'var(--blue-lt)', catTextColor: 'var(--blue)',
+    title: 'Website Development Bootcamp',
+    desc: 'Build real websites with HTML, CSS, JavaScript and React. From beginner to job-ready in 12 weeks.',
+    instructor: 'Kweku Mensah', level: 'beginner',
+    weeks: 12, lessons: 68, students: 2341, rating: 4.9, reviews: 389,
+    price: 399, old: 699, badge: 'bestseller',
+    img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 3, cat: 'security', catLabel: 'Cybersecurity',
+    catColor: 'rgba(220,38,38,0.10)', catTextColor: 'var(--red)',
+    title: 'Cybersecurity Fundamentals',
+    desc: 'Learn network security, ethical hacking basics and how to defend systems from modern cyber threats.',
+    instructor: 'Kofi Asare', level: 'beginner',
+    weeks: 6, lessons: 35, students: 987, rating: 4.7, reviews: 156,
+    price: 249, old: 449, badge: null,
+    img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 4, cat: 'marketing', catLabel: 'Digital Marketing',
+    catColor: 'rgba(249,115,22,0.10)', catTextColor: 'var(--orange)',
+    title: 'Digital Marketing Mastery',
+    desc: 'Social media, SEO, Google Ads, email campaigns — master every digital channel and grow any business.',
+    instructor: 'Abena Dankwa', level: 'beginner',
+    weeks: 8, lessons: 48, students: 1456, rating: 4.8, reviews: 203,
+    price: 279, old: 449, badge: 'new',
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 5, cat: 'data', catLabel: 'Data Analysis',
+    catColor: 'var(--green-lt)', catTextColor: 'var(--green)',
+    title: 'Data Analysis with Excel & Power BI',
+    desc: 'Transform raw data into business insights using Excel and Power BI. No prior experience needed.',
+    instructor: 'Yaa Owusu', level: 'beginner',
+    weeks: 5, lessons: 28, students: 743, rating: 4.6, reviews: 98,
+    price: 199, old: 349, badge: null,
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 6, cat: 'networking', catLabel: 'Networking',
+    catColor: 'rgba(21,101,192,0.08)', catTextColor: 'var(--blue)',
+    title: 'Computer Networking Basics',
+    desc: 'Understand TCP/IP, routing, switching and wireless networks. Great foundation for IT support roles.',
+    instructor: 'Nana Amponsah', level: 'beginner',
+    weeks: 7, lessons: 40, students: 621, rating: 4.7, reviews: 87,
+    price: 229, old: 399, badge: null,
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=85'
+  },
+  {
+    id: 7, cat: 'ai', catLabel: 'AI & Machine Learning',
+    catColor: 'var(--purple-lt)', catTextColor: 'var(--purple)',
+    title: 'AI Fundamentals & Practical Applications',
+    desc: 'Understand how AI works, use modern AI tools, and apply AI to real business and career problems.',
+    instructor: 'Kwame Acheampong', level: 'intermediate',
+    weeks: 10, lessons: 55, students: 2018, rating: 4.9, reviews: 312,
+    price: 349, old: 599, badge: 'hot',
+    img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=600&q=85'
+  }
+];
+
+/* ─── STATE ──────────────────────────────────────── */
+let state = { cat: 'all', level: 'all', dur: 'all', sort: 'featured', search: '' };
+
+/* ─── FILTER ─────────────────────────────────────── */
+function getFiltered() {
+  let list = [...COURSES];
+  if (state.cat   !== 'all') list = list.filter(c => c.cat === state.cat);
+  if (state.level !== 'all') list = list.filter(c => c.level === state.level);
+  if (state.dur   === 'short')  list = list.filter(c => c.weeks < 6);
+  if (state.dur   === 'medium') list = list.filter(c => c.weeks >= 6 && c.weeks <= 10);
+  if (state.dur   === 'long')   list = list.filter(c => c.weeks > 10);
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    list = list.filter(c => c.title.toLowerCase().includes(q) || c.catLabel.toLowerCase().includes(q) || c.instructor.toLowerCase().includes(q));
+  }
+  if (state.sort === 'rating')     list.sort((a,b) => b.rating - a.rating);
+  if (state.sort === 'popular')    list.sort((a,b) => b.students - a.students);
+  if (state.sort === 'price-asc')  list.sort((a,b) => a.price - b.price);
+  if (state.sort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  if (state.sort === 'newest')     list.sort((a,b) => (b.badge==='new'?1:0) - (a.badge==='new'?1:0));
+  return list;
+}
+
+/* ─── RENDER ─────────────────────────────────────── */
+function stars(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.3;
+  const star = `<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+  const halfStar = `<svg viewBox="0 0 24 24" class="half"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+  return star.repeat(full) + (half ? halfStar : '');
+}
+
+function renderGrid() {
+  const list = getFiltered();
+  const grid = document.getElementById('courseGrid');
+
+  document.getElementById('resultCount').innerHTML = `Showing <strong>${list.length}</strong> course${list.length!==1?'s':''}`;
+  document.getElementById('featuredBanner').style.display = (state.cat==='all' && state.level==='all' && state.dur==='all' && !state.search) ? '' : 'none';
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="no-courses">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <h3>No courses found</h3>
+      <p>Try adjusting your filters or <button onclick="resetFilters()" style="color:var(--orange);font-weight:600;background:none;border:none;cursor:pointer;font-size:15px;">clear all filters</button></p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(c => {
+    const save = c.old ? Math.round((c.old - c.price) / c.old * 100) : 0;
+    const badge = c.badge === 'bestseller' ? '<span class="cbadge cbadge-bestseller">Bestseller</span>'
+                : c.badge === 'new'        ? '<span class="cbadge cbadge-new">New</span>'
+                : c.badge === 'hot'        ? '<span class="cbadge cbadge-hot">Hot</span>'
+                : '';
+    return `
+    <div class="course-card">
+      <a href="course-detail.html?id=${c.id}" class="course-img-wrap" style="display:block;">
+        <img src="${c.img}" alt="${c.title}" loading="lazy">
+        <div class="course-badges">${badge}</div>
+        <div class="cert-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificate</div>
+      </a>
+      <div class="course-body">
+        <div class="course-cat" style="background:${c.catColor};color:${c.catTextColor};">${c.catLabel}</div>
+        <a href="course-detail.html?id=${c.id}" class="course-title">${c.title}</a>
+        <p class="course-desc">${c.desc}</p>
+        <div class="course-instructor">By <strong>${c.instructor}</strong></div>
+        <div class="course-rating">
+          <div class="course-stars">${stars(c.rating)}</div>
+          <span class="rating-val">${c.rating}</span>
+          <span class="rating-cnt">(${c.reviews.toLocaleString()} reviews)</span>
+        </div>
+        <div class="course-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${c.weeks} weeks</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>${c.lessons} lessons</span>
+          <span class="level-pill level-${c.level}">${c.level.charAt(0).toUpperCase()+c.level.slice(1)}</span>
+        </div>
+        <div class="course-footer">
+          <div class="course-price-block">
+            <span class="course-price">GH₵ ${c.price.toLocaleString()}</span>${c.old ? `<span class="course-old">GH₵ ${c.old.toLocaleString()}</span>` : ''}
+            ${save > 0 ? `<span class="course-save">Save ${save}%</span>` : ''}
+          </div>
+          <a href="course-detail.html?id=${c.id}" class="enroll-btn">
+            Enroll
+            <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateTabCounts() {
+  const cats = ['all','design','development','security','marketing','data','networking','ai'];
+  cats.forEach(cat => {
+    const el = document.getElementById('cnt-'+cat);
+    if (!el) return;
+    const count = cat === 'all' ? COURSES.length : COURSES.filter(c => c.cat === cat).length;
+    el.textContent = count;
+  });
+}
+
+function updateActiveFilters() {
+  const chips = [];
+  if (state.level !== 'all') chips.push({ label: state.level.charAt(0).toUpperCase()+state.level.slice(1), key: 'level' });
+  if (state.dur !== 'all')   chips.push({ label: state.dur === 'short' ? '< 6 weeks' : state.dur === 'medium' ? '6–10 weeks' : '10+ weeks', key: 'dur' });
+  if (state.search)          chips.push({ label: `"${state.search}"`, key: 'search' });
+  const el = document.getElementById('activeFilters');
+  el.innerHTML = chips.map(ch => `
+    <div class="active-chip">${ch.label}
+      <button onclick="clearFilter('${ch.key}')"><svg viewBox="0 0 24 24" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>`).join('');
+}
+
+function clearFilter(key) {
+  if (key === 'level')  { state.level = 'all'; document.querySelectorAll('#levelPills .filter-pill').forEach((b,i) => b.classList.toggle('active', i===0)); }
+  if (key === 'dur')    { state.dur = 'all';   document.querySelectorAll('#durPills .filter-pill').forEach((b,i) => b.classList.toggle('active', i===0)); }
+  if (key === 'search') { state.search = ''; document.getElementById('heroSearch').value = ''; }
+  renderGrid(); updateActiveFilters();
+}
+
+function resetFilters() {
+  state = { cat: 'all', level: 'all', dur: 'all', sort: state.sort, search: '' };
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.id === 'ctab-all'));
+  document.querySelectorAll('#levelPills .filter-pill').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('#durPills .filter-pill').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.getElementById('heroSearch').value = '';
+  renderGrid(); updateActiveFilters();
+}
+
+/* ─── FILTER HANDLERS ────────────────────────────── */
+function filterCat(cat) {
+  state.cat = cat;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.id === 'ctab-'+cat));
+  renderGrid(); updateActiveFilters();
+  document.getElementById('courseGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function filterLevel(level, btn) {
+  state.level = level;
+  btn.closest('.filter-group').querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid(); updateActiveFilters();
+}
+
+function filterDur(dur, btn) {
+  state.dur = dur;
+  btn.closest('.filter-group').querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid(); updateActiveFilters();
+}
+
+function sortCourses(val) { state.sort = val; renderGrid(); }
+
+function heroFilter(val) {
+  state.search = val.trim();
+  renderGrid(); updateActiveFilters();
+}
+
+/* ─── CART ───────────────────────────────────────── */
+let cart = JSON.parse(localStorage.getItem('sth_cart') || '[]');
+function saveCart() { localStorage.setItem('sth_cart', JSON.stringify(cart)); }
+
+function updateQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  saveCart(); renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((s,i) => s+i.qty, 0);
+  const total = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  document.getElementById('cartBadge').textContent = count;
+  document.getElementById('cdCount').textContent   = count;
+  document.getElementById('cdTotal').textContent   = 'GH₵ ' + total.toLocaleString();
+  const body = document.getElementById('cdBody');
+  const foot = document.getElementById('cdFoot');
+  if (!cart.length) {
+    body.innerHTML = `<div class="cd-empty"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><p>Your cart is empty</p></div>`;
+    foot.style.display = 'none';
+  } else {
+    body.innerHTML = cart.map(i => `
+      <div class="cd-item">
+        <img src="${i.img}" alt="${i.name}">
+        <div style="flex:1;min-width:0;">
+          <div class="cd-item-name">${i.name}</div>
+          <div class="cd-item-price">GH₵ ${i.price.toLocaleString()} each</div>
+          <div class="cd-qty">
+            <button onclick="updateQty(${i.id},-1)">−</button>
+            <span>${i.qty}</span>
+            <button onclick="updateQty(${i.id},1)">+</button>
+          </div>
+        </div>
+        <div class="cd-item-total">GH₵ ${(i.price*i.qty).toLocaleString()}</div>
+      </div>`).join('');
+    foot.style.display = 'block';
+  }
+}
+
+function openCart()   { document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeCart()  { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function toggleCart() { document.getElementById('cartDrawer').classList.contains('open') ? closeCart() : openCart(); }
+
+/* ─── STICKY HEADER ──────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 12);
+}, { passive: true });
+
+/* ─── INIT ───────────────────────────────────────── */
+updateTabCounts();
+renderGrid();
+renderCart();
+</script>
+</body>
+</html>

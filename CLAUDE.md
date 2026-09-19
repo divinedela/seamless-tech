@@ -84,7 +84,7 @@
 | Homepage | `index.html` | ✅ Done — approved |
 | Shop / Product Listing | `shop.html` | ✅ Done |
 | Product Detail | `product.html` | ✅ Done |
-| Courses Page | `courses.html` | ⬜ |
+| Courses Page | `courses.html` | ✅ Done |
 | Course Detail | `course-detail.html` | ⬜ |
 | Services Page | `services.html` | ⬜ |
 | Cart + Checkout | `checkout.html` | ✅ Done |
