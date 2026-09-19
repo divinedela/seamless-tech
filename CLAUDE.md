@@ -88,7 +88,7 @@
 | Course Detail | `course-detail.html` | ✅ Done |
 | Services Page | `services.html` | ✅ Done |
 | Cart + Checkout | `checkout.html` | ✅ Done |
-| About Us | `about.html` | ⬜ |
+| About Us | `about.html` | ✅ Done |
 | Contact | `contact.html` | ⬜ |
 | Login / Register | `login.html` | ⬜ |
 | Student Dashboard | `dashboard.html` | ⬜ |
