@@ -87,7 +87,7 @@
 | Courses Page | `courses.html` | ⬜ |
 | Course Detail | `course-detail.html` | ⬜ |
 | Services Page | `services.html` | ⬜ |
-| Cart + Checkout | `checkout.html` | ⬜ |
+| Cart + Checkout | `checkout.html` | ✅ Done |
 | About Us | `about.html` | ⬜ |
 | Contact | `contact.html` | ⬜ |
 | Login / Register | `login.html` | ⬜ |
