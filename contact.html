@@ -288,6 +288,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 24px 0}
   .footer-grid{grid-template-columns:1fr}
 }
 </style>
+<link rel="stylesheet" href="animations.css">
 </head>
 <body>
 
@@ -872,5 +873,6 @@ function changeQty(id,delta){ const item=cart.find(i=>i.id===id); if(!item)retur
 function removeItem(id){ cart=cart.filter(i=>i.id!==id); saveCart(); updateCartBadge(); renderCart(); }
 function toggleMobileNav(){ document.getElementById('mobileNav').classList.toggle('open'); }
 </script>
+<script src="animations.js" defer></script>
 </body>
 </html>
