@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Us — Seamless Technologies Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3A6B;--blue:#1565C0;--blue-lt:#E8F0FE;
+  --orange:#F97316;--orange-dk:#EA6508;--white:#FFFFFF;--off-white:#F5F7FA;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#6B7280;--gray-900:#111827;
+  --green:#16A34A;--green-lt:#DCFCE7;--red:#DC2626;--amber:#F59E0B;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--gray-900);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ANNOUNCE */
+.announce{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
+.announce strong{color:var(--orange)}
+
+/* HEADER */
+.header{background:#fff;border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm)}
+.hdr-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-mark{width:36px;height:36px;background:var(--navy);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px}
+.logo-text{font-family:var(--font-head);font-weight:800;font-size:17px;color:var(--navy);line-height:1.1}
+.logo-text span{color:var(--orange)}
+.logo-sub{font-size:9px;font-weight:600;color:var(--gray-600);letter-spacing:.05em;text-transform:uppercase}
+nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+nav a{font-size:13.5px;font-weight:600;color:var(--gray-600);padding:6px 11px;border-radius:var(--r-sm);transition:.2s;white-space:nowrap}
+nav a:hover{background:var(--blue-lt);color:var(--blue)}
+nav a.active{color:var(--navy);background:var(--blue-lt)}
+.hdr-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hdr-icon{width:38px;height:38px;border:none;background:none;cursor:pointer;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:.2s;position:relative}
+.hdr-icon:hover{background:var(--gray-100);color:var(--navy)}
+.cart-badge{position:absolute;top:4px;right:4px;background:var(--orange);color:#fff;border-radius:var(--r-full);font-size:9px;font-weight:700;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+.btn-login{background:var(--navy);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:.2s}
+.btn-login:hover{background:var(--navy-mid)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gray-900);border-radius:2px}
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-200);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-nav a{padding:10px 12px;border-radius:var(--r-sm);font-size:14px;font-weight:600;color:var(--gray-700)}
+.mobile-nav a:hover,.mobile-nav a.active{background:var(--blue-lt);color:var(--blue)}
+.mobile-nav.open{display:flex}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0d2545 60%,#0f2e5a 100%);padding:72px 24px 64px;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);border-radius:var(--r-full);padding:6px 16px;font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:20px}
+.hero-title{font-family:var(--font-head);font-size:clamp(30px,4.5vw,50px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
+.hero-title em{color:var(--orange);font-style:normal}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:0}
+
+/* QUICK CONTACT CARDS */
+.quick-cards{background:#fff;padding:0 24px;position:relative;z-index:2}
+.quick-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;transform:translateY(-40px)}
+.quick-card{background:#fff;border-radius:var(--r-xl);padding:24px;box-shadow:var(--shadow-lg);border:1px solid var(--gray-200);display:flex;align-items:flex-start;gap:14px;transition:.2s;cursor:pointer}
+.quick-card:hover{box-shadow:var(--shadow-xl);border-color:var(--orange);transform:translateY(-2px)}
+.quick-card-icon{width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.quick-card-icon svg{width:22px;height:22px}
+.quick-card-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.quick-card-value{font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--gray-900);line-height:1.3}
+.quick-card-sub{font-size:12px;color:var(--gray-600);margin-top:3px}
+
+/* MAIN CONTACT SECTION */
+.contact-section{padding:0 24px 80px}
+.contact-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start}
+
+/* FORM */
+.form-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:40px;box-shadow:var(--shadow-sm)}
+.form-card h2{font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--gray-900);margin-bottom:6px}
+.form-card .form-sub{font-size:14.5px;color:var(--gray-600);margin-bottom:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:13.5px;font-weight:600;color:var(--gray-900)}
+.form-group label span{color:var(--red)}
+.form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--gray-200);border-radius:var(--r-md);padding:11px 14px;font-size:14.5px;font-family:var(--font-body);color:var(--gray-900);background:#fff;transition:.2s;outline:none;appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
+.form-input.error,.form-select.error,.form-textarea.error{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.08)}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.form-textarea{resize:vertical;min-height:140px;line-height:1.6}
+.form-error{font-size:12px;color:var(--red);font-weight:500;display:none}
+.form-error.show{display:block}
+.char-count{font-size:11px;color:var(--gray-400);text-align:right;margin-top:4px}
+
+/* ATTACHMENT */
+.attach-zone{border:2px dashed var(--gray-200);border-radius:var(--r-md);padding:20px;text-align:center;cursor:pointer;transition:.2s;position:relative;margin-bottom:16px}
+.attach-zone:hover{border-color:var(--blue);background:var(--blue-lt)}
+.attach-zone svg{width:28px;height:28px;color:var(--gray-400);margin:0 auto 8px}
+.attach-zone p{font-size:13px;color:var(--gray-600)}
+.attach-zone strong{color:var(--blue)}
+.attach-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.attach-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.attach-item{display:flex;align-items:center;gap:8px;background:var(--gray-100);border-radius:var(--r-sm);padding:8px 12px;font-size:13px}
+.attach-item svg{width:14px;height:14px;color:var(--blue);flex-shrink:0}
+.attach-item span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.attach-remove{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:14px;line-height:1;transition:.2s}
+.attach-remove:hover{color:var(--red)}
+
+/* PRIVACY CHECKBOX */
+.privacy-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px}
+.privacy-row input[type=checkbox]{width:16px;height:16px;border:1.5px solid var(--gray-300);border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;accent-color:var(--navy)}
+.privacy-row label{font-size:13px;color:var(--gray-600);cursor:pointer;line-height:1.5}
+.privacy-row label a{color:var(--blue);font-weight:600}
+
+/* SUBMIT BUTTON */
+.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:15px;border-radius:var(--r-lg);font-size:16px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-submit:hover:not(:disabled){background:var(--orange-dk);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.4)}
+.btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.btn-submit .spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.btn-submit.loading .spinner{display:block}
+.btn-submit.loading .btn-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SUCCESS STATE */
+.form-success{display:none;text-align:center;padding:40px 20px}
+.success-icon{width:72px;height:72px;background:var(--green-lt);border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;animation:popIn .4s ease}
+@keyframes popIn{0%{transform:scale(0.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.success-icon svg{width:36px;height:36px;color:var(--green)}
+.form-success h3{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:10px}
+.form-success p{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:24px}
+.btn-reset{background:var(--navy);color:#fff;border:none;padding:12px 28px;border-radius:var(--r-md);font-size:14px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-reset:hover{background:var(--navy-mid)}
+
+/* INFO SIDEBAR */
+.info-sidebar{display:flex;flex-direction:column;gap:20px}
+.info-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
+.info-card-head{background:var(--navy);padding:20px 24px;display:flex;align-items:center;gap:12px}
+.info-card-head h3{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff}
+.info-card-head svg{width:20px;height:20px;color:var(--orange)}
+.info-card-body{padding:20px 24px;display:flex;flex-direction:column;gap:16px}
+.info-item{display:flex;align-items:flex-start;gap:12px}
+.info-item-icon{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-item-icon svg{width:18px;height:18px}
+.info-item-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.info-item-value{font-size:14px;font-weight:600;color:var(--gray-900)}
+.info-item-sub{font-size:12px;color:var(--gray-600);margin-top:1px}
+
+/* HOURS TABLE */
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr td{padding:7px 0;font-size:13.5px;border-bottom:1px solid var(--gray-100)}
+.hours-table tr:last-child td{border-bottom:none}
+.hours-table td:first-child{color:var(--gray-600);font-weight:500}
+.hours-table td:last-child{text-align:right;font-weight:600;color:var(--gray-900)}
+.hours-open{color:var(--green)!important}
+.hours-closed{color:var(--gray-400)!important}
+
+/* MAP */
+.map-card{border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--gray-200);box-shadow:var(--shadow-sm)}
+.map-placeholder{background:linear-gradient(135deg,#e8f0fe 0%,#f0f4ff 100%);height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden}
+.map-placeholder::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(21,101,192,.08) 1px,transparent 1px);background-size:24px 24px}
+.map-pin-wrap{width:56px;height:56px;background:#fff;border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);position:relative;z-index:1}
+.map-pin-wrap svg{width:28px;height:28px;color:var(--red)}
+.map-label{font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--navy);position:relative;z-index:1}
+.map-sub{font-size:12px;color:var(--gray-600);position:relative;z-index:1}
+.map-open-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-md);font-size:13px;font-weight:700;font-family:var(--font-body);cursor:pointer;transition:.2s;position:relative;z-index:1}
+.map-open-btn:hover{background:var(--navy)}
+.map-open-btn svg{width:14px;height:14px}
+
+/* WHATSAPP */
+.wa-card{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);border-radius:var(--r-xl);padding:24px;display:flex;align-items:center;gap:16px}
+.wa-icon{width:52px;height:52px;background:rgba(255,255,255,.2);border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-icon svg{width:28px;height:28px;fill:#fff}
+.wa-text h4{font-family:var(--font-head);font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+.wa-text p{font-size:13px;color:rgba(255,255,255,.85)}
+.wa-btn{margin-left:auto;background:#fff;color:#128C7E;border:none;padding:10px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;white-space:nowrap;flex-shrink:0}
+.wa-btn:hover{background:rgba(255,255,255,.9);transform:scale(1.02)}
+
+/* FAQ */
+.faq-section{background:var(--off-white);padding:80px 24px}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:48px}
+.section-eyebrow{display:inline-block;background:var(--blue-lt);color:var(--blue);border-radius:var(--r-full);padding:5px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+.section-title{font-family:var(--font-head);font-size:clamp(24px,3.5vw,34px);font-weight:800;color:var(--gray-900);margin-bottom:10px}
+.section-sub{font-size:15px;color:var(--gray-600);max-width:480px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--gray-200)}
+.faq-item:first-child{border-top:1px solid var(--gray-200)}
+.faq-question{width:100%;background:none;border:none;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;text-align:left;font-family:var(--font-body)}
+.faq-q-text{font-size:15px;font-weight:700;color:var(--gray-900);line-height:1.4}
+.faq-chevron{width:20px;height:20px;color:var(--gray-400);flex-shrink:0;transition:.25s}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:var(--orange)}
+.faq-item.open .faq-q-text{color:var(--navy)}
+.faq-answer{display:none;padding:0 0 20px;font-size:14.5px;color:var(--gray-600);line-height:1.75}
+.faq-item.open .faq-answer{display:block}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,var(--navy) 0%,#0f2e5a 100%);padding:72px 24px}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center}
+.cta-inner h2{font-family:var(--font-head);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#fff;margin-bottom:12px}
+.cta-inner p{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.btn-primary{background:var(--orange);color:#fff;border:none;padding:13px 28px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-primary:hover{background:var(--orange-dk);transform:translateY(-1px)}
+.btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);padding:13px 28px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.pay-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pay-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-full);padding:6px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.9)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 24px 0}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo-text{color:#fff}
+.footer-desc{font-size:13.5px;line-height:1.7;margin-bottom:18px;color:rgba(255,255,255,.6)}
+.social-row{display:flex;gap:8px}
+.social-btn{width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:.2s}
+.social-btn:hover{background:var(--orange);color:#fff}
+.social-btn svg{width:16px;height:16px}
+.footer-col h4{font-family:var(--font-head);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#fff;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,.6);transition:.2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-contact-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.footer-contact-item svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--orange)}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;gap:16px;flex-wrap:wrap}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:rgba(255,255,255,.5);transition:.2s}
+.footer-bottom-links a:hover{color:#fff}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+.overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:400px;max-width:100vw;background:#fff;z-index:201;transform:translateX(100%);transition:.3s cubic-bezier(.4,0,0,.1);display:flex;flex-direction:column;box-shadow:var(--shadow-xl)}
+.cart-drawer.open{transform:translateX(0)}
+.cd-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--gray-200)}
+.cd-head h3{font-family:var(--font-head);font-weight:800;font-size:16px}
+.cd-close{background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--r-sm);color:var(--gray-600);transition:.2s}
+.cd-close:hover{background:var(--gray-100)}
+.cd-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cd-empty{text-align:center;padding:48px 20px;color:var(--gray-600)}
+.cd-empty svg{width:56px;height:56px;margin:0 auto 16px;color:var(--gray-300)}
+.cd-empty h4{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:6px}
+.cd-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-200)}
+.cd-item-img{width:64px;height:64px;border-radius:var(--r-md);object-fit:cover;flex-shrink:0;background:var(--gray-100)}
+.cd-item-info{flex:1;min-width:0}
+.cd-item-name{font-size:13.5px;font-weight:600;color:var(--gray-900);line-height:1.4;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-item-price{font-size:13px;color:var(--orange);font-weight:700}
+.cd-item-controls{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cd-qty-btn{width:26px;height:26px;border:1px solid var(--gray-200);background:#fff;border-radius:var(--r-sm);cursor:pointer;font-size:15px;font-weight:600;color:var(--gray-700);display:flex;align-items:center;justify-content:center;transition:.2s}
+.cd-qty-btn:hover{border-color:var(--navy);color:var(--navy)}
+.cd-qty-val{font-size:13px;font-weight:600;min-width:20px;text-align:center}
+.cd-item-remove{background:none;border:none;cursor:pointer;color:var(--gray-400);font-size:12px;margin-left:auto;transition:.2s}
+.cd-item-remove:hover{color:var(--red)}
+.cd-foot{padding:16px 20px;border-top:1px solid var(--gray-200)}
+.cd-subtotal{display:flex;justify-content:space-between;font-size:14px;margin-bottom:14px}
+.cd-subtotal strong{font-family:var(--font-head);font-size:16px;color:var(--gray-900)}
+.cd-subtotal span{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--orange)}
+.cd-checkout{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:.2s;margin-bottom:8px}
+.cd-checkout:hover{background:var(--orange-dk)}
+.cd-view{width:100%;background:transparent;color:var(--navy);border:2px solid var(--gray-200);padding:12px;border-radius:var(--r-md);font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:.2s}
+.cd-view:hover{border-color:var(--navy);background:var(--gray-100)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .contact-inner{grid-template-columns:1fr 360px}
+  .quick-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .quick-inner{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr}
+  .info-sidebar{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .wa-card{grid-column:1/-1}
+  .map-card{grid-column:1/-1}
+}
+@media(max-width:640px){
+  .quick-inner{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .info-sidebar{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .wa-card{flex-wrap:wrap}
+  .wa-btn{width:100%;text-align:center;margin-left:0}
+}
+@media(max-width:380px){
+  .quick-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">We respond within <strong>2 hours</strong> during business hours — Mon–Sat 8am–6pm</div>
+
+<header class="header">
+  <div class="hdr-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg></div>
+      <div><div class="logo-text">Seamless<span>Tech</span></div><div class="logo-sub">Technologies Hub</div></div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="courses.html">Courses</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="hdr-icon" onclick="openCart()" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+      <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+      <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="shop.html">Shop</a>
+    <a href="courses.html">Courses</a><a href="services.html">Services</a>
+    <a href="blog.html">Blog</a><a href="contact.html" class="active">Contact</a>
+    <a href="login.html">Login / Register</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .99 1.18A2 2 0 0 1 2.97 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      Get in Touch
+    </div>
+    <h1 class="hero-title">We're Here to <em>Help You</em></h1>
+    <p class="hero-sub">Questions about a product, need a repair quote, or want to discuss a corporate IT project? Reach out and we'll get back to you within 2 hours.</p>
+  </div>
+</section>
+
+<!-- QUICK CONTACT CARDS -->
+<div class="quick-cards">
+  <div class="quick-inner">
+    <div class="quick-card" onclick="document.getElementById('phone').focus()">
+      <div class="quick-card-icon" style="background:#FEF3C7">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .99 1.18A2 2 0 0 1 2.97 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      </div>
+      <div>
+        <div class="quick-card-label">Call / WhatsApp</div>
+        <div class="quick-card-value">+233 XX XXX XXXX</div>
+        <div class="quick-card-sub">Mon–Sat, 8am–6pm</div>
+      </div>
+    </div>
+    <div class="quick-card" onclick="window.location.href='mailto:info@seamlesstech.com.gh'">
+      <div class="quick-card-icon" style="background:#E8F0FE">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div>
+        <div class="quick-card-label">Email Us</div>
+        <div class="quick-card-value">info@seamlesstech.com.gh</div>
+        <div class="quick-card-sub">Reply within 2 hours</div>
+      </div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-card-icon" style="background:#DCFCE7">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="quick-card-label">Visit Us</div>
+        <div class="quick-card-value">Accra, Ghana</div>
+        <div class="quick-card-sub">Walk-ins welcome</div>
+      </div>
+    </div>
+    <div class="quick-card">
+      <div class="quick-card-icon" style="background:#FEE2E2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="quick-card-label">Business Hours</div>
+        <div class="quick-card-value">Mon–Sat 8am–6pm</div>
+        <div class="quick-card-sub">Sunday: closed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <div id="formWrap">
+        <h2>Send Us a Message</h2>
+        <p class="form-sub">Fill out the form and we'll respond within 2 business hours. For urgent repairs, call or WhatsApp directly.</p>
+
+        <form id="contactForm" onsubmit="submitForm(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0">
+              <label for="firstName">First Name <span>*</span></label>
+              <input type="text" id="firstName" class="form-input" placeholder="Kwame" autocomplete="given-name">
+              <span class="form-error" id="err-firstName">Please enter your first name</span>
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label for="lastName">Last Name <span>*</span></label>
+              <input type="text" id="lastName" class="form-input" placeholder="Asante" autocomplete="family-name">
+              <span class="form-error" id="err-lastName">Please enter your last name</span>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:16px">
+            <div class="form-group" style="margin-bottom:0">
+              <label for="email">Email Address <span>*</span></label>
+              <input type="email" id="email" class="form-input" placeholder="kwame@example.com" autocomplete="email">
+              <span class="form-error" id="err-email">Please enter a valid email</span>
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="tel" id="phone" class="form-input" placeholder="+233 XX XXX XXXX" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:16px">
+            <label for="subject">What can we help you with? <span>*</span></label>
+            <select id="subject" class="form-select">
+              <option value="">— Select a topic —</option>
+              <option value="repair">Device Repair / Diagnostics</option>
+              <option value="shop">Shop / Product Enquiry</option>
+              <option value="courses">Courses &amp; Training</option>
+              <option value="networking">Networking &amp; Infrastructure</option>
+              <option value="cctv">CCTV &amp; Security Systems</option>
+              <option value="consultation">IT Consultation</option>
+              <option value="corporate">Corporate Training / B2B</option>
+              <option value="other">General Enquiry</option>
+            </select>
+            <span class="form-error" id="err-subject">Please select a topic</span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span>*</span></label>
+            <textarea id="message" class="form-textarea" placeholder="Tell us what you need — the more detail, the faster we can help..." maxlength="1000" oninput="updateCharCount()"></textarea>
+            <div class="char-count"><span id="charCount">0</span> / 1000</div>
+            <span class="form-error" id="err-message">Please write a message (at least 20 characters)</span>
+          </div>
+
+          <div class="attach-zone" id="attachZone">
+            <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx" multiple onchange="handleFiles(this.files)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            <p>Attach photos of your device or documents<br><strong>click to browse</strong> · PNG, JPG, PDF, DOC · max 5MB each</p>
+          </div>
+          <div class="attach-list" id="attachList"></div>
+
+          <div class="privacy-row">
+            <input type="checkbox" id="privacy">
+            <label for="privacy">I agree to the <a href="#">Privacy Policy</a> and consent to being contacted regarding my enquiry. We never share your details.</label>
+          </div>
+          <span class="form-error" id="err-privacy" style="margin-bottom:12px;margin-top:-8px">Please accept the privacy policy to continue</span>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="btn-text">Send Message</span>
+            <div class="spinner"></div>
+            <svg class="btn-text" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess" style="display:none">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Message Sent!</h3>
+        <p>Thanks for reaching out. We've received your message and will get back to you within 2 business hours. Check your email for a confirmation.</p>
+        <button class="btn-reset" onclick="resetForm()">Send Another Message</button>
+      </div>
+    </div>
+
+    <!-- INFO SIDEBAR -->
+    <div class="info-sidebar">
+
+      <!-- WhatsApp CTA -->
+      <div class="wa-card">
+        <div class="wa-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </div>
+        <div class="wa-text">
+          <h4>Chat on WhatsApp</h4>
+          <p>Fastest way to reach us — send photos of your device directly.</p>
+        </div>
+        <button class="wa-btn" onclick="window.open('https://wa.me/233XXXXXXXXX','_blank')">Open WhatsApp</button>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="info-card">
+        <div class="info-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h3>Find Us</h3>
+        </div>
+        <div class="info-card-body">
+          <div class="info-item">
+            <div class="info-item-icon" style="background:#DCFCE7">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="info-item-label">Address</div>
+              <div class="info-item-value">Accra, Ghana</div>
+              <div class="info-item-sub">Exact address provided on booking</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon" style="background:#FEF3C7">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .99 1.18A2 2 0 0 1 2.97 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            </div>
+            <div>
+              <div class="info-item-label">Phone</div>
+              <div class="info-item-value">+233 XX XXX XXXX</div>
+              <div class="info-item-sub">Call or WhatsApp</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon" style="background:#E8F0FE">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="info-item-label">Email</div>
+              <div class="info-item-value">info@seamlesstech.com.gh</div>
+              <div class="info-item-sub">Replies within 2 hours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Hours -->
+      <div class="info-card">
+        <div class="info-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Business Hours</h3>
+        </div>
+        <div class="info-card-body">
+          <table class="hours-table">
+            <tr><td>Monday</td><td class="hours-open" id="hr-mon">8:00 am – 6:00 pm</td></tr>
+            <tr><td>Tuesday</td><td class="hours-open" id="hr-tue">8:00 am – 6:00 pm</td></tr>
+            <tr><td>Wednesday</td><td class="hours-open" id="hr-wed">8:00 am – 6:00 pm</td></tr>
+            <tr><td>Thursday</td><td class="hours-open" id="hr-thu">8:00 am – 6:00 pm</td></tr>
+            <tr><td>Friday</td><td class="hours-open" id="hr-fri">8:00 am – 6:00 pm</td></tr>
+            <tr><td>Saturday</td><td class="hours-open" id="hr-sat">9:00 am – 4:00 pm</td></tr>
+            <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+          </table>
+          <div id="statusBar" style="margin-top:12px;padding:10px 14px;border-radius:var(--r-md);font-size:13px;font-weight:600;text-align:center"></div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-card">
+        <div class="map-placeholder">
+          <div class="map-pin-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="map-label">Seamless Technologies Hub</div>
+          <div class="map-sub">Accra, Ghana</div>
+          <button class="map-open-btn" onclick="window.open('https://maps.google.com/?q=Accra,Ghana','_blank')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Open in Google Maps
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Quick answers before you reach out.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How long does a laptop repair take?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">Most standard repairs — screen replacements, keyboard, battery, OS reinstallation — are completed same day or within 24 hours. Complex motherboard or chip-level repairs may take 48–72 hours. We'll give you a clear timeline upfront before starting any work.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Do you offer a warranty on repairs?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">Yes — all repairs carry a full 90-day warranty on both parts and labour. If the same fault recurs within 90 days of repair, we fix it free of charge. No questions asked.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What payment methods do you accept?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">We accept MTN Mobile Money (MoMo), Telecel Cash, AirtelTigo Money, Debit/Credit Card, Bank Transfer, and cash. All prices are in GH₵ — no foreign currency fees or dollar surcharges.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I enroll in a course if I'm a complete beginner?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">Absolutely. Six of our seven courses are designed specifically for beginners — no prior experience required. All you need is a computer and a willingness to learn. Our instructors are experienced at teaching complete beginners and the courses are self-paced so you go at your own speed.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Do you offer on-site IT services for businesses?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">Yes. For networking, CCTV installation, IT consultation, and corporate training, we visit your premises anywhere in Greater Accra. For larger projects outside Accra, contact us to discuss travel arrangements. The first consultation visit is always free.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How does online course delivery work?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">All courses are self-paced and available on our LMS platform. After purchase you get lifetime access to all lessons, downloadable resources, and the student community. You can study on any device — laptop, phone, or tablet. A certificate of completion is issued upon finishing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Are the products you sell genuine / original?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">Yes. We only stock and sell genuine products from authorised distributors. Every laptop, accessory, and gadget in our shop comes with manufacturer warranty documentation. We do not sell refurbished products as new.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I get a refund if I'm not satisfied?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">For products: we offer a 7-day return policy on unopened items in original condition. For courses: a 14-day money-back guarantee if you've completed less than 20% of the content. For services: if you're not satisfied with a repair result, we'll rectify it free of charge within the 90-day warranty period.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Still Have Questions?</h2>
+    <p>Our team is ready to help. Call, WhatsApp, or send a message and hear back within 2 hours.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="document.getElementById('firstName').focus();window.scrollTo({top:0,behavior:'smooth'})">Send a Message</button>
+      <button class="btn-outline-white" onclick="window.location.href='services.html'">View Our Services</button>
+    </div>
+    <div class="pay-chips">
+      <span class="pay-chip">MTN MoMo</span>
+      <span class="pay-chip">Telecel Cash</span>
+      <span class="pay-chip">AirtelTigo</span>
+      <span class="pay-chip">Debit / Credit Card</span>
+      <span class="pay-chip">Bank Transfer</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:14px;display:inline-flex">
+        <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg></div>
+        <div><div class="logo-text">Seamless<span style="color:var(--orange)">Tech</span></div><div class="logo-sub" style="color:rgba(255,255,255,.4)">Technologies Hub</div></div>
+      </a>
+      <p class="footer-desc">Empowering Lives Through Technology &amp; Digital Skills — Accra, Ghana.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li><li><a href="courses.html">Courses</a></li>
+        <li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>IT Services</h4>
+      <ul>
+        <li><a href="services.html#repairs">Device Repairs</a></li>
+        <li><a href="services.html#networking">Networking</a></li>
+        <li><a href="services.html#cctv">CCTV Installation</a></li>
+        <li><a href="services.html#consultation">IT Consultation</a></li>
+        <li><a href="services.html#installations">OS Installations</a></li>
+        <li><a href="services.html#training">IT Training</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Accra, Ghana
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .99 1.18A2 2 0 0 1 2.97 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>+233 XX XXX XXXX
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@seamlesstech.com.gh
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Seamless Technologies Hub. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Refund Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head">
+    <h3>Shopping Cart (<span id="cdCount">0</span>)</h3>
+    <button class="cd-close" onclick="closeCart()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cd-body" id="cdBody"></div>
+  <div class="cd-foot" id="cdFoot" style="display:none">
+    <div class="cd-subtotal"><strong>Subtotal</strong><span id="cdTotal">GH₵ 0</span></div>
+    <button class="cd-checkout" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+    <button class="cd-view" onclick="window.location.href='checkout.html'">View Cart</button>
+  </div>
+</div>
+
+<script>
+// ── BUSINESS HOURS STATUS ─────────────────────────────────────────────────────
+(function(){
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun … 6=Sat
+  const h = now.getHours() + now.getMinutes() / 60;
+  const isWeekday = day >= 1 && day <= 5;
+  const isSat = day === 6;
+  const isOpen = (isWeekday && h >= 8 && h < 18) || (isSat && h >= 9 && h < 16);
+  const bar = document.getElementById('statusBar');
+  if(isOpen){
+    bar.style.background = 'var(--green-lt)';
+    bar.style.color = 'var(--green)';
+    bar.textContent = '✓ We are open right now';
+  } else {
+    bar.style.background = 'var(--gray-100)';
+    bar.style.color = 'var(--gray-600)';
+    bar.textContent = 'Currently closed — send a message and we\'ll reply when we open';
+  }
+  // Highlight today
+  const days = ['hr-sun','hr-mon','hr-tue','hr-wed','hr-thu','hr-fri','hr-sat'];
+  const el = document.getElementById(days[day]);
+  if(el){ el.style.fontWeight = '800'; el.style.color = 'var(--navy)'; }
+})();
+
+// ── CHAR COUNT ────────────────────────────────────────────────────────────────
+function updateCharCount(){
+  document.getElementById('charCount').textContent = document.getElementById('message').value.length;
+}
+
+// ── FILE ATTACHMENTS ──────────────────────────────────────────────────────────
+let attachedFiles = [];
+function handleFiles(files){
+  Array.from(files).forEach(f => {
+    if(attachedFiles.length >= 5) return;
+    if(f.size > 5 * 1024 * 1024){ alert(`${f.name} exceeds 5MB`); return; }
+    attachedFiles.push(f);
+  });
+  renderAttachList();
+}
+function renderAttachList(){
+  const list = document.getElementById('attachList');
+  list.innerHTML = attachedFiles.map((f,i) => `
+    <div class="attach-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>${f.name}</span>
+      <button class="attach-remove" onclick="removeFile(${i})" type="button">✕</button>
+    </div>`).join('');
+}
+function removeFile(i){ attachedFiles.splice(i,1); renderAttachList(); }
+
+// ── FORM VALIDATION & SUBMIT ──────────────────────────────────────────────────
+function validateField(id, test, errId){
+  const el = document.getElementById(id);
+  const err = document.getElementById(errId);
+  const valid = test(el.value.trim());
+  el.classList.toggle('error', !valid);
+  err.classList.toggle('show', !valid);
+  return valid;
+}
+
+function submitForm(e){
+  e.preventDefault();
+  const checks = [
+    validateField('firstName', v => v.length >= 2, 'err-firstName'),
+    validateField('lastName',  v => v.length >= 2, 'err-lastName'),
+    validateField('email',     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'err-email'),
+    validateField('subject',   v => v !== '', 'err-subject'),
+    validateField('message',   v => v.length >= 20, 'err-message'),
+  ];
+
+  // Privacy checkbox
+  const priv = document.getElementById('privacy');
+  const privErr = document.getElementById('err-privacy');
+  const privOk = priv.checked;
+  privErr.classList.toggle('show', !privOk);
+  checks.push(privOk);
+
+  if(!checks.every(Boolean)){
+    document.querySelector('.error')?.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  // Simulate async submission
+  setTimeout(() => {
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 1600);
+}
+
+function resetForm(){
+  document.getElementById('contactForm').reset();
+  attachedFiles = [];
+  renderAttachList();
+  document.getElementById('charCount').textContent = '0';
+  document.querySelectorAll('.form-input,.form-select,.form-textarea').forEach(el => el.classList.remove('error'));
+  document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
+  const btn = document.getElementById('submitBtn');
+  btn.classList.remove('loading');
+  btn.disabled = false;
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formWrap').style.display = 'block';
+}
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ── CART ──────────────────────────────────────────────────────────────────────
+let cart = JSON.parse(localStorage.getItem('sth_cart') || '[]');
+document.addEventListener('DOMContentLoaded', () => { updateCartBadge(); renderCart(); });
+function saveCart(){ localStorage.setItem('sth_cart', JSON.stringify(cart)); }
+function updateCartBadge(){ const t=cart.reduce((s,i)=>s+i.qty,0); const b=document.getElementById('cartBadge'); b.textContent=t; b.style.display=t>0?'flex':'none'; }
+function openCart(){ document.getElementById('overlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); renderCart(); }
+function closeCart(){ document.getElementById('overlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
+function renderCart(){
+  const body=document.getElementById('cdBody'); const foot=document.getElementById('cdFoot');
+  document.getElementById('cdCount').textContent=cart.reduce((s,i)=>s+i.qty,0);
+  if(!cart.length){ body.innerHTML=`<div class="cd-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><h4>Your cart is empty</h4><p>Shop our devices or enroll in a course</p></div>`; foot.style.display='none'; return; }
+  body.innerHTML=cart.map(item=>`<div class="cd-item"><img class="cd-item-img" src="${item.img}" alt="${item.name}"><div class="cd-item-info"><div class="cd-item-name">${item.name}</div><div class="cd-item-price">GH₵ ${(item.price*item.qty).toLocaleString()}</div><div class="cd-item-controls"><button class="cd-qty-btn" onclick="changeQty('${item.id}',-1)">−</button><span class="cd-qty-val">${item.qty}</span><button class="cd-qty-btn" onclick="changeQty('${item.id}',1)">+</button><button class="cd-item-remove" onclick="removeItem('${item.id}')">✕ Remove</button></div></div></div>`).join('');
+  document.getElementById('cdTotal').textContent=`GH₵ ${cart.reduce((s,i)=>s+i.price*i.qty,0).toLocaleString()}`;
+  foot.style.display='block';
+}
+function changeQty(id,delta){ const item=cart.find(i=>i.id===id); if(!item)return; item.qty=Math.max(1,item.qty+delta); saveCart(); updateCartBadge(); renderCart(); }
+function removeItem(id){ cart=cart.filter(i=>i.id!==id); saveCart(); updateCartBadge(); renderCart(); }
+function toggleMobileNav(){ document.getElementById('mobileNav').classList.toggle('open'); }
+</script>
+</body>
+</html>

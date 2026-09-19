@@ -89,7 +89,7 @@
 | Services Page | `services.html` | ✅ Done |
 | Cart + Checkout | `checkout.html` | ✅ Done |
 | About Us | `about.html` | ✅ Done |
-| Contact | `contact.html` | ⬜ |
+| Contact | `contact.html` | ✅ Done |
 | Login / Register | `login.html` | ⬜ |
 | Student Dashboard | `dashboard.html` | ⬜ |
 | Blog | `blog.html` | ⬜ (optional, last) |
