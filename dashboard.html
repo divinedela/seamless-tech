@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Dashboard — Seamless Technologies Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;--navy-mid:#1A3A6B;--blue:#1565C0;--blue-lt:#E8F0FE;
+  --orange:#F97316;--orange-dk:#EA6508;--white:#FFFFFF;--off-white:#F5F7FA;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-400:#9CA3AF;--gray-600:#6B7280;--gray-900:#111827;
+  --green:#16A34A;--green-lt:#DCFCE7;--red:#DC2626;--red-lt:#FEE2E2;--amber:#F59E0B;--amber-lt:#FEF3C7;
+  --purple:#7C3AED;--purple-lt:#EDE9FE;
+  --font-head:'Plus Jakarta Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+  --sidebar:260px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--gray-900);background:var(--off-white);line-height:1.6;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{font-family:var(--font-body)}
+
+/* LAYOUT */
+.dash-layout{display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar);background:var(--navy);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:50;transition:.3s}
+.sb-logo{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo a{display:flex;align-items:center;gap:10px}
+.sb-logo-mark{width:36px;height:36px;background:var(--orange);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-logo-mark svg{width:20px;height:20px}
+.sb-logo-text{font-family:var(--font-head);font-weight:800;font-size:15px;color:#fff;line-height:1.15}
+.sb-logo-sub{font-size:9px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase}
+.sb-user{padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px}
+.sb-ava{width:42px;height:42px;border-radius:var(--r-full);background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
+.sb-user-name{font-size:14px;font-weight:700;color:#fff;line-height:1.2}
+.sb-user-role{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:1px}
+.sb-nav{flex:1;padding:16px 12px;overflow-y:auto}
+.sb-section-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;padding:8px 10px 6px;margin-top:4px}
+.sb-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-md);color:rgba(255,255,255,.65);font-size:13.5px;font-weight:600;cursor:pointer;border:none;background:none;width:100%;text-align:left;transition:.2s;margin-bottom:2px;position:relative}
+.sb-link:hover{background:rgba(255,255,255,.08);color:#fff}
+.sb-link.active{background:rgba(249,115,22,.18);color:#fff}
+.sb-link.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;background:var(--orange);border-radius:0 2px 2px 0}
+.sb-link svg{width:18px;height:18px;flex-shrink:0;opacity:.8}
+.sb-link.active svg{opacity:1;color:var(--orange)}
+.sb-badge{margin-left:auto;background:var(--orange);color:#fff;border-radius:var(--r-full);font-size:10px;font-weight:700;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.sb-bottom{padding:16px 12px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-link.logout{color:rgba(220,38,38,.8)}
+.sb-link.logout:hover{background:rgba(220,38,38,.1);color:var(--red)}
+
+/* MAIN */
+.dash-main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP BAR */
+.topbar{background:#fff;border-bottom:1px solid var(--gray-200);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40;box-shadow:var(--shadow-sm)}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.sidebar-toggle{display:none;width:36px;height:36px;background:none;border:none;cursor:pointer;border-radius:var(--r-sm);color:var(--gray-600);align-items:center;justify-content:center}
+.sidebar-toggle svg{width:20px;height:20px}
+.topbar-title{font-family:var(--font-head);font-size:17px;font-weight:800;color:var(--gray-900)}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.topbar-icon{width:36px;height:36px;background:none;border:none;border-radius:var(--r-md);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:.2s;position:relative}
+.topbar-icon:hover{background:var(--gray-100);color:var(--gray-900)}
+.topbar-icon .notif-dot{position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--red);border-radius:var(--r-full);border:2px solid #fff}
+.topbar-ava{width:36px;height:36px;border-radius:var(--r-full);background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:13px;color:#fff;cursor:pointer;flex-shrink:0}
+.topbar-name{font-size:13.5px;font-weight:600;color:var(--gray-900)}
+
+/* CONTENT AREA */
+.dash-content{flex:1;padding:32px}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:block}
+
+/* SECTION TITLES */
+.panel-title{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:6px}
+.panel-sub{font-size:14px;color:var(--gray-600);margin-bottom:28px}
+
+/* STAT CARDS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px}
+.stat-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:.2s}
+.stat-card:hover{box-shadow:var(--shadow-md)}
+.stat-icon{width:48px;height:48px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stat-icon svg{width:24px;height:24px}
+.stat-num{font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--gray-900);line-height:1}
+.stat-label{font-size:12.5px;color:var(--gray-600);margin-top:3px;font-weight:500}
+.stat-delta{font-size:11.5px;font-weight:600;margin-top:4px}
+
+/* GRID SECTIONS */
+.dash-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+
+/* COURSE PROGRESS CARDS */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-head h3{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--gray-900)}
+.see-all{font-size:13px;font-weight:600;color:var(--blue);cursor:pointer;background:none;border:none;transition:.2s}
+.see-all:hover{color:var(--navy)}
+.card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden;transition:.2s}
+.card:hover{box-shadow:var(--shadow-md)}
+
+.course-prog-card{display:flex;gap:0;margin-bottom:14px}
+.cpc-img{width:100px;flex-shrink:0;overflow:hidden}
+.cpc-img img{width:100%;height:100%;object-fit:cover}
+.cpc-body{flex:1;padding:14px 16px}
+.cpc-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.cpc-title{font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--gray-900);line-height:1.3;margin-bottom:8px}
+.progress-bar-wrap{background:var(--gray-100);border-radius:var(--r-full);height:6px;margin-bottom:6px}
+.progress-bar-fill{height:100%;border-radius:var(--r-full);background:linear-gradient(90deg,var(--blue),var(--orange));transition:.6s}
+.cpc-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--gray-600)}
+.cpc-pct{font-weight:700;color:var(--navy)}
+.btn-resume{background:var(--orange);color:#fff;border:none;padding:6px 14px;border-radius:var(--r-md);font-size:12px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body)}
+.btn-resume:hover{background:var(--orange-dk)}
+.btn-resume.completed{background:var(--green);cursor:default}
+
+/* ACTIVITY */
+.activity-list{display:flex;flex-direction:column;gap:0}
+.activity-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-100)}
+.activity-item:last-child{border-bottom:none}
+.act-icon{width:32px;height:32px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.act-icon svg{width:15px;height:15px}
+.act-text{font-size:13.5px;color:var(--gray-900);line-height:1.4}
+.act-time{font-size:11.5px;color:var(--gray-400);margin-top:2px}
+
+/* QUICK ACTIONS */
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
+.qa-btn{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);padding:14px;cursor:pointer;transition:.2s;text-align:left}
+.qa-btn:hover{border-color:var(--orange);box-shadow:var(--shadow-sm)}
+.qa-icon{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qa-icon svg{width:18px;height:18px}
+.qa-text{font-size:13px;font-weight:700;color:var(--gray-900);line-height:1.3}
+.qa-sub{font-size:11.5px;color:var(--gray-600)}
+
+/* MY COURSES PANEL */
+.courses-filter-tabs{display:flex;gap:4px;background:var(--gray-100);border-radius:var(--r-lg);padding:4px;margin-bottom:24px;width:fit-content}
+.cf-tab{padding:7px 18px;border:none;background:transparent;font-size:13.5px;font-weight:700;color:var(--gray-600);border-radius:var(--r-md);cursor:pointer;font-family:var(--font-body);transition:.2s}
+.cf-tab.active{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+.enrolled-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.enr-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden;transition:.2s}
+.enr-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.enr-img{aspect-ratio:16/9;overflow:hidden;position:relative}
+.enr-img img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.enr-card:hover .enr-img img{transform:scale(1.04)}
+.enr-badge{position:absolute;top:10px;left:10px;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.enr-body{padding:16px}
+.enr-cat{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.enr-title{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--gray-900);margin-bottom:12px;line-height:1.3}
+.enr-progress{margin-bottom:10px}
+.enr-progress-bar{background:var(--gray-100);border-radius:var(--r-full);height:7px;margin-bottom:5px;overflow:hidden}
+.enr-progress-fill{height:100%;border-radius:var(--r-full);background:linear-gradient(90deg,var(--blue),var(--orange))}
+.enr-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-600)}
+.enr-pct{font-weight:700;color:var(--navy)}
+.enr-actions{display:flex;gap:8px;margin-top:12px}
+.btn-continue{flex:1;background:var(--orange);color:#fff;border:none;padding:9px;border-radius:var(--r-md);font-size:13px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body)}
+.btn-continue:hover{background:var(--orange-dk)}
+.btn-cert{background:var(--green-lt);color:var(--green);border:none;padding:9px 12px;border-radius:var(--r-md);font-size:12px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:5px;font-family:var(--font-body);white-space:nowrap}
+.btn-cert:hover{background:#bbf7d0}
+.btn-cert svg{width:13px;height:13px}
+
+/* ORDERS PANEL */
+.orders-table-wrap{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);overflow:hidden}
+.orders-table{width:100%;border-collapse:collapse}
+.orders-table th{background:var(--gray-100);padding:12px 16px;font-size:12px;font-weight:700;color:var(--gray-600);text-align:left;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--gray-200)}
+.orders-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--gray-100);vertical-align:middle}
+.orders-table tr:last-child td{border-bottom:none}
+.orders-table tr:hover td{background:var(--gray-100)}
+.order-num{font-weight:700;color:var(--navy);font-family:var(--font-head)}
+.order-items{color:var(--gray-600);font-size:13px}
+.status-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--r-full);font-size:11.5px;font-weight:700}
+.status-badge.delivered{background:var(--green-lt);color:var(--green)}
+.status-badge.processing{background:var(--amber-lt);color:#92400E}
+.status-badge.cancelled{background:var(--red-lt);color:var(--red)}
+.status-badge.enrolled{background:var(--blue-lt);color:var(--blue)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.order-amount{font-family:var(--font-head);font-weight:800;color:var(--gray-900)}
+.btn-view-order{background:none;border:1.5px solid var(--gray-200);padding:6px 12px;border-radius:var(--r-sm);font-size:12px;font-weight:600;cursor:pointer;color:var(--gray-600);transition:.2s;font-family:var(--font-body)}
+.btn-view-order:hover{border-color:var(--navy);color:var(--navy)}
+
+/* CERTIFICATES PANEL */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cert-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:24px;text-align:center;transition:.2s}
+.cert-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.cert-icon{width:56px;height:56px;border-radius:var(--r-full);margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.cert-icon svg{width:28px;height:28px}
+.cert-title{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--gray-900);margin-bottom:4px;line-height:1.3}
+.cert-date{font-size:12px;color:var(--gray-400);margin-bottom:14px}
+.cert-locked{opacity:.45;filter:grayscale(1)}
+.cert-locked .cert-date{color:var(--gray-400)}
+.btn-dl-cert{width:100%;background:var(--navy);color:#fff;border:none;padding:10px;border-radius:var(--r-md);font-size:13px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body);display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-dl-cert:hover{background:var(--navy-mid)}
+.btn-dl-cert.locked{background:var(--gray-200);color:var(--gray-400);cursor:default}
+.btn-dl-cert svg{width:14px;height:14px}
+
+/* PROFILE PANEL */
+.profile-grid{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+.profile-form-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:28px}
+.profile-form-card h3{font-family:var(--font-head);font-size:16px;font-weight:800;margin-bottom:20px;color:var(--gray-900)}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--gray-900);margin-bottom:6px}
+.form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--gray-200);border-radius:var(--r-md);padding:10px 14px;font-size:14px;font-family:var(--font-body);color:var(--gray-900);background:#fff;transition:.2s;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
+.form-textarea{resize:vertical;min-height:80px;line-height:1.6}
+.btn-save{background:var(--orange);color:#fff;border:none;padding:11px 28px;border-radius:var(--r-md);font-size:14px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body)}
+.btn-save:hover{background:var(--orange-dk);transform:translateY(-1px)}
+.profile-sidebar-card{display:flex;flex-direction:column;gap:16px}
+.avatar-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:28px;text-align:center}
+.ava-big{width:88px;height:88px;border-radius:var(--r-full);background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:32px;color:#fff;margin:0 auto 12px}
+.ava-name{font-family:var(--font-head);font-size:17px;font-weight:800;color:var(--gray-900);margin-bottom:4px}
+.ava-email{font-size:13px;color:var(--gray-600);margin-bottom:14px}
+.btn-upload-ava{background:var(--gray-100);color:var(--navy);border:1.5px solid var(--gray-200);padding:8px 18px;border-radius:var(--r-md);font-size:13px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body)}
+.btn-upload-ava:hover{background:var(--gray-200)}
+.notif-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:20px}
+.notif-card h4{font-family:var(--font-head);font-size:14px;font-weight:800;color:var(--gray-900);margin-bottom:14px}
+.notif-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:13.5px}
+.notif-row:last-child{border-bottom:none;padding-bottom:0}
+.toggle-switch{position:relative;width:38px;height:22px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--gray-200);border-radius:var(--r-full);cursor:pointer;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:.2s}
+.toggle-switch input:checked + .toggle-slider{background:var(--green)}
+.toggle-switch input:checked + .toggle-slider::before{transform:translateX(16px)}
+.pw-change-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-xl);padding:20px}
+.pw-change-card h4{font-family:var(--font-head);font-size:14px;font-weight:800;color:var(--gray-900);margin-bottom:14px}
+.pw-input-wrap{position:relative;margin-bottom:10px}
+.pw-input-wrap input{width:100%;border:1.5px solid var(--gray-200);border-radius:var(--r-md);padding:10px 38px 10px 14px;font-size:13.5px;font-family:var(--font-body);outline:none;transition:.2s}
+.pw-input-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1)}
+.pw-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--gray-400)}
+.pw-eye svg{width:16px;height:16px;display:block}
+.btn-change-pw{width:100%;background:var(--navy);color:#fff;border:none;padding:10px;border-radius:var(--r-md);font-size:13px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-body);margin-top:4px}
+.btn-change-pw:hover{background:var(--navy-mid)}
+
+/* SAVE TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--gray-900);color:#fff;padding:12px 20px;border-radius:var(--r-lg);font-size:14px;font-weight:600;box-shadow:var(--shadow-xl);transform:translateY(80px);opacity:0;transition:.3s;z-index:999;display:flex;align-items:center;gap:8px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast svg{width:16px;height:16px;color:var(--green)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .dash-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  .profile-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  :root{--sidebar:0px}
+  .sidebar{transform:translateX(-260px);width:260px}
+  .sidebar.open{transform:translateX(0)}
+  .dash-main{margin-left:0}
+  .sidebar-toggle{display:flex}
+  .enrolled-grid{grid-template-columns:1fr}
+  .topbar-name{display:none}
+}
+@media(max-width:640px){
+  .dash-content{padding:20px 16px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .topbar{padding:0 16px}
+  .certs-grid{grid-template-columns:1fr}
+  .form-row-2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="dash-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-logo">
+      <a href="index.html">
+        <div class="sb-logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#fff"/></svg></div>
+        <div><div class="sb-logo-text">SeamlessTech</div><div class="sb-logo-sub">Technologies Hub</div></div>
+      </a>
+    </div>
+    <div class="sb-user">
+      <div class="sb-ava" id="sbAva">KA</div>
+      <div>
+        <div class="sb-user-name" id="sbName">Kwame Asante</div>
+        <div class="sb-user-role">Student · Customer</div>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section-label">Main</div>
+      <button class="sb-link active" data-panel="overview" onclick="switchPanel('overview',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Overview
+      </button>
+      <button class="sb-link" data-panel="courses" onclick="switchPanel('courses',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        My Courses
+        <span class="sb-badge">3</span>
+      </button>
+      <button class="sb-link" data-panel="orders" onclick="switchPanel('orders',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Orders
+      </button>
+      <button class="sb-link" data-panel="certificates" onclick="switchPanel('certificates',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Certificates
+      </button>
+      <div class="sb-section-label">Account</div>
+      <button class="sb-link" data-panel="profile" onclick="switchPanel('profile',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile & Settings
+      </button>
+      <a class="sb-link" href="contact.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Support
+      </a>
+    </nav>
+    <div class="sb-bottom">
+      <button class="sb-link logout" onclick="window.location.href='login.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="topbar-title" id="topbarTitle">Overview</span>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon" title="Notifications" onclick="showToast('No new notifications')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+        <button class="topbar-icon" title="Go to shop" onclick="window.location.href='shop.html'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+        <span class="topbar-name">Kwame Asante</span>
+        <div class="topbar-ava" onclick="switchPanel('profile',document.querySelector('[data-panel=profile]'))">KA</div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="dash-content">
+
+      <!-- OVERVIEW -->
+      <div class="panel active" id="panel-overview">
+        <div class="panel-title">Welcome back, Kwame 👋</div>
+        <p class="panel-sub">Here's what's happening with your learning and orders.</p>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--blue-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Courses Enrolled</div>
+              <div class="stat-delta" style="color:var(--green)">+1 this month</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--amber-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="stat-num">87</div>
+              <div class="stat-label">Lessons Completed</div>
+              <div class="stat-delta" style="color:var(--green)">4 this week</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--green-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div>
+              <div class="stat-num">1</div>
+              <div class="stat-label">Certificates Earned</div>
+              <div class="stat-delta" style="color:var(--gray-400)">2 in progress</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--purple-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <div>
+              <div class="stat-num">2</div>
+              <div class="stat-label">Orders Placed</div>
+              <div class="stat-delta" style="color:var(--green)">1 delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div>
+            <!-- CONTINUE LEARNING -->
+            <div class="section-head">
+              <h3>Continue Learning</h3>
+              <button class="see-all" onclick="switchPanel('courses',document.querySelector('[data-panel=courses]'))">See all →</button>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div style="padding:16px">
+                <div class="course-prog-card card" style="margin-bottom:12px">
+                  <div class="cpc-img"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=200&q=80" alt="Web Dev"></div>
+                  <div class="cpc-body">
+                    <div class="cpc-cat" style="color:var(--blue)">Web Development</div>
+                    <div class="cpc-title">Website Development Bootcamp</div>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:62%"></div></div>
+                    <div class="cpc-meta"><span>42 / 68 lessons</span><span class="cpc-pct">62%</span><button class="btn-resume" onclick="window.location.href='course-detail.html?id=2'">Resume</button></div>
+                  </div>
+                </div>
+                <div class="course-prog-card card" style="margin-bottom:12px">
+                  <div class="cpc-img"><img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=200&q=80" alt="Design"></div>
+                  <div class="cpc-body">
+                    <div class="cpc-cat" style="color:var(--purple)">Graphic Design</div>
+                    <div class="cpc-title">Graphic Design Masterclass</div>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+                    <div class="cpc-meta"><span>42 / 42 lessons</span><span class="cpc-pct" style="color:var(--green)">Complete ✓</span><button class="btn-resume completed">View</button></div>
+                  </div>
+                </div>
+                <div class="course-prog-card card" style="margin-bottom:0">
+                  <div class="cpc-img"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=200&q=80" alt="AI"></div>
+                  <div class="cpc-body">
+                    <div class="cpc-cat" style="color:var(--purple)">AI & Machine Learning</div>
+                    <div class="cpc-title">AI Fundamentals & Machine Learning</div>
+                    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:15%"></div></div>
+                    <div class="cpc-meta"><span>8 / 55 lessons</span><span class="cpc-pct">15%</span><button class="btn-resume" onclick="window.location.href='course-detail.html?id=7'">Resume</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <!-- RECENT ACTIVITY -->
+            <div>
+              <div class="section-head"><h3>Recent Activity</h3></div>
+              <div class="card">
+                <div style="padding:4px 16px">
+                  <div class="activity-list">
+                    <div class="activity-item">
+                      <div class="act-icon" style="background:var(--blue-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                      <div><div class="act-text">Completed <strong>CSS Grid</strong> lesson</div><div class="act-time">2 hours ago</div></div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="act-icon" style="background:var(--green-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+                      <div><div class="act-text">Earned <strong>Graphic Design</strong> certificate</div><div class="act-time">Yesterday</div></div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="act-icon" style="background:var(--purple-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+                      <div><div class="act-text">Order <strong>ORD-284710</strong> delivered</div><div class="act-time">3 days ago</div></div>
+                    </div>
+                    <div class="activity-item">
+                      <div class="act-icon" style="background:var(--purple-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                      <div><div class="act-text">Enrolled in <strong>AI Fundamentals</strong></div><div class="act-time">1 week ago</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div>
+              <div class="section-head"><h3>Quick Actions</h3></div>
+              <div class="quick-actions">
+                <button class="qa-btn" onclick="window.location.href='courses.html'">
+                  <div class="qa-icon" style="background:var(--blue-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                  <div><div class="qa-text">Browse Courses</div><div class="qa-sub">7 available</div></div>
+                </button>
+                <button class="qa-btn" onclick="window.location.href='shop.html'">
+                  <div class="qa-icon" style="background:var(--orange)" style="background:rgba(249,115,22,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+                  <div><div class="qa-text">Shop Devices</div><div class="qa-sub">Laptops & more</div></div>
+                </button>
+                <button class="qa-btn" onclick="switchPanel('certificates',document.querySelector('[data-panel=certificates]'))">
+                  <div class="qa-icon" style="background:var(--green-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                  <div><div class="qa-text">Certificates</div><div class="qa-sub">1 earned</div></div>
+                </button>
+                <button class="qa-btn" onclick="window.location.href='contact.html'">
+                  <div class="qa-icon" style="background:var(--purple-lt)"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                  <div><div class="qa-text">Get Support</div><div class="qa-sub">2h response</div></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MY COURSES -->
+      <div class="panel" id="panel-courses">
+        <div class="panel-title">My Courses</div>
+        <p class="panel-sub">Track your progress across all enrolled courses.</p>
+        <div class="courses-filter-tabs">
+          <button class="cf-tab active">All (3)</button>
+          <button class="cf-tab">In Progress (2)</button>
+          <button class="cf-tab">Completed (1)</button>
+        </div>
+        <div class="enrolled-grid">
+          <div class="enr-card">
+            <div class="enr-img">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=85" alt="Web Dev">
+              <span class="enr-badge" style="background:var(--orange);color:#fff">In Progress</span>
+            </div>
+            <div class="enr-body">
+              <div class="enr-cat" style="color:var(--blue)">Web Development</div>
+              <div class="enr-title">Website Development Bootcamp</div>
+              <div class="enr-progress">
+                <div class="enr-progress-bar"><div class="enr-progress-fill" style="width:62%"></div></div>
+                <div class="enr-meta"><span>42 of 68 lessons</span><span class="enr-pct">62%</span></div>
+              </div>
+              <div class="enr-actions">
+                <button class="btn-continue" onclick="window.location.href='course-detail.html?id=2'">Continue Learning</button>
+              </div>
+            </div>
+          </div>
+          <div class="enr-card">
+            <div class="enr-img">
+              <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=600&q=85" alt="Design">
+              <span class="enr-badge" style="background:var(--green);color:#fff">Completed</span>
+            </div>
+            <div class="enr-body">
+              <div class="enr-cat" style="color:var(--purple)">Graphic Design</div>
+              <div class="enr-title">Graphic Design Masterclass</div>
+              <div class="enr-progress">
+                <div class="enr-progress-bar"><div class="enr-progress-fill" style="width:100%;background:var(--green)"></div></div>
+                <div class="enr-meta"><span>42 of 42 lessons</span><span class="enr-pct" style="color:var(--green)">100% ✓</span></div>
+              </div>
+              <div class="enr-actions">
+                <button class="btn-continue" style="background:var(--navy)" onclick="window.location.href='course-detail.html?id=1'">Review Course</button>
+                <button class="btn-cert" onclick="downloadCert('Graphic Design Masterclass')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Certificate</button>
+              </div>
+            </div>
+          </div>
+          <div class="enr-card">
+            <div class="enr-img">
+              <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=600&q=85" alt="AI">
+              <span class="enr-badge" style="background:var(--orange);color:#fff">In Progress</span>
+            </div>
+            <div class="enr-body">
+              <div class="enr-cat" style="color:var(--purple)">AI & Machine Learning</div>
+              <div class="enr-title">AI Fundamentals & Machine Learning</div>
+              <div class="enr-progress">
+                <div class="enr-progress-bar"><div class="enr-progress-fill" style="width:15%"></div></div>
+                <div class="enr-meta"><span>8 of 55 lessons</span><span class="enr-pct">15%</span></div>
+              </div>
+              <div class="enr-actions">
+                <button class="btn-continue" onclick="window.location.href='course-detail.html?id=7'">Continue Learning</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS -->
+      <div class="panel" id="panel-orders">
+        <div class="panel-title">Order History</div>
+        <p class="panel-sub">All your purchases and service bookings.</p>
+        <div class="orders-table-wrap">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Items</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="order-num">#ORD-284710</span></td>
+                <td><span class="order-items">HP EliteBook 840 G8 × 1</span></td>
+                <td>Sep 10, 2024</td>
+                <td><span class="order-amount">GH₵ 4,599</span></td>
+                <td><span class="status-badge delivered"><span class="status-dot"></span>Delivered</span></td>
+                <td><button class="btn-view-order" onclick="showToast('Order details coming soon')">View</button></td>
+              </tr>
+              <tr>
+                <td><span class="order-num">#ORD-291043</span></td>
+                <td><span class="order-items">Graphic Design Masterclass (Course)</span></td>
+                <td>Aug 28, 2024</td>
+                <td><span class="order-amount">GH₵ 299</span></td>
+                <td><span class="status-badge enrolled"><span class="status-dot"></span>Enrolled</span></td>
+                <td><button class="btn-view-order" onclick="switchPanel('courses',document.querySelector('[data-panel=courses]'))">View</button></td>
+              </tr>
+              <tr>
+                <td><span class="order-num">#ORD-304822</span></td>
+                <td><span class="order-items">AI Fundamentals Course + Web Dev Bootcamp</span></td>
+                <td>Sep 14, 2024</td>
+                <td><span class="order-amount">GH₵ 748</span></td>
+                <td><span class="status-badge enrolled"><span class="status-dot"></span>Enrolled</span></td>
+                <td><button class="btn-view-order" onclick="switchPanel('courses',document.querySelector('[data-panel=courses]'))">View</button></td>
+              </tr>
+              <tr>
+                <td><span class="order-num">#SVC-100291</span></td>
+                <td><span class="order-items">Laptop Screen Replacement (Repair Service)</span></td>
+                <td>Jul 5, 2024</td>
+                <td><span class="order-amount">GH₵ 320</span></td>
+                <td><span class="status-badge delivered"><span class="status-dot"></span>Completed</span></td>
+                <td><button class="btn-view-order" onclick="showToast('Service details coming soon')">View</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CERTIFICATES -->
+      <div class="panel" id="panel-certificates">
+        <div class="panel-title">My Certificates</div>
+        <p class="panel-sub">Download your earned certificates. Complete a course to unlock more.</p>
+        <div class="certs-grid">
+          <div class="cert-card">
+            <div class="cert-icon" style="background:var(--purple-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="cert-title">Graphic Design Masterclass</div>
+            <div class="cert-date">Completed Aug 28, 2024</div>
+            <button class="btn-dl-cert" onclick="downloadCert('Graphic Design Masterclass')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+          </div>
+          <div class="cert-card cert-locked">
+            <div class="cert-icon" style="background:var(--blue-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="cert-title">Website Development Bootcamp</div>
+            <div class="cert-date">62% complete — keep going!</div>
+            <button class="btn-dl-cert locked" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Complete to Unlock
+            </button>
+          </div>
+          <div class="cert-card cert-locked">
+            <div class="cert-icon" style="background:var(--purple-lt)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="cert-title">AI Fundamentals & Machine Learning</div>
+            <div class="cert-date">15% complete — just started</div>
+            <button class="btn-dl-cert locked" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Complete to Unlock
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="panel" id="panel-profile">
+        <div class="panel-title">Profile & Settings</div>
+        <p class="panel-sub">Manage your account details and preferences.</p>
+        <div class="profile-grid">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <div class="profile-form-card">
+              <h3>Personal Information</h3>
+              <div class="form-row-2">
+                <div class="form-group" style="margin-bottom:0">
+                  <label>First Name</label>
+                  <input type="text" class="form-input" value="Kwame" id="pfFirst">
+                </div>
+                <div class="form-group" style="margin-bottom:0">
+                  <label>Last Name</label>
+                  <input type="text" class="form-input" value="Asante" id="pfLast">
+                </div>
+              </div>
+              <div class="form-group" style="margin-top:14px">
+                <label>Email Address</label>
+                <input type="email" class="form-input" value="kwame.asante@gmail.com" id="pfEmail">
+              </div>
+              <div class="form-group">
+                <label>Phone / WhatsApp</label>
+                <input type="tel" class="form-input" value="+233 24 XXX XXXX" id="pfPhone">
+              </div>
+              <div class="form-group">
+                <label>Bio (optional)</label>
+                <textarea class="form-textarea" id="pfBio" placeholder="Tell us a little about yourself…">Aspiring full-stack developer based in Accra. Learning web development and AI to build tech products for Africa.</textarea>
+              </div>
+              <button class="btn-save" onclick="saveProfile()">Save Changes</button>
+            </div>
+          </div>
+
+          <div class="profile-sidebar-card">
+            <div class="avatar-card">
+              <div class="ava-big" id="pfAva">KA</div>
+              <div class="ava-name" id="pfAvaName">Kwame Asante</div>
+              <div class="ava-email" id="pfAvaEmail">kwame.asante@gmail.com</div>
+              <button class="btn-upload-ava" onclick="showToast('Photo upload coming soon')">Change Photo</button>
+            </div>
+
+            <div class="notif-card">
+              <h4>Notifications</h4>
+              <div class="notif-row">
+                <span>Course updates</span>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div class="notif-row">
+                <span>Order updates</span>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+              <div class="notif-row">
+                <span>Promotions</span>
+                <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+              </div>
+              <div class="notif-row">
+                <span>Weekly digest</span>
+                <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+              </div>
+            </div>
+
+            <div class="pw-change-card">
+              <h4>Change Password</h4>
+              <div class="pw-input-wrap">
+                <input type="password" placeholder="Current password" id="pwCurrent">
+                <button class="pw-eye" type="button" onclick="togglePwField('pwCurrent',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              </div>
+              <div class="pw-input-wrap">
+                <input type="password" placeholder="New password" id="pwNew">
+                <button class="pw-eye" type="button" onclick="togglePwField('pwNew',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              </div>
+              <div class="pw-input-wrap">
+                <input type="password" placeholder="Confirm new password" id="pwConfirm">
+                <button class="pw-eye" type="button" onclick="togglePwField('pwConfirm',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              </div>
+              <button class="btn-change-pw" onclick="changePw()">Update Password</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dash-content -->
+  </main>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Saved</span>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="overlay" id="sbOverlay" onclick="closeSidebar()" style="position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:49;opacity:0;pointer-events:none;transition:.3s"></div>
+
+<script>
+// ── PANEL SWITCHING ───────────────────────────────────────────────────────────
+const panelTitles = {
+  overview:'Overview', courses:'My Courses', orders:'Order History',
+  certificates:'Certificates', profile:'Profile & Settings'
+};
+
+function switchPanel(id, btn){
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(`panel-${id}`).classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('topbarTitle').textContent = panelTitles[id] || id;
+  closeSidebar();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── SIDEBAR MOBILE ────────────────────────────────────────────────────────────
+function toggleSidebar(){
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sbOverlay');
+  const open = sb.classList.toggle('open');
+  ov.style.opacity = open ? '1' : '0';
+  ov.style.pointerEvents = open ? 'all' : 'none';
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  const ov = document.getElementById('sbOverlay');
+  ov.style.opacity = '0';
+  ov.style.pointerEvents = 'none';
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg){
+  clearTimeout(toastTimer);
+  document.getElementById('toastMsg').textContent = msg;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── PROFILE SAVE ──────────────────────────────────────────────────────────────
+function saveProfile(){
+  const first = document.getElementById('pfFirst').value.trim();
+  const last  = document.getElementById('pfLast').value.trim();
+  const email = document.getElementById('pfEmail').value.trim();
+  if(first) {
+    document.getElementById('pfAvaName').textContent = `${first} ${last}`;
+    document.getElementById('pfAva').textContent = `${first[0]}${last[0] || ''}`.toUpperCase();
+    document.getElementById('sbAva').textContent   = `${first[0]}${last[0] || ''}`.toUpperCase();
+    document.getElementById('sbName').textContent  = `${first} ${last}`;
+  }
+  document.getElementById('pfAvaEmail').textContent = email;
+  showToast('Profile saved successfully');
+}
+
+// ── CHANGE PASSWORD ───────────────────────────────────────────────────────────
+function changePw(){
+  const cur = document.getElementById('pwCurrent').value;
+  const nw  = document.getElementById('pwNew').value;
+  const cf  = document.getElementById('pwConfirm').value;
+  if(!cur){ showToast('Enter your current password'); return; }
+  if(nw.length < 8){ showToast('New password must be 8+ characters'); return; }
+  if(nw !== cf){ showToast('New passwords do not match'); return; }
+  ['pwCurrent','pwNew','pwConfirm'].forEach(id => document.getElementById(id).value = '');
+  showToast('Password updated successfully');
+}
+
+function togglePwField(id, btn){
+  const input = document.getElementById(id);
+  input.type = input.type === 'text' ? 'password' : 'text';
+}
+
+// ── CERTIFICATE DOWNLOAD ──────────────────────────────────────────────────────
+function downloadCert(name){
+  showToast(`Downloading "${name}" certificate…`);
+}
+
+// ── URL PARAM: jump to panel ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search).get('panel');
+  if(p){
+    const btn = document.querySelector(`[data-panel="${p}"]`);
+    if(btn) switchPanel(p, btn);
+  }
+});
+</script>
+</body>
+</html>

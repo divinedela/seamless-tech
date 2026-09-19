@@ -91,7 +91,7 @@
 | About Us | `about.html` | ✅ Done |
 | Contact | `contact.html` | ✅ Done |
 | Login / Register | `login.html` | ✅ Done |
-| Student Dashboard | `dashboard.html` | ⬜ |
+| Student Dashboard | `dashboard.html` | ✅ Done |
 | Blog | `blog.html` | ⬜ (optional, last) |
 
 ## Homepage Sections (for reference when building inner pages)
