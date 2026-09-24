@@ -17,6 +17,7 @@
   --shadow-sm:0 1px 3px rgba(0,0,0,0.08);--shadow-md:0 4px 12px rgba(0,0,0,0.10);
   --shadow-lg:0 8px 24px rgba(0,0,0,0.12);--shadow-xl:0 16px 48px rgba(0,0,0,0.18);
   --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+  --ease:200ms ease;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font-body);color:var(--gray-900);background:#fff;line-height:1.6}
@@ -24,34 +25,40 @@ a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
 /* ANNOUNCE */
-.announce{background:var(--navy);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
-.announce strong{color:var(--orange)}
+/* ANNOUNCE BAR */
+.announce-bar{background:var(--navy);color:rgba(255,255,255,0.85);text-align:center;padding:10px 24px;font-size:13px;font-weight:500}
+.announce-bar strong{color:var(--orange)}
+.announce-bar a{color:var(--white);text-decoration:underline;margin-left:8px}
 
 /* HEADER */
-.header{background:#fff;border-bottom:1px solid var(--gray-200);position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm)}
-.hdr-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.logo-mark{width:36px;height:36px;background:var(--navy);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:20px;height:20px}
-.logo-text{font-family:var(--font-head);font-weight:800;font-size:17px;color:var(--navy);line-height:1.1}
-.logo-text span{color:var(--orange)}
-.logo-sub{font-size:9px;font-weight:600;color:var(--gray-600);letter-spacing:.05em;text-transform:uppercase}
-nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
-nav a{font-size:13.5px;font-weight:500;color:var(--gray-900);padding:7px 11px;border-radius:var(--r-sm);transition:all .2s;white-space:nowrap}
-nav a:hover{background:var(--blue-lt);color:var(--blue)}
-nav a.active{color:var(--blue);font-weight:600}
-.hdr-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.hdr-icon{width:38px;height:38px;border:none;background:none;cursor:pointer;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:.2s;position:relative}
-.hdr-icon:hover{background:var(--gray-100);color:var(--navy)}
-.cart-badge{position:absolute;top:4px;right:4px;background:var(--orange);color:#fff;border-radius:var(--r-full);font-size:9px;font-weight:700;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px}
-.btn-login{background:var(--navy);color:#fff;border:none;padding:8px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:.2s}
-.btn-login:hover{background:var(--navy-mid)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.site-header{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--gray-200);transition:box-shadow var(--ease)}
+.site-header.scrolled{box-shadow:var(--shadow-md)}
+.nav-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:72px;gap:8px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:32px}
+.logo-mark{width:40px;height:40px;background:var(--navy);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:22px;height:22px;fill:var(--orange)}
+.logo-name strong{display:block;font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--navy);line-height:1.1}
+.logo-name span{font-size:10px;color:var(--gray-400);letter-spacing:1px;text-transform:uppercase}
+.main-nav{display:flex;align-items:center;gap:2px;flex:1}
+.nav-a{font-size:13.5px;font-weight:500;color:var(--gray-900);padding:7px 11px;border-radius:var(--r-sm);transition:all var(--ease);white-space:nowrap}
+.nav-a:hover{color:var(--blue);background:var(--blue-lt)}
+.nav-a.active{color:var(--blue);font-weight:600}
+.search-wrap{display:flex;align-items:center;gap:8px;background:var(--gray-100);border:1.5px solid transparent;border-radius:var(--r-full);padding:8px 16px;margin-left:auto;transition:all var(--ease)}
+.search-wrap:focus-within{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 3px var(--blue-lt)}
+.search-wrap svg{width:15px;height:15px;flex-shrink:0;stroke:var(--gray-400);fill:none}
+.search-wrap input{border:none;background:none;outline:none;font-size:14px;font-family:var(--font-body);color:var(--gray-900);width:180px}
+.search-wrap input::placeholder{color:var(--gray-400)}
+.icon-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-sm);color:var(--gray-600);transition:all var(--ease);position:relative;flex-shrink:0}
+.icon-btn:hover{background:var(--gray-100);color:var(--navy)}
+.icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none}
+.cart-badge{position:absolute;top:5px;right:5px;width:17px;height:17px;background:var(--orange);color:var(--white);font-size:9px;font-weight:800;border-radius:50%;display:none;align-items:center;justify-content:center}
+.btn-login-nav{flex-shrink:0;background:var(--navy);color:var(--white);padding:9px 20px;border-radius:var(--r-sm);font-size:13px;font-weight:700;font-family:var(--font-head);transition:background var(--ease)}
+.btn-login-nav:hover{background:var(--blue)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:6px;border-radius:var(--r-sm);cursor:pointer;margin-left:auto}
 .hamburger span{display:block;width:22px;height:2px;background:var(--gray-900);border-radius:2px}
-.mobile-nav{display:none;background:#fff;border-top:1px solid var(--gray-200);padding:16px 24px;flex-direction:column;gap:4px}
-.mobile-nav a{padding:10px 12px;border-radius:var(--r-sm);font-size:14px;font-weight:600;color:var(--gray-700)}
-.mobile-nav a:hover,.mobile-nav a.active{background:var(--blue-lt);color:var(--blue)}
+.mobile-nav{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--gray-200);padding:12px 0 20px}
 .mobile-nav.open{display:flex}
+.mobile-nav .nav-a{padding:11px 24px;border-radius:0}
 
 /* HERO */
 .hero{background:linear-gradient(135deg,var(--navy) 0%,#0d2545 60%,#0f2e5a 100%);padding:88px 24px 80px;position:relative;overflow:hidden}
@@ -278,37 +285,49 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 24px 0}
 </head>
 <body>
 
-<div class="announce">Empowering Lives Through Technology &amp; Digital Skills — Based in <strong>Accra, Ghana</strong></div>
+<div class="announce-bar">Empowering Lives Through Technology &amp; Digital Skills — Based in <strong>Accra, Ghana</strong></div>
 
-<header class="header">
-  <div class="hdr-inner">
+<header class="site-header" id="siteHeader">
+  <div class="nav-wrap">
     <a href="index.html" class="logo">
-      <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M11 2L4 11h6l-1 7 7-9h-6l1-7z" fill="#F97316"/></svg></div>
-      <div><div class="logo-text">Seamless<span>Tech</span></div><div class="logo-sub">Technologies Hub</div></div>
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="logo-name"><strong>Seamless Tech</strong><span>Technologies Hub</span></div>
     </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="courses.html">Courses</a>
-      <a href="services.html">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-a">Home</a>
+      <a href="shop.html" class="nav-a">Shop</a>
+      <a href="courses.html" class="nav-a">Courses</a>
+      <a href="services.html#training" class="nav-a">IT Training</a>
+      <a href="services.html" class="nav-a">Services</a>
+      <a href="services.html#repairs" class="nav-a">Repairs</a>
+      <a href="#" class="nav-a">Blog</a>
+      <a href="about.html" class="nav-a active">About</a>
     </nav>
-    <div class="hdr-actions">
-      <button class="hdr-icon" onclick="openCart()" aria-label="Cart">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
-      </button>
-      <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
-      <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/></svg>
+      <input type="text" placeholder="Search products, courses…" id="searchInput">
     </div>
+    <button class="icon-btn" title="Wishlist" style="margin-left:8px;">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <button class="icon-btn" title="Cart" onclick="openCart()">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <a href="login.html" class="btn-login-nav" style="margin-left:4px;">Login</a>
+    <button class="hamburger" onclick="toggleMobileNav()" id="hamburger"><span></span><span></span><span></span></button>
   </div>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="shop.html">Shop</a>
-    <a href="courses.html">Courses</a><a href="services.html">Services</a>
-    <a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="login.html">Login / Register</a>
-  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-a">Home</a>
+    <a href="shop.html" class="nav-a">Shop</a>
+    <a href="courses.html" class="nav-a">Courses</a>
+    <a href="services.html#training" class="nav-a">IT Training</a>
+    <a href="services.html" class="nav-a">Services</a>
+    <a href="services.html#repairs" class="nav-a">Repairs</a>
+    <a href="#" class="nav-a">Blog</a>
+    <a href="about.html" class="nav-a active">About Us</a>
+    <a href="contact.html" class="nav-a">Contact</a>
+  </nav>
 </header>
 
 <!-- HERO -->
